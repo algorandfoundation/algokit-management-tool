@@ -20,7 +20,8 @@ export function RepoNetwork() {
   useEffect(() => {
     forceRef.current = d3
       .forceSimulation(data.nodes)
-      .force("charge", d3.forceManyBody().strength(-20))
+      .force("charge", d3.forceManyBody().strength(-10))
+      .force("collide", d3.forceCollide().radius(2).iterations(3))
       .force(
         "link",
         d3.forceLink<Node, Link>(data.links).id((d) => d.name)
