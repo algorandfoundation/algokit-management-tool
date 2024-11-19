@@ -19,7 +19,9 @@ export function DrawerConfig({ closeDrawer }: DrawerConfigProps) {
     <div className="menu bg-base-200 text-base-content min-h-full w-full max-w-[300px] p-2">
       <div className="flex justify-between items-center py-1">
         <h2 className="text-lg font-bold">Settings</h2>
-        <IoIosClose style={{ width: 35, height: 35 }} onClick={closeDrawer} />
+        <button className="btn btn-square" onClick={closeDrawer}>
+          <IoIosClose style={{ width: 35, height: 35 }} onClick={closeDrawer} />
+        </button>
       </div>
       <label className="form-control w-full max-w-xs">
         <div className="label">
@@ -28,7 +30,6 @@ export function DrawerConfig({ closeDrawer }: DrawerConfigProps) {
         <select
           className="select select-bordered w-full max-w-xs capitalize"
           onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-            console.log(event.target.value);
             setColorBySelection(event.target.value as ColorBySelection);
           }}
         >
@@ -46,7 +47,7 @@ export function DrawerConfig({ closeDrawer }: DrawerConfigProps) {
                 type="checkbox"
                 checked={showDevDependencies}
                 className="checkbox"
-                onClick={() => setShowDevDependencies(!showDevDependencies)}
+                onChange={() => setShowDevDependencies(!showDevDependencies)}
               />
               <span className="label-text">Show Dev Dependencies</span>
             </label>
@@ -59,7 +60,7 @@ export function DrawerConfig({ closeDrawer }: DrawerConfigProps) {
                 type="checkbox"
                 checked={showMismatchedVersions}
                 className="checkbox"
-                onClick={() =>
+                onChange={() =>
                   setShowMismatchedVersions(!showMismatchedVersions)
                 }
               />

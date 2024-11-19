@@ -23,14 +23,14 @@ const ZoomableContainer = ({
     width={width}
     height={height}
     scaleXMin={1}
-    scaleXMax={4}
+    scaleXMax={7}
     scaleYMin={1}
-    scaleYMax={4}
+    scaleYMax={7}
     initialTransformMatrix={{
-      scaleX: 1,
-      scaleY: 1,
-      translateX: 100,
-      translateY: 0,
+      scaleX: 2,
+      scaleY: 2,
+      translateX: (-1 * width) / 2,
+      translateY: (-1 * height) / 2,
       skewX: 0,
       skewY: 0,
     }}

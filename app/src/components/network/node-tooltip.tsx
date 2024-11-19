@@ -2,7 +2,7 @@ import { Node } from "./types";
 
 export function NodeTooltip({ node }: { node: Node }) {
   return (
-    <dl className="grid grid-cols-2 gap-y-2">
+    <dl className="grid grid-cols-[auto_auto] gap-x-4 gap-y-2">
       <dt className="font-semibold">Name</dt>
       <dd>{node.name}</dd>
       <dt className="font-semibold">Version(s)</dt>

@@ -21,10 +21,13 @@ export function RepoNetwork() {
     forceRef.current = d3
       .forceSimulation(data.nodes)
       .force("charge", d3.forceManyBody().strength(-10))
-      .force("collide", d3.forceCollide().radius(2).iterations(3))
+      .force("collide", d3.forceCollide().radius(3).iterations(5))
       .force(
         "link",
-        d3.forceLink<Node, Link>(data.links).id((d) => d.name)
+        d3
+          .forceLink<Node, Link>(data.links)
+          .id((d) => d.id)
+          .strength(1)
       )
       .force("center", d3.forceCenter(width / 2, height / 2))
       .on("tick", () => {
@@ -42,7 +45,11 @@ export function RepoNetwork() {
   return width < 10 ? null : (
     <div ref={containerRef}>
       <ZoomableContainer width={width} height={height}>
-        <NetworkVisx showTooltip={showTooltip} hideTooltip={hideTooltip} />;
+        <NetworkVisx
+          showTooltip={showTooltip}
+          hideTooltip={hideTooltip}
+          tooltipData={tooltipData}
+        />
       </ZoomableContainer>
       {tooltipData && (
         <TooltipInPortal

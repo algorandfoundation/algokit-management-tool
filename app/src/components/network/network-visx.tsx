@@ -9,15 +9,21 @@ import { useConfigContext } from "../../config-context";
 type NetworkProps = {
   showTooltip: UseTooltipParams<Node>["showTooltip"];
   hideTooltip: UseTooltipParams<Node>["hideTooltip"];
+  tooltipData: UseTooltipParams<Node>["tooltipData"];
 };
 
-export function NetworkVisx({ showTooltip, hideTooltip }: NetworkProps) {
+export function NetworkVisx({
+  showTooltip,
+  hideTooltip,
+  tooltipData,
+}: NetworkProps) {
   const {
     showDevDependencies,
     showMismatchedVersions,
     colorBySelection,
     colorMap,
   } = useConfigContext();
+  const hoverNodeId = tooltipData?.id;
 
   const nodeComponent = useCallback(
     ({ node }: NodeProvidedProps<Node>) => {
@@ -38,7 +44,7 @@ export function NetworkVisx({ showTooltip, hideTooltip }: NetworkProps) {
           }}
           onMouseOut={hideTooltip}
           stroke={shouldShowMismatched ? "red" : "none"}
-          stroke-width={shouldShowMismatched ? 1 : 0}
+          strokeWidth={shouldShowMismatched ? 1 : 0}
           fill={color}
           r={2.5}
         />
@@ -55,9 +61,13 @@ export function NetworkVisx({ showTooltip, hideTooltip }: NetworkProps) {
   );
   const linkComponent = useCallback(
     ({ link }: LinkProvidedProps<Link>) => {
-      if (!showDevDependencies && link.type !== "dependency") return null;
       const linkSource = link.source as Node;
       const linkTarget = link.target as Node;
+      const linkNodesDependency =
+        linkSource.type === "dependency" && linkTarget.type === "dependency";
+      if (!showDevDependencies && !linkNodesDependency) return null;
+      const isEitherLinkNodeHoveredOver =
+        linkSource.id === hoverNodeId || linkTarget.id === hoverNodeId;
       return (
         <line
           x1={linkSource.x}
@@ -65,12 +75,12 @@ export function NetworkVisx({ showTooltip, hideTooltip }: NetworkProps) {
           x2={linkTarget.x}
           y2={linkTarget.y}
           strokeWidth={1}
-          stroke="#999"
-          strokeOpacity={0.6}
+          stroke={isEitherLinkNodeHoveredOver ? "#ccc" : "#999"}
+          strokeOpacity={isEitherLinkNodeHoveredOver ? 1 : 0.6}
         />
       );
     },
-    [showDevDependencies]
+    [showDevDependencies, hoverNodeId]
   );
   return (
     <Graph
