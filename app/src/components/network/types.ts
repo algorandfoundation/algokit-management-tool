@@ -4,12 +4,14 @@ export interface Node extends d3.SimulationNodeDatum {
   version: string[];
   owner: string;
   language: string;
-  type: "dependency" | "dev-dependency" | "peer-dependency";
+  type: string;
+  // type: "dependency" | "dev-dependency" | "peer-dependency";
 }
 
 export interface Link extends d3.SimulationLinkDatum<Node> {
   language: string;
-  type: "dependency" | "dev-dependency" | "peer-dependency";
+  type: string;
+  // type: "dependency" | "dev-dependency" | "peer-dependency";
 }
 
 export type Data = {
