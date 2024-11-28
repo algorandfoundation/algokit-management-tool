@@ -8,6 +8,7 @@ function App() {
   return (
     <ConfigContextProvider>
       <div className="h-dvh">
+        <div>title</div>
         <div className="absolute top-0 left-0 z-10">
           <Legend />
         </div>
