@@ -1,0 +1,768 @@
+{
+  "name": "Functional Specifications",
+  "description": "",
+  "children": [
+    {
+      "name": "Smart Contract",
+      "description": "Must have the ability to create,",
+      "children": [
+        {
+          "name": "High level Language Use",
+          "description": "A set of HLL syntaxes and semantics to enable writing Algorand Smart Contracts.",
+          "children": [
+            {
+              "name": "High level Language Use Native Syntax",
+              "description": "Each HLL definition should use as much native syntax as possibile while keeping the number of new concepts, types, and idioms to a minimum."
+            },
+            {
+              "name": "Clear definition of native High Level Language Syntax",
+              "description": "Must define exactly what subset of the native HLL is available and the restriction when it is."
+            }
+          ]
+        },
+        {
+          "name": "Smart Contract Compilation",
+          "description": "Has the ability to compile Algorand Python code into AVM (Algorand Virtual Machine) bytecode for execution on the Algorand blockchain",
+          "children": [
+            {
+              "name": "Modular Design",
+              "description": "The components of the compiler should have a modular design that enables extensibility and code reuse, facilitating future enhancements and support for new languages or platforms"
+            },
+            {
+              "name": "Frontend",
+              "description": "Has the ability to compile code from an AlgoKit-support language to Intermediate Representation of the code",
+              "children": [
+                {
+                  "name": "Support Languages",
+                  "description": "Must have the ability to support multiple languages in which users will write smart contracts. These languages must be as semantically close as possible to the original languages",
+                  "children": [
+                    {
+                      "name": "Python",
+                      "description": "Must support the Python language"
+                    },
+                    {
+                      "name": "Typescript",
+                      "description": "Must support the Typescript Language"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Multi-stage optimization",
+              "description": "Must support applying multiple optimization passes at different IR stages that allow for more specialized and effective optimizations. The end result should be TEAL Intermediate Representation",
+              "children": [
+                {
+                  "name": "Optimization Parameters",
+                  "description": "Must be able to optimize the code based on the following parameters",
+                  "children": [
+                    {
+                      "name": "opcode budget",
+                      "description": "Must be able to optimize the code for opcode budget"
+                    },
+                    {
+                      "name": "code size",
+                      "description": "Must be able to optimize the code for code size"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Output",
+              "description": "The compiler should be able to turn TEAL Intermediate Representation to various target languages and output various files generated from the TEAL.",
+              "children": [
+                {
+                  "name": "Artifacts",
+                  "description": "The compiler should generate various output artifacts, including:",
+                  "children": [
+                    {
+                      "name": "TEAL code",
+                      "description": "The compiler should output TEAL code"
+                    },
+                    {
+                      "name": "AVM bytecode",
+                      "description": "The compiler should output AVM bytecode"
+                    },
+                    {
+                      "name": "ARC-32 application specification file",
+                      "description": "The compiler should output ARC-32 application specification files (for ARC-4 contracts)"
+                    },
+                    {
+                      "name": "ARC-56 application specification file",
+                      "description": "The compiler should output ARC-56 application specification files (for ARC-4 contracts)"
+                    },
+                    {
+                      "name": "Source Maps",
+                      "description": "Must be able to produce debugging symbols and source maps."
+                    }
+                  ]
+                },
+                {
+                  "name": "AVM Target Version",
+                  "description": "Must be able to target all versions of the AVM."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Data Types",
+          "description": "Uses a typing system for the particular language that that provide a statically typed representation of the behaviour that is possible on the Algorand Virtual Machine",
+          "children": [
+            {
+              "name": "AVM Types",
+              "description": "",
+              "children": [
+                {
+                  "name": "UInt64",
+                  "description": ""
+                },
+                {
+                  "name": "Bytes",
+                  "description": ""
+                },
+                {
+                  "name": "String",
+                  "description": ""
+                },
+                {
+                  "name": "BigUInt",
+                  "description": ""
+                },
+                {
+                  "name": "bool",
+                  "description": ""
+                },
+                {
+                  "name": "Account",
+                  "description": ""
+                },
+                {
+                  "name": "Asset",
+                  "description": ""
+                },
+                {
+                  "name": "Application",
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "name": "Template Variables",
+              "description": "Must provide a way to define template variables that are placeholders for a deploy-time provided value. They allow developers to define placeholders in their Algorand Python smart contract code that can be replaced with specific literal values during the compilation process."
+            },
+            {
+              "name": "ARC-4 Types",
+              "description": "",
+              "children": [
+                {
+                  "name": "Address",
+                  "description": "Must have support for Address: An alias for an array containing 32 bytes representing an Algorand address"
+                },
+                {
+                  "name": "BigUFixedNxM",
+                  "description": "Must have support for BigUFixedNxM: An ARC4 UFixed representing a decimal with the number of bits and precision specified."
+                },
+                {
+                  "name": "BigUIntN",
+                  "description": "Must have support for BigUIntN: An ARC4 UInt consisting of the number of bits specified."
+                },
+                {
+                  "name": "Bool",
+                  "description": "Must have support for Bool: An ARC4 encoded bool"
+                },
+                {
+                  "name": "Bytes",
+                  "description": "Must have support for Bytes: An ARC4 alias for a UInt8"
+                },
+                {
+                  "name": "DynamicArray",
+                  "description": "Must have support for DynamicArray: A dynamically sized ARC4 Array of the specified type"
+                },
+                {
+                  "name": "DynamicBytes",
+                  "description": "Must have support for DynamicBytes: A variable sized array of bytes"
+                },
+                {
+                  "name": "StaticArray",
+                  "description": "Must have support for StaticArray: A fixed length ARC4 Array of the specified type and length"
+                },
+                {
+                  "name": "String",
+                  "description": "Must have support for String: An ARC4 sequence of bytes containing a UTF8 string"
+                },
+                {
+                  "name": "Struct",
+                  "description": "Must have support for Struct: Base class for ARC4 Struct types"
+                },
+                {
+                  "name": "Tuple",
+                  "description": "Must have support for Tuple: An ARC4 ABI tuple, containing other ARC4 ABI types"
+                },
+                {
+                  "name": "UFixedNxM",
+                  "description": "Must have support for UFixedNxM: An ARC4 UFixed representing a decimal with the number of bits and precision specified."
+                },
+                {
+                  "name": "UIntN",
+                  "description": "Must have support for UIntN: An ARC4 UInt consisting of the number of bits specified."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Data Storage",
+          "description": "Must have ways to store data within your smart contracts, both persistently and temporarily and various access types",
+          "children": [
+            {
+              "name": "Global Storage",
+              "description": "Must allow for data that global available to the contract that needs to be accessible across multiple calls to the contract and should persist throughout the contract's lifetime"
+            },
+            {
+              "name": "Local Storage",
+              "description": "Must allow for storing data specific to individual accounts that interact with your contract"
+            },
+            {
+              "name": "Box Storage",
+              "description": "Must allow for data globally available to the contract that is more flexible and potentially larger data storage",
+              "children": [
+                {
+                  "name": "Box",
+                  "description": "Must be able to store single values"
+                },
+                {
+                  "name": "BoxMap",
+                  "description": "Must be able to organizing multiple boxes (e.g. key-value store)"
+                },
+                {
+                  "name": "BoxRef",
+                  "description": "Must allow for working with large byte arrays in boxes, offering efficient methods for reading and updating portions of the data."
+                },
+                {
+                  "name": "Raw AVM Ops",
+                  "description": "Allow for fine-grained control to interact with box storage directly using the AVM operations"
+                }
+              ]
+            },
+            {
+              "name": "Scratch Space",
+              "description": "Must allow for temporary storage that's only available during a single execution of your contract's approval or clear-state program"
+            }
+          ]
+        },
+        {
+          "name": "Transactions",
+          "description": "Must allow working with various types of transactions within your smart contracts",
+          "children": [
+            {
+              "name": "Transaction Types",
+              "description": "",
+              "children": [
+                {
+                  "name": "Payment",
+                  "description": ""
+                },
+                {
+                  "name": "KeyRegistration",
+                  "description": ""
+                },
+                {
+                  "name": "AssetConfig",
+                  "description": ""
+                },
+                {
+                  "name": "AssetTransfer",
+                  "description": ""
+                },
+                {
+                  "name": "AssetFreeze",
+                  "description": ""
+                },
+                {
+                  "name": "ApplicationCall",
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "name": "Group Transactions",
+              "description": "Must provide a way to create group transactions such that transactions can be grouped together atomically, ensuring that either all transactions in a group succeed or none of them do",
+              "children": [
+                {
+                  "name": "Group transactions by index",
+                  "description": "Must be able to group transactions by assigning an index to them"
+                }
+              ]
+            },
+            {
+              "name": "Inner Transactions",
+              "description": "Must provide a structured way to define, submit, and manage inner transactions.",
+              "children": [
+                {
+                  "name": "Submit inner transaction individually",
+                  "description": "Must be able to submit inner transactions individually"
+                },
+                {
+                  "name": "Submit inner transaction as a group",
+                  "description": "Must be able to submit inner transactions as a group"
+                },
+                {
+                  "name": "Access inner transactions results",
+                  "description": "Must be able to access inner transactions logs after the operation is complete"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Contract Structures",
+          "description": "",
+          "children": [
+            {
+              "name": "Contract Types",
+              "description": "",
+              "children": [
+                {
+                  "name": "ARC4 Contracts",
+                  "description": "",
+                  "children": [
+                    {
+                      "name": "Scaffolding for ARC4 Contracts",
+                      "description": ""
+                    },
+                    {
+                      "name": "Automated routing",
+                      "description": ""
+                    },
+                    {
+                      "name": "ABI methods",
+                      "description": ""
+                    },
+                    {
+                      "name": "Bare methods",
+                      "description": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "Logic Signatures",
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "name": "Subroutines",
+              "description": "Must allow for subroutines that are internal or private methods to a contract",
+              "children": [
+                {
+                  "name": "Subroutine accessibility",
+                  "description": "Subroutines must be able to exist as part of a contract class, or at the module level so they can be used by multiple classes or even across multiple projects."
+                }
+              ]
+            },
+            {
+              "name": "Control Flow Structures",
+              "description": "",
+              "children": [
+                {
+                  "name": "If Statements",
+                  "description": ""
+                },
+                {
+                  "name": "Ternary Conditions",
+                  "description": ""
+                },
+                {
+                  "name": "While Loops",
+                  "description": ""
+                },
+                {
+                  "name": "For Loops",
+                  "description": ""
+                },
+                {
+                  "name": "Match Statements",
+                  "description": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Logging",
+          "description": "Allow emitting debugging and event information as well as return values from your contracts to the caller.",
+          "children": [
+            {
+              "name": "Logging various Data Types",
+              "description": "Allow logging the following data types:",
+              "children": [
+                {
+                  "name": "int",
+                  "description": "Allow logging int literals / module variables (encoded as raw bytes, not ASCII)"
+                },
+                {
+                  "name": "UInt64",
+                  "description": "Allow logging UInt64 values (encoded as raw bytes, not ASCII)"
+                },
+                {
+                  "name": "str",
+                  "description": "Allow logging str literals / module variables (encoded as UTF-8)"
+                },
+                {
+                  "name": "bytes literals",
+                  "description": "Allow logging bytes literals / module variables (encoded as is)"
+                },
+                {
+                  "name": "Bytes values",
+                  "description": "Allow logging Bytes values (encoded as is)"
+                },
+                {
+                  "name": "BytesBacked",
+                  "description": "Allow logging BytesBacked values, which includes String, BigUInt, Account and all of the ARC-4 types (encoded as their underlying bytes values)"
+                }
+              ]
+            },
+            {
+              "name": "Log single value",
+              "description": "Allow logging a single value"
+            },
+            {
+              "name": "Log multiple values",
+              "description": "Allow logging mulitple values"
+            },
+            {
+              "name": "ARC-28 Event Logs",
+              "description": "Allow for logging ARC-28 events according to the ARC-28 specification"
+            }
+          ]
+        },
+        {
+          "name": "Error Handling",
+          "description": "Allow for handling errors on execution of a smart contract",
+          "children": [
+            {
+              "name": "Assertions",
+              "description": "Allow for addition of assertions to a smart contract that will immediately fail the execution if the statement evaluate to false",
+              "children": [
+                {
+                  "name": "Assertion Error Message",
+                  "description": "Allow for a string error message added to the assertion that will be added as a TEAL comment if the assertion fails. The error should show a TEAL stack trace of an error and thus show the error message to the caller (when source maps have been loaded)"
+                }
+              ]
+            },
+            {
+              "name": "Explicit Failures",
+              "description": "Allow to fail the contract explicitly. This operation should cause the TEAL program to immediately and unconditionally fail."
+            }
+          ]
+        },
+        {
+          "name": "Debugging",
+          "description": "NEED MORE DETAIL HERE"
+        },
+        {
+          "name": "Contract Auditing",
+          "description": "NEED MORE DETAIL HERE"
+        },
+        {
+          "name": "Development Environment",
+          "description": "Provide a streamlined development experience with tools for testing, debugging, and deploying contracts.",
+          "children": [
+            {
+              "name": "Intellisense",
+              "description": "Code completion and suggestions within your editor."
+            },
+            {
+              "name": "Linting",
+              "description": "Static analysis to identify potential code style and quality issues."
+            },
+            {
+              "name": "Formatting",
+              "description": "Automatic code style enforcement to maintain consistency."
+            },
+            {
+              "name": "Debugging",
+              "description": "Tools for setting breakpoints and stepping through code execution."
+            },
+            {
+              "name": "Deployment",
+              "description": "Simplified processes for deploying contracts to the Algorand network."
+            },
+            {
+              "name": "CI/CD",
+              "description": "Integration with continuous integration and continuous delivery pipelines."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Algokit Templates",
+      "description": "Scaffolding for an AlgoKit-first project.",
+      "children": [
+        {
+          "name": "Template Definition",
+          "description": "Definition of a parameterizable and reusable templates",
+          "children": [
+            {
+              "name": "Create project scaffold",
+              "description": "The ability to create a project directory structure that conforms the best practices of AlgoKit-first project",
+              "children": [
+                {
+                  "name": "Standard project structure",
+                  "description": "Define a standard project structure and strategy to, optionally, deploy a compiled smart contract."
+                },
+                {
+                  "name": "Integrate with IDE visual debugging",
+                  "description": "",
+                  "children": [
+                    {
+                      "name": "Integrate with visual debugging VSCode",
+                      "description": "Must integrate with VSCode visual debugging tools."
+                    },
+                    {
+                      "name": "Integrate visual debugging PyCharm",
+                      "description": "Must integrate with PyCharm visual debugging tools."
+                    }
+                  ]
+                },
+                {
+                  "name": "Support all smart contract languages",
+                  "description": "Smart contract template must support all supported languages."
+                },
+                {
+                  "name": "Support versioning",
+                  "description": "Must integrate with git."
+                },
+                {
+                  "name": "Mutli-contract deployment",
+                  "description": "The deployment strategy shall be able to orchestrate a complex multi-contract deployment in addition to a single-contract deployment."
+                }
+              ]
+            },
+            {
+              "name": "Create templating parameters",
+              "description": "The project should contain parameters that the user can set when the template is being initialized"
+            },
+            {
+              "name": "Creating project dependencies",
+              "description": "Project dependencies should be able to be set and upgraded for each template"
+            },
+            {
+              "name": "Pinning LocalNet version",
+              "description": "A template must define the acceptable range of versions compatible with that project."
+            },
+            {
+              "name": "Template upgradeability",
+              "description": "There should exist a path to migration in case a template is re-rendered on top of an existing project."
+            }
+          ]
+        },
+        {
+          "name": "Template Runner",
+          "description": "",
+          "children": [
+            {
+              "name": "Initializing the project from the command line",
+              "description": "The ability to run a command and create a new algokit project",
+              "children": [
+                {
+                  "name": "Generating the project through a guided wizard",
+                  "description": "Allow the user to set the parameters for the given project through a wizard cli with prompts and options"
+                },
+                {
+                  "name": "Generating the project through command line arguments",
+                  "description": "Allow the user to set the paramaters through command line arguments with defaults for the arguments not specifiied"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Example Template",
+          "description": "",
+          "children": [
+            {
+              "name": "Starter Template",
+              "description": "Must have at least a lean, beginner friendly, and non-overwhelming variant.",
+              "children": [
+                {
+                  "name": "Smart Contract Language",
+                  "description": "Have the ability to choose a language in which to develop smart contracts",
+                  "children": [
+                    {
+                      "name": "Python",
+                      "description": "The template structure and dependencies to develop smart contracts in python"
+                    },
+                    {
+                      "name": "Typescript",
+                      "description": "The template structure and dependencies to develop smart contracts in typescript"
+                    }
+                  ]
+                },
+                {
+                  "name": "Frontend Framework",
+                  "description": "",
+                  "children": [
+                    {
+                      "name": "React Frontend",
+                      "description": "DESCRIBE WHAT THE BASIC REACT TEMPLATE HAS HERE",
+                      "children": [
+                        {
+                          "name": "Wallet aggregators integration",
+                          "description": "Must integrate with Algorand wallet aggregators."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Production Template",
+              "description": "Must have a full featured, complete, and comprehensive production ready variant.",
+              "children": [
+                {
+                  "name": "Smart Contract Language",
+                  "description": "Have the ability to choose a language in which to develop smart contracts",
+                  "children": [
+                    {
+                      "name": "Python",
+                      "description": "The template structure and dependencies to develop smart contracts in python"
+                    },
+                    {
+                      "name": "Typescript",
+                      "description": "The template structure and dependencies to develop smart contracts in typescript"
+                    }
+                  ]
+                },
+                {
+                  "name": "Frontend Framework",
+                  "description": "",
+                  "children": [
+                    {
+                      "name": "React Frontend",
+                      "description": "DESCRIBE WHAT THE PRODUCTION REACT TEMPLATE HAS HERE"
+                    }
+                  ]
+                },
+                {
+                  "name": "Production CI-CD",
+                  "description": "",
+                  "children": [
+                    {
+                      "name": "Smart Contract CI-CD",
+                      "description": "Must provide CI-CD pipelines using GitHub workflows and virtualized task runners. These pipelines must be: compatible with output stability checks, cheap in terms of compute minutes, dependency environment and artifact cache friendly, and finally parametrizable at least in terms of Algorand API provider and target network."
+                    },
+                    {
+                      "name": "Frontend CI-CD",
+                      "description": "Must provide CI-CD pipelines using GitHub workflows and virtualized task runners. These pipelines should: be compatible with Vercel and Netlify deployments using API tokens, implement best practices for building a vite project."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Template variant migration path",
+          "description": "It shall be possible, by use of generators, template re-rendering, or otherwise, to migrate from a beginner template to a production one easily."
+        }
+      ]
+    },
+    {
+      "name": "Environment Management",
+      "description": "",
+      "children": [
+        {
+          "name": "Localnet",
+          "description": "A system-wide set of containerized services working in concert to provide a local replica of the Algorand blockchain.",
+          "children": [
+            {
+              "name": "Localnet Management",
+              "description": "Manages the use of the Localnet through commands like start and stop",
+              "children": [
+                {
+                  "name": "Localnet Start",
+                  "description": "Start-ups localnet so that it's running algod, indexer and KMD"
+                },
+                {
+                  "name": "Localnet Stop",
+                  "description": "Stop all running processes related to localnet but does not clear the state information"
+                },
+                {
+                  "name": "Localnet Status",
+                  "description": "Get the status of all the containerized services that are running. The information should contain information about the blockchain state, node state, connection information (e.g. ports, schema), indexer state, KMD state.",
+                  "children": [
+                    {
+                      "name": "Specific node status",
+                      "description": "???"
+                    }
+                  ]
+                },
+                {
+                  "name": "Localnet reset",
+                  "description": "Resets localnet to the its original state (i.e. deletes all the blocks)"
+                },
+                {
+                  "name": "Localnet update to latest version",
+                  "description": "Updates the localnet containerize services to the latest container versions",
+                  "children": [
+                    {
+                      "name": "Localnet detect older versions",
+                      "description": "Detects if the current localnet containers are not the latest version an prompts the user to the update the container versions."
+                    }
+                  ]
+                },
+                {
+                  "name": "Localnet configure container engine",
+                  "description": "Allows users to choose different container engines on which to run the containerize services, e.g. docker, podman"
+                },
+                {
+                  "name": "Global or project-based localnet",
+                  "description": "The ability to set a global localnet config (i.e. pinned versions for each service) or have particular pinned versions that vary by project. This would be something similar to global python installation vs virtual envs",
+                  "children": [
+                    {
+                      "name": "Version configuration by project",
+                      "description": "The ability to customize the version of each of the services in localnet"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Localnet interaction",
+              "description": "Interact with localnet services to get awareness of nodes and blockchain data",
+              "children": [
+                {
+                  "name": "Web-Browser based interactions",
+                  "description": "Can be inspected thru a web-browser application"
+                },
+                {
+                  "name": "CLI interaction with algod",
+                  "description": "Allows to iteract directly with the underlying algod containerized service"
+                },
+                {
+                  "name": "OTHER INTERACTIONS?????",
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "name": "Localnet in a Web IDE",
+              "description": "The ability to run localnet and its functions, including development in a Web IDE. The functionality for development will be determined the the functionality offered by the Web IDE",
+              "children": [
+                {
+                  "name": "Localnet in Github Codespace",
+                  "description": "Must be able to run in Github codespaces"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
