@@ -10,7 +10,6 @@ export const Route = createLazyFileRoute("/func-specs")({
 function RouteComponent() {
   const { width, height } = useScreenSize();
   const [data, setData] = useState(null);
-  console.log(data);
 
   useEffect(() => {
     import("./tree_data.json").then((m) => {

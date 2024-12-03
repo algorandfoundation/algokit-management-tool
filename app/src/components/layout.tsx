@@ -15,6 +15,11 @@ export function Layout({ children }: PropsWithChildren) {
       />
       <div className="drawer-content">
         <button
+          style={{
+            visibility: isMenuOpen ? "hidden" : "visible",
+            position: "relative",
+            zIndex: 2,
+          }}
           onClick={() => setIsMenuOpen(true)}
           className="fixed top-4 left-4 text-2xl"
           aria-label="Open menu"
@@ -24,7 +29,7 @@ export function Layout({ children }: PropsWithChildren) {
 
         <main>{children}</main>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side" style={{ zIndex: 1 }}>
         <label
           htmlFor="my-drawer"
           aria-label="close sidebar"
