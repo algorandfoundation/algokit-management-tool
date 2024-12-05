@@ -4,7 +4,7 @@
   "children": [
     {
       "name": "Smart Contract",
-      "description": "Must have the ability to create,",
+      "description": "",
       "children": [
         {
           "name": "High level Language Use",
@@ -499,6 +499,96 @@
       ]
     },
     {
+      "name": "Type Client Generation",
+      "description": "",
+      "children": [
+        {
+          "name": "Component Generation",
+          "description": "Generated components that facilitate Smart Contract interactions for specific applications."
+        },
+        {
+          "name": "ARC Compliance",
+          "description": "Should be based on ARCs that define the interface and the properties of a SC."
+        },
+        {
+          "name": "Type Safety",
+          "description": "Must offer type safe functions compatible with SC types."
+        },
+        {
+          "name": "State Management",
+          "description": "Global/Local state reading."
+        },
+        {
+          "name": "Method Interaction",
+          "description": "Method calls."
+        },
+        {
+          "name": "Box Data Access",
+          "description": "Box reading."
+        },
+        {
+          "name": "Resource Management",
+          "description": "Must know how to populate external resources."
+        },
+        {
+          "name": "Language Independence",
+          "description": "Must be SC HLL agnostic."
+        },
+        {
+          "name": "Multi-Language Support",
+          "description": "Should be available in all supported languages."
+        },
+        {
+          "name": "Transaction Group Handling",
+          "description": "Must know how to compile argument transactions into a transaction group."
+        },
+        {
+          "name": "Component Generation",
+          "description": "Generated components that facilitate Smart Contract interactions for specific applications."
+        },
+        {
+          "name": "ARC Compliance",
+          "description": "Should be based on ARCs that define the interface and the properties of a SC."
+        },
+        {
+          "name": "Type Safety",
+          "description": "Must offer type safe functions compatible with SC types."
+        },
+        {
+          "name": "State Management",
+          "description": "Global/Local state reading."
+        },
+        {
+          "name": "Method Interaction",
+          "description": "Method calls."
+        },
+        {
+          "name": "Box Data Access",
+          "description": "Box reading."
+        },
+        {
+          "name": "Resource Management",
+          "description": "Must know how to populate external resources."
+        },
+        {
+          "name": "Language Independence",
+          "description": "Must be SC HLL agnostic."
+        },
+        {
+          "name": "Multi-Language Support",
+          "description": "Should be available in all supported languages."
+        },
+        {
+          "name": "Transaction Group Handling",
+          "description": "Must know how to compile argument transactions into a transaction group."
+        }
+      ]
+    },
+    {
+      "name": "Type Client Generation",
+      "description": ""
+    },
+    {
       "name": "Algokit Templates",
       "description": "Scaffolding for an AlgoKit-first project.",
       "children": [
@@ -673,6 +763,674 @@
       ]
     },
     {
+      "name": "Wallet Management",
+      "description": "",
+      "children": [
+        {
+          "name": "Wallet Creation",
+          "description": "Ability to create a wallet provided a wallet name and password"
+        },
+        {
+          "name": "Wallet Information",
+          "description": "Get Wallet information",
+          "children": [
+            {
+              "name": "All Wallets Information",
+              "description": "Get all wallets"
+            },
+            {
+              "name": "Single Wallet Information",
+              "description": "Fetches and returns wallet information associated with the given wallet name"
+            }
+          ]
+        },
+        {
+          "name": "Wallet Handle Management",
+          "description": "Manage the wallet handles for accessing information for an associated wallet",
+          "children": [
+            {
+              "name": "Initialize Wallet Hanlde",
+              "description": "Initializes a handle for the wallet associated with an existing wallet"
+            },
+            {
+              "name": "Release Wallet Handle",
+              "description": "Deactivates the wallet handle"
+            },
+            {
+              "name": "Renew Wallet Handle",
+              "description": "Extends the validity of a wallet handle"
+            }
+          ]
+        },
+        {
+          "name": "Rename Wallet",
+          "description": "Ability to change the name of an existing wallet"
+        },
+        {
+          "name": "Key Management",
+          "description": "Manages public/private key pair inside a wallet",
+          "children": [
+            {
+              "name": "List Keys",
+              "description": "Generates a new key pair in the wallet."
+            },
+            {
+              "name": "Generate Keys",
+              "description": "Adds an existing private key to a wallet."
+            },
+            {
+              "name": "Import Key",
+              "description": "Exports the private key associated with a specific address from"
+            },
+            {
+              "name": "Export Key",
+              "description": "Deletes a key pair from the wallet."
+            },
+            {
+              "name": "Delete Key",
+              "description": "Provides a list of all public keys in a wallet."
+            },
+            {
+              "name": "Master Derivation Key",
+              "description": "Exports the master key, enabling wallet"
+            },
+            {
+              "name": "Rekey Account",
+              "description": "Allow modifying the underlying private key or spending authority."
+            }
+          ]
+        },
+        {
+          "name": "Multi Signature Account Management",
+          "description": "Manage multi-signature accounts",
+          "children": [
+            {
+              "name": "List Mutisignature Account",
+              "description": "Lists all multisig accounts in the wallet."
+            },
+            {
+              "name": "Import Mutisignature Account",
+              "description": "Imports a multisig account into the wallet."
+            },
+            {
+              "name": "Export Mutisignature Account",
+              "description": "Exports a multisig account from the wallet."
+            },
+            {
+              "name": "Delete Mutisignature Account",
+              "description": "Deletes a multisig account from the wallet."
+            }
+          ]
+        },
+        {
+          "name": "Transaction Signing",
+          "description": "Allow signing a transactions using a key from the wallet",
+          "children": [
+            {
+              "name": "Single Signature",
+              "description": "Signs a transaction using a key from a wallet."
+            },
+            {
+              "name": "Multisig Signature",
+              "description": "Partially or fully signs a multisig transaction."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AlgoKit Transaction Type Support",
+      "description": "The AlgoKit utilities should have knowledge of the supported types of Algorand transcations and it should provide type-safe idiomatic interfaces for compiling transactions.",
+      "children": [
+        {
+          "name": "Transaction Type Abstractions",
+          "description": "The tooling should also provide useful abstraction on top of the transaction type defined by the Algorand Protocol.",
+          "children": [
+            {
+              "name": "Transaction Field Compatibility",
+              "description": "These abstraction must prevent producing a transaction type with incompatibly set fields."
+            },
+            {
+              "name": "Protocol Compliance",
+              "description": "All AlgoKit tooling must be compliant with the same knowledge and abstraction built on top of the transaction type defined by the Algorand Protocol."
+            }
+          ]
+        },
+        {
+          "name": "Field Name Standardization",
+          "description": "All AlgoKit tooling must implement these type-safe interfaces using the same field names defined in this document.",
+          "children": [
+            {
+              "name": "Language-Specific Naming Conventions",
+              "description": "The field names in these interfaces shall be written using the case style idiomatic to the language its being implemented in."
+            }
+          ]
+        },
+        {
+          "name": "Protocol Transaction Types",
+          "description": "Algorand Protocol Transaction Types",
+          "children": [
+            {
+              "name": "Low-Level Type Availability",
+              "description": "All these types must be available as a low-level alternative to abstracted AlgoKit types."
+            },
+            {
+              "name": "Module Import Structure",
+              "description": "All these types must be available in all modules as a deeper object in the import hierarchy.",
+              "children": [
+                {
+                  "name": "Import Structure Exceptions",
+                  "description": "With the exception of the Payment and Asset Freeze types."
+                }
+              ]
+            },
+            {
+              "name": "Payment Transaction Type",
+              "description": "Payment"
+            },
+            {
+              "name": "Key Registration Transaction Type",
+              "description": "Key Registration"
+            },
+            {
+              "name": "Asset Configuration Transaction Type",
+              "description": "Asset Configuration"
+            },
+            {
+              "name": "Asset Freeze Transaction Type",
+              "description": "Asset Freeze",
+              "children": [
+                {
+                  "name": "Freeze Target Field Renaming",
+                  "description": "All reference (either direct or indirect) to this transaction type must expose the \"FreezeAccount\" field renamed as \"freezeTarget\"."
+                }
+              ]
+            },
+            {
+              "name": "Asset Transfer Transaction Type",
+              "description": "Asset Transfer",
+              "children": [
+                {
+                  "name": "Asset Receiver Field Renaming",
+                  "description": "All reference (either direct or indirect) to this transaction type must expose the \"assetReceiver\" field renamed as \"receiver\"."
+                },
+                {
+                  "name": "Asset Sender Field Renaming",
+                  "description": "All reference (either direct or indirect) to this transaction type must expose the \"assetSender\" field renamed as \"clawbackTarget\"."
+                }
+              ]
+            },
+            {
+              "name": "Application Call Transaction Type",
+              "description": "Application Call"
+            },
+            {
+              "name": "State Proof Transaction Type",
+              "description": "State Proof"
+            }
+          ]
+        },
+        {
+          "name": "AlgoKit Transaction Types",
+          "description": "AlgoKit Abstracted Transaction Types",
+          "children": [
+            {
+              "name": "Key Registration Types",
+              "description": "Key Registration Abstracted Transaction Types",
+              "children": [
+                {
+                  "name": "Online Key Registration",
+                  "description": "Key Registration Online",
+                  "children": [
+                    {
+                      "name": "Base Transaction Type",
+                      "description": "Is based on the Key Registration transaction type."
+                    },
+                    {
+                      "name": "Required Fields",
+                      "description": "votekey, selkey, votekd, votefst, votelst must all be set."
+                    }
+                  ]
+                },
+                {
+                  "name": "Offline Key Registration",
+                  "description": "Key Registration Offline",
+                  "children": [
+                    {
+                      "name": "Base Transaction Type",
+                      "description": "Is based on the Key Registration transaction type."
+                    },
+                    {
+                      "name": "Field Requirements",
+                      "description": "votekey, selkey, votekd, votefst, votelst must all be non-set."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Asset Transaction Types",
+              "description": "Asset Abstracted Transaction Types",
+              "children": [
+                {
+                  "name": "Clawback Field Restriction",
+                  "description": "Unless explicitly state, all these types must not expose the \"clawbackTarget\" (renamed from asnd / \"assetSender\") field (when applicable)."
+                },
+                {
+                  "name": "Close Field Restriction",
+                  "description": "Unless explicitly state, all these types must not expose the aclose field (when applicable)."
+                },
+                {
+                  "name": "Asset Creation Type",
+                  "description": "Asset Creation",
+                  "children": [
+                    {
+                      "name": "Base Type Definition",
+                      "description": "Is based on the Asset Configuration transaction type."
+                    },
+                    {
+                      "name": "Field Requirements",
+                      "description": "caid must be non-set. apar.t, apar.dc, apar.df must be all set."
+                    }
+                  ]
+                },
+                {
+                  "name": "Asset Update Type",
+                  "description": "Asset Update",
+                  "children": [
+                    {
+                      "name": "Base Type Definition",
+                      "description": "Is based on the Asset Configuration transaction type."
+                    },
+                    {
+                      "name": "Configuration ID Requirement",
+                      "description": "caid must be set."
+                    },
+                    {
+                      "name": "Address Field Requirements",
+                      "description": "Manager, Freeze, Clawback, and Reserve address fields must all be set to either a valid address or a special enum-like (or string literal) value called \"ForeverDisabled\"."
+                    }
+                  ]
+                },
+                {
+                  "name": "Asset Deletion Type",
+                  "description": "Asset Delete",
+                  "children": [
+                    {
+                      "name": "Base Type Definition",
+                      "description": "Is based on the Asset Configuration transaction type."
+                    },
+                    {
+                      "name": "Configuration ID Requirement",
+                      "description": "caid must be set."
+                    },
+                    {
+                      "name": "Parameter Requirements",
+                      "description": "apar must be non-set."
+                    }
+                  ]
+                },
+                {
+                  "name": "Asset Transfer Type",
+                  "description": "Asset Transfer",
+                  "children": [
+                    {
+                      "name": "Base Type Definition",
+                      "description": "Is based on the Asset Transfer transaction type."
+                    },
+                    {
+                      "name": "Field Requirements",
+                      "description": "snd, \"receiver\" (renamed from arcv) must be set."
+                    }
+                  ]
+                },
+                {
+                  "name": "Asset Opt-In Type",
+                  "description": "Asset Opt In",
+                  "children": [
+                    {
+                      "name": "Base Type Definition",
+                      "description": "Is based on the Asset Transfer transaction type."
+                    },
+                    {
+                      "name": "Asset ID Requirement",
+                      "description": "xaid must be set."
+                    },
+                    {
+                      "name": "Address Requirements",
+                      "description": "snd and arcv must be set and equal to each other."
+                    },
+                    {
+                      "name": "Amount Requirement",
+                      "description": "amt must be 0."
+                    }
+                  ]
+                },
+                {
+                  "name": "Asset Close-Out Type",
+                  "description": "Asset Close Out",
+                  "children": [
+                    {
+                      "name": "Base Type Definition",
+                      "description": "Is based on the Asset Transfer transaction type."
+                    },
+                    {
+                      "name": "Asset ID Requirement",
+                      "description": "xaid must be set."
+                    },
+                    {
+                      "name": "Close Field Requirement",
+                      "description": "aclose must be set."
+                    }
+                  ]
+                },
+                {
+                  "name": "Asset Clawback Type",
+                  "description": "Asset Clawback",
+                  "children": [
+                    {
+                      "name": "Base Type Definition",
+                      "description": "Is based on the Asset Transfer transaction type."
+                    },
+                    {
+                      "name": "Clawback Target Requirement",
+                      "description": "clawbackTarget must be set."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Application Types",
+              "description": "Application Call Abstracted Transaction Types",
+              "children": [
+                {
+                  "name": "Application Creation Type",
+                  "description": "Application Create",
+                  "children": [
+                    {
+                      "name": "Base Type Definition",
+                      "description": "Is based on the Application Call transaction type."
+                    },
+                    {
+                      "name": "Application ID Requirement",
+                      "description": "apid must be non-set."
+                    },
+                    {
+                      "name": "Program Requirements",
+                      "description": "apap, apsu, apgs, apls must be set."
+                    }
+                  ]
+                },
+                {
+                  "name": "Application Update Type",
+                  "description": "Application Update",
+                  "children": [
+                    {
+                      "name": "Base Type Definition",
+                      "description": "Is based on the Application Call transaction type."
+                    },
+                    {
+                      "name": "Action Number Requirement",
+                      "description": "apan must be set to 4."
+                    },
+                    {
+                      "name": "Field Requirements",
+                      "description": "apid, apap, apsu must be set."
+                    }
+                  ]
+                },
+                {
+                  "name": "Application Deletion Type",
+                  "description": "Application Delete",
+                  "children": [
+                    {
+                      "name": "Base Type Definition",
+                      "description": "Is based on the Application Call transaction type."
+                    },
+                    {
+                      "name": "Action Number Requirement",
+                      "description": "apan must be set to 5."
+                    },
+                    {
+                      "name": "Application ID Requirement",
+                      "description": "apid must be set."
+                    }
+                  ]
+                },
+                {
+                  "name": "Application Opt-In Type",
+                  "description": "Application Opt In",
+                  "children": [
+                    {
+                      "name": "Base Type Definition",
+                      "description": "Is based on the Application Call transaction type."
+                    },
+                    {
+                      "name": "Application ID Requirement",
+                      "description": "apid must be set."
+                    },
+                    {
+                      "name": "Action Number Requirement",
+                      "description": "apan must be set to 1."
+                    }
+                  ]
+                },
+                {
+                  "name": "Application Close-Out Type",
+                  "description": "Application Close Out",
+                  "children": [
+                    {
+                      "name": "Base Type Definition",
+                      "description": "Is based on the Application Call transaction type."
+                    },
+                    {
+                      "name": "Application ID Requirement",
+                      "description": "apid must be set."
+                    },
+                    {
+                      "name": "Action Number Requirement",
+                      "description": "apan must be set to 2."
+                    }
+                  ]
+                },
+                {
+                  "name": "Application Clear State Type",
+                  "description": "Application Clear State",
+                  "children": [
+                    {
+                      "name": "Base Type Definition",
+                      "description": "Is based on the Application Call transaction type."
+                    },
+                    {
+                      "name": "Application ID Requirement",
+                      "description": "apid must be set."
+                    },
+                    {
+                      "name": "Action Number Requirement",
+                      "description": "apan must be set to 3."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Account Management",
+      "description": ""
+    },
+    {
+      "name": "Fund Account",
+      "description": ""
+    },
+    {
+      "name": "Ledger Observability",
+      "description": "",
+      "children": [
+        {
+          "name": "Ledger Status",
+          "description": "",
+          "children": [
+            {
+              "name": " Ledger Supply",
+              "description": "Get the current supply reported by the ledger."
+            }
+          ]
+        },
+        {
+          "name": "Block Observability",
+          "description": "",
+          "children": [
+            {
+              "name": "Block Information",
+              "description": "Get the block information for the given round."
+            },
+            {
+              "name": "Block Hash",
+              "description": "Get the block hash for the block on the given round."
+            },
+            {
+              "name": "Transactions IDs in Block",
+              "description": "Get the top level transaction IDs for the block on the given round."
+            },
+            {
+              "name": "Transaction Proof",
+              "description": "Get a proof for a transaction in a block."
+            },
+            {
+              "name": "Block Logs",
+              "description": "Get all of the logs from outer and inner app calls in the given round"
+            },
+            {
+              "name": "Light Block Header Proof",
+              "description": "Gets a proof for a given light block header inside a state proof commitment"
+            },
+            {
+              "name": "Block State Proof",
+              "description": "Get a state proof that covers a given round"
+            }
+          ]
+        },
+        {
+          "name": "Account Observability",
+          "description": "Get information regarding accounts",
+          "children": [
+            {
+              "name": "List Accounts",
+              "description": "Search for accounts given a set of query parameters"
+            },
+            {
+              "name": "Detailed Account information By Address",
+              "description": "Given an account address, get all of the account information specified in the algod schema: https://developer.algorand.org/docs/rest-apis/algod/#account"
+            },
+            {
+              "name": "Account Asset Holdings",
+              "description": "Given an account address, get all of the assets the account is holding.",
+              "children": [
+                {
+                  "name": "Account Asset Holding by Specific Asset",
+                  "description": "Get account's asset holding and asset parameters (if either exist) ,given a specific account public key and asset ID. The asset parameters should only be returned if the provided address is the asset's creator."
+                }
+              ]
+            },
+            {
+              "name": "Account created Assets",
+              "description": "Get all the account's created assets"
+            },
+            {
+              "name": "Account Applications",
+              "description": "Lists all of the applications created by the given account",
+              "children": [
+                {
+                  "name": "Account Application by Specific Application ID",
+                  "description": "Given a specific account public key and application ID, get the application information"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Asset Observability",
+          "description": "Gets information regarding Assets",
+          "children": [
+            {
+              "name": "List Assets",
+              "description": "Search for assets given a set of query parameters"
+            },
+            {
+              "name": "Information by Asset ID",
+              "description": "Given and asset Id, get all the information about that asset in the following schema: https://developer.algorand.org/docs/rest-apis/algod/#asset"
+            },
+            {
+              "name": "Accounts that hold an asset",
+              "description": "List of accounts who hold this asset"
+            },
+            {
+              "name": "Transaction involving an asset",
+              "description": "List transactions that involved the given asset id"
+            }
+          ]
+        },
+        {
+          "name": "Application Observability",
+          "description": "Gets information regarding Applications",
+          "children": [
+            {
+              "name": "Application Information",
+              "description": "Given a application ID, application information including creator, approval and clear programs, global and local schemas, and global state."
+            },
+            {
+              "name": "Get Application Boxes",
+              "description": "Given an application ID, get all Box names. "
+            },
+            {
+              "name": "Get Application Box Information",
+              "description": "Given an application ID and box name, get round, box name, and value (each base64 encoded). "
+            },
+            {
+              "name": "Get Application Logs",
+              "description": "Get application log for a specific application ID"
+            }
+          ]
+        },
+        {
+          "name": "Transaction Observability",
+          "description": "Get transaction information",
+          "children": [
+            {
+              "name": "List Transactions",
+              "description": "Return a list of transactions given a set of params"
+            },
+            {
+              "name": "Transaction Information By Id",
+              "description": "Get information for single transactions by its ID"
+            },
+            {
+              "name": "Transaction Parameters",
+              "description": "Get parameters that help a client construct a new transaction."
+            },
+            {
+              "name": "Pending Transactions",
+              "description": "Get information about pending transactions",
+              "children": [
+                {
+                  "name": "All Pending Transactions",
+                  "description": "Get the list of pending transactions"
+                },
+                {
+                  "name": "Pending Transactions By ID",
+                  "description": "Get the transactions information of a recently submitted transaction, given a transaction ID."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Environment Management",
       "description": "",
       "children": [
@@ -759,6 +1517,20 @@
                   "description": "Must be able to run in Github codespaces"
                 }
               ]
+            }
+          ]
+        },
+        {
+          "name": "Node management",
+          "description": "",
+          "children": [
+            {
+              "name": "Status",
+              "description": ""
+            },
+            {
+              "name": "Node Information After Specific Block",
+              "description": "Waits for a block to appear after round {round} and returns the node's status at the time. There is a 1 minute timeout, when reached the current status is returned regardless of whether or not it is the round after the given round."
             }
           ]
         }

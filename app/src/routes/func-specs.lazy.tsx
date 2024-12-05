@@ -21,7 +21,7 @@ function RouteComponent() {
   if (!data || width === 0 || height === 0) return null;
   return (
     <div>
-      <Tree data={data} width={width} height={height} />
+      <Tree data={data} width={width} height={height + 500} />
     </div>
   );
 }
