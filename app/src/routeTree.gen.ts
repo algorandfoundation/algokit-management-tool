@@ -16,10 +16,17 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
+const MetricsLazyImport = createFileRoute('/metrics')()
 const FuncSpecsLazyImport = createFileRoute('/func-specs')()
 const DepsVizLazyImport = createFileRoute('/deps-viz')()
 
 // Create/Update Routes
+
+const MetricsLazyRoute = MetricsLazyImport.update({
+  id: '/metrics',
+  path: '/metrics',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/metrics.lazy').then((d) => d.Route))
 
 const FuncSpecsLazyRoute = FuncSpecsLazyImport.update({
   id: '/func-specs',
@@ -51,6 +58,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FuncSpecsLazyImport
       parentRoute: typeof rootRoute
     }
+    '/metrics': {
+      id: '/metrics'
+      path: '/metrics'
+      fullPath: '/metrics'
+      preLoaderRoute: typeof MetricsLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -59,36 +73,41 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/deps-viz': typeof DepsVizLazyRoute
   '/func-specs': typeof FuncSpecsLazyRoute
+  '/metrics': typeof MetricsLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/deps-viz': typeof DepsVizLazyRoute
   '/func-specs': typeof FuncSpecsLazyRoute
+  '/metrics': typeof MetricsLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/deps-viz': typeof DepsVizLazyRoute
   '/func-specs': typeof FuncSpecsLazyRoute
+  '/metrics': typeof MetricsLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/deps-viz' | '/func-specs'
+  fullPaths: '/deps-viz' | '/func-specs' | '/metrics'
   fileRoutesByTo: FileRoutesByTo
-  to: '/deps-viz' | '/func-specs'
-  id: '__root__' | '/deps-viz' | '/func-specs'
+  to: '/deps-viz' | '/func-specs' | '/metrics'
+  id: '__root__' | '/deps-viz' | '/func-specs' | '/metrics'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   DepsVizLazyRoute: typeof DepsVizLazyRoute
   FuncSpecsLazyRoute: typeof FuncSpecsLazyRoute
+  MetricsLazyRoute: typeof MetricsLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   DepsVizLazyRoute: DepsVizLazyRoute,
   FuncSpecsLazyRoute: FuncSpecsLazyRoute,
+  MetricsLazyRoute: MetricsLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -102,7 +121,8 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/deps-viz",
-        "/func-specs"
+        "/func-specs",
+        "/metrics"
       ]
     },
     "/deps-viz": {
@@ -110,6 +130,9 @@ export const routeTree = rootRoute
     },
     "/func-specs": {
       "filePath": "func-specs.lazy.tsx"
+    },
+    "/metrics": {
+      "filePath": "metrics.lazy.tsx"
     }
   }
 }
