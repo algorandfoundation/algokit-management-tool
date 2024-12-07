@@ -1,9 +1,9 @@
 {
-  "baseUrl": ".",
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"],
   "references": [],
   "compilerOptions": {
+    "baseUrl": ".",
     "lib": ["DOM", "ES2015"],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
