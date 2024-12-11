@@ -3,7 +3,7 @@ import { Tree as VisxTree } from "@visx/hierarchy";
 import { hierarchy } from "d3-hierarchy";
 import Links from "./Links";
 import Nodes from "./Nodes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTooltip, TooltipWithBounds } from "@visx/tooltip";
 import { NodeData } from "./types";
 import { HierarchyPointNode } from "@visx/hierarchy/lib/types";
@@ -18,6 +18,7 @@ interface TreeProps {
     right: number;
     bottom: number;
   };
+  setSelectedNode: (node: HierarchyPointNode<NodeData>) => void;
 }
 
 function Tree({
@@ -30,12 +31,11 @@ function Tree({
     right: 100,
     bottom: 30,
   },
+  setSelectedNode,
 }: TreeProps) {
   const [renderCount, setRenderCount] = useState(0);
   const { showTooltip, hideTooltip, tooltipData, tooltipLeft, tooltipTop } =
     useTooltip<NodeData>();
-
-  if (width < 10) return null;
 
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
@@ -51,7 +51,14 @@ function Tree({
     return d.isExpanded ? d.children : null;
   });
 
-  const handleNodeClick = (node: HierarchyPointNode<NodeData>) => {
+  const handleNodeClick = (
+    event: React.MouseEvent<Element>,
+    node: HierarchyPointNode<NodeData>
+  ) => {
+    if (event.ctrlKey || event.metaKey) {
+      setSelectedNode(node);
+      return;
+    }
     if (!node.data.isExpanded) {
       node.data.x0 = node.x ?? 0;
       node.data.y0 = node.y ?? 0;
@@ -60,6 +67,19 @@ function Tree({
     // Force re-render
     setRenderCount(renderCount + 1);
   };
+
+  useEffect(() => {
+    const handleCtrlClick = (e: MouseEvent) => {
+      if (e.ctrlKey || e.metaKey) {
+        console.log("clicked", e);
+      }
+    };
+
+    document.addEventListener("click", handleCtrlClick);
+    return () => document.removeEventListener("click", handleCtrlClick);
+  }, []);
+
+  if (width < 10) return null;
 
   return (
     <div style={{ position: "relative" }}>

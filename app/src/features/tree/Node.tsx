@@ -4,7 +4,10 @@ import { NodeData } from "./types";
 
 interface NodeProps {
   node: HierarchyPointNode<NodeData>;
-  onClick: (event: React.MouseEvent<Element>) => void;
+  onClick: (
+    event: React.MouseEvent<Element>,
+    node: HierarchyPointNode<NodeData>
+  ) => void;
   onMouseOver?: (
     event: React.MouseEvent<Element>,
     node: HierarchyPointNode<NodeData>
@@ -27,7 +30,7 @@ function Node({
         <circle
           r={12}
           fill="red"
-          onClick={onClick}
+          onClick={(event) => onClick(event, node)}
           onMouseOver={(event) => onMouseOver?.(event, node)}
           onMouseLeave={onMouseLeave}
         />
@@ -36,12 +39,12 @@ function Node({
           x={-width / 2}
           y={-height / 2}
           width={width}
-          height="auto"
+          // height="auto"
           dominantBaseline="middle"
           className="overflow-visible"
         >
           <div
-            onClick={onClick}
+            onClick={(event) => onClick(event, node)}
             onMouseOver={(event) => onMouseOver?.(event, node)}
             onMouseLeave={onMouseLeave}
             className={`

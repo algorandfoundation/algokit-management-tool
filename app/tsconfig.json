@@ -4,6 +4,9 @@
   "references": [],
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "lib": ["DOM", "ES2015"],
     "jsx": "react-jsx",
     "jsxImportSource": "react",

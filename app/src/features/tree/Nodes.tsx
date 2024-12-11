@@ -6,7 +6,10 @@ import { NodeData } from "./types";
 
 interface NodesProps {
   nodes: HierarchyPointNode<NodeData>[];
-  onNodeClick: (node: HierarchyPointNode<NodeData>) => void;
+  onNodeClick: (
+    event: React.MouseEvent<Element>,
+    node: HierarchyPointNode<NodeData>
+  ) => void;
   onMouseOver: (
     event: React.MouseEvent,
     node: HierarchyPointNode<NodeData>
@@ -46,7 +49,7 @@ function Nodes({ nodes, onMouseOver, onMouseLeave, onNodeClick }: NodesProps) {
                 node={node}
                 onMouseOver={onMouseOver}
                 onMouseLeave={onMouseLeave}
-                onClick={() => onNodeClick(node)}
+                onClick={onNodeClick}
               />
             </motion.g>
           );

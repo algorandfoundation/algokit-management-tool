@@ -8,9 +8,10 @@ import os
 
 
 class Node:
-    def __init__(self, name: str, description: str = ""):
+    def __init__(self, name: str, description: str = "", spec_id: str = ""):
         self.name = name
         self.description = description
+        self.spec_id = spec_id
         self.children: List[Node] = []
 
 def parse_id(id_str: str) -> List[int]:
@@ -23,8 +24,8 @@ def build_tree(csv_data: List[List[str]]) -> Dict:
     for row in csv_data[1:]:
         id_str, level, spec_name, description = row[0:4]
         
-        # Create node with description
-        node = Node(spec_name, description)
+        # Create node with description and spec_id
+        node = Node(spec_name, description, id_str)
         
         # Find parent
         current = root
@@ -51,7 +52,8 @@ def get_row_index(csv_data: List[List[str]], id_parts: List[int]) -> int:
 def convert_to_dict(node: Node) -> Dict:
     result = {
         "name": node.name,
-        "description": node.description
+        "description": node.description,
+        "specId": node.spec_id
     }
     if node.children:
         result["children"] = [convert_to_dict(child) for child in node.children]
@@ -76,7 +78,7 @@ def read_google_sheets(sheet_url: str) -> List[List[str]]:
     # Extract the sheet ID from the URL
     sheet_id = sheet_url.split('/')[5]
     
-    tab_names = ["SmartContract", "Typed Client Generation", "Typed Client Generation", "Templates", "Wallet Management", "Transaction Management", "Account Management", "Fund Account", "Ledger Observability", "Environment Management"]
+    tab_names = ["SmartContract", "Typed Client Generation", "Templates", "Account Management", "Transaction Management", "Fund Account", "Ledger Observability", "Environment Management"]
     all_rows = []
     header = None
     
@@ -141,7 +143,7 @@ if __name__ == "__main__":
     # Replace with your CSV file path
     # path = Path(__file__).parent / "spec_data.csv"
     # csv_data = read_csv_data(str(path))
-    csv_data = read_google_sheets("https://docs.google.com/spreadsheets/d/1wCD10BlHGjqAAGfKwp1Mpd7K0OfEeeKwB4yzRRM2DmM/edit?gid=0#gid=0")
+    csv_data = read_google_sheets("https://docs.google.com/spreadsheets/d/10bSJO3oNyV8__w76TQJ94dWa1TtFeuGCKfwjQ9Wxz4E")
     has_warnings = validate_csv_data(csv_data)
     if has_warnings:
         exit(1)
