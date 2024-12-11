@@ -78,7 +78,7 @@ def read_google_sheets(sheet_url: str) -> List[List[str]]:
     # Extract the sheet ID from the URL
     sheet_id = sheet_url.split('/')[5]
     
-    tab_names = ["SmartContract", "Typed Client Generation", "Templates", "Account Management", "Transaction Management", "Fund Account", "Ledger Observability", "Environment Management"]
+    tab_names = ["Smart Contract", "Templates", "Account Management", "Transaction Management", "Ledger Observability", "Environment Management"]
     all_rows = []
     header = None
     
@@ -143,7 +143,7 @@ if __name__ == "__main__":
     # Replace with your CSV file path
     # path = Path(__file__).parent / "spec_data.csv"
     # csv_data = read_csv_data(str(path))
-    csv_data = read_google_sheets("https://docs.google.com/spreadsheets/d/10bSJO3oNyV8__w76TQJ94dWa1TtFeuGCKfwjQ9Wxz4E")
+    csv_data = read_google_sheets("https://docs.google.com/spreadsheets/d/1YXC-6YTo7HT0lUl_eTbtgUwGmq9T2tBox_N7wbBs2UY")
     has_warnings = validate_csv_data(csv_data)
     if has_warnings:
         exit(1)

@@ -29,7 +29,7 @@ function RouteComponent() {
       <Tree
         data={data}
         width={width}
-        height={height + 300}
+        height={height + 100}
         setSelectedNode={setSelectedNode}
       />
       <FuncSpecsDetailsDrawer
