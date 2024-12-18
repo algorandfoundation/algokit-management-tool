@@ -2,7 +2,7 @@ import { createLazyFileRoute } from "@tanstack/react-router";
 import Tree from "../features/tree/Tree";
 import { useScreenSize } from "@visx/responsive";
 import { useEffect, useState } from "react";
-import { FuncSpecsDetailsDrawer } from "@/features/func-specs-details-drawer/FuncSpecsDetailsDrawer";
+import { FuncSpecsDetailsDrawer } from "@/features/func-specs-details-drawer/func-specs-details-drawer";
 import { NodeData } from "@/features/tree/types";
 import { HierarchyPointNode } from "@visx/hierarchy/lib/types";
 

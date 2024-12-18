@@ -4,6 +4,7 @@ export interface BaseNodeData {
   name: string;
   description: string;
   specId: string;
+  currentFunctionality: string;
 }
 
 export interface NodeData extends BaseNodeData {

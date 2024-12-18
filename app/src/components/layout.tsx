@@ -17,11 +17,9 @@ export function Layout({ children }: PropsWithChildren) {
         <button
           style={{
             visibility: isMenuOpen ? "hidden" : "visible",
-            position: "relative",
-            zIndex: 2,
           }}
           onClick={() => setIsMenuOpen(true)}
-          className="fixed top-4 left-4 text-2xl"
+          className="fixed top-4 left-4 text-2xl z-[2]"
           aria-label="Open menu"
         >
           <IoMenu />

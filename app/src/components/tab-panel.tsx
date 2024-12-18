@@ -28,7 +28,7 @@ export function TabPanel({ tabs }: TabPanelProps) {
         ))}
       </div>
 
-      <div className="p-2 h-full overflow-auto">{tabs[activeTab].content}</div>
+      <div className="h-full overflow-auto">{tabs[activeTab].content}</div>
     </div>
   );
 }

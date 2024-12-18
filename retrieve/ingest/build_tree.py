@@ -8,10 +8,12 @@ import os
 
 
 class Node:
-    def __init__(self, name: str, description: str = "", spec_id: str = ""):
+    def __init__(self, name: str, description: str = "", spec_id: str = "", current_functionality: str = "", future: str = ""):
         self.name = name
         self.description = description
         self.spec_id = spec_id
+        self.current_functionality = current_functionality
+        self.future = future
         self.children: List[Node] = []
 
 def parse_id(id_str: str) -> List[int]:
@@ -23,9 +25,11 @@ def build_tree(csv_data: List[List[str]]) -> Dict:
     # Skip header row
     for row in csv_data[1:]:
         id_str, level, spec_name, description = row[0:4]
+        current_functionality = row[4] if len(row) > 4 else ""  # Get current functionality from 5th column
+        future = row[5] if len(row) > 5 else ""  # Get future functionality from 6th column
         
-        # Create node with description and spec_id
-        node = Node(spec_name, description, id_str)
+        # Create node with description, spec_id, current functionality, and future
+        node = Node(spec_name, description, id_str, current_functionality, future)
         
         # Find parent
         current = root
@@ -53,7 +57,9 @@ def convert_to_dict(node: Node) -> Dict:
     result = {
         "name": node.name,
         "description": node.description,
-        "specId": node.spec_id
+        "specId": node.spec_id,
+        "currentFunctionality": node.current_functionality,
+        "future": node.future
     }
     if node.children:
         result["children"] = [convert_to_dict(child) for child in node.children]
@@ -122,6 +128,7 @@ def validate_csv_data(csv_data: List[List[str]]) -> None:
         csv_data: List of rows from CSV, where each row is a list of strings
     """
     has_warnings = False
+    spec_ids = {}
     # Skip header row
     for i, row in enumerate(csv_data[1:], start=2):
         if not row or not row[0]:
@@ -131,7 +138,15 @@ def validate_csv_data(csv_data: List[List[str]]) -> None:
         if row[0].endswith('.'):
             print(f"WARNING: First element ends with period in row {i}: {row}")
             has_warnings = True
-            
+        
+        matched_spec_id = spec_ids.get(row[0])
+        if matched_spec_id:
+            spec_ids[row[0]] += 1
+            print(f"WARNING: Duplicate spec ID found in row {i}: {row[0]}, {row}")
+            has_warnings = True
+        else:
+            spec_ids[row[0]] = 1
+
     if has_warnings:
         print("\nPlease review the warnings above and fix any issues in the source data.")
     return has_warnings

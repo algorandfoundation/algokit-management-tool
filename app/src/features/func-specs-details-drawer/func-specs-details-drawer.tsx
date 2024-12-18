@@ -3,33 +3,15 @@ import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { IoChevronUpOutline, IoChevronDownOutline } from "react-icons/io5";
-import { BaseNodeData, NodeData } from "../tree/types";
+import { NodeData } from "../tree/types";
 import { TabPanel } from "@/components/tab-panel";
-import { FuncSpecsTable } from "./FuncSpecsTable";
+import { FuncSpecsTable } from "./func-specs-table";
+import { FuncSpecsMarkdown } from "./func-specs-markdown";
+import { flattenNodeData } from "./utils";
 
 interface FuncSpecsDetailsDrawerProps {
   selectedNode: HierarchyPointNode<NodeData> | null;
   close: () => void;
-}
-
-export function flattenNodeData(node: NodeData): BaseNodeData[] {
-  // Initialize result array with current node
-  const result: BaseNodeData[] = [
-    {
-      name: node.name,
-      description: node.description,
-      specId: node.specId,
-    },
-  ];
-
-  // Recursively process children if they exist
-  if (node.children && node.children.length > 0) {
-    node.children.forEach((child) => {
-      result.push(...flattenNodeData(child));
-    });
-  }
-
-  return result;
 }
 
 export function FuncSpecsDetailsDrawer({
@@ -51,7 +33,7 @@ export function FuncSpecsDetailsDrawer({
     },
     {
       label: "Markdown",
-      content: <div>Markdown</div>,
+      content: <FuncSpecsMarkdown data={funcSpecData ?? []} />,
     },
   ];
 

@@ -3,7 +3,7 @@ import { Tree as VisxTree } from "@visx/hierarchy";
 import { hierarchy } from "d3-hierarchy";
 import Links from "./Links";
 import Nodes from "./Nodes";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTooltip, TooltipWithBounds } from "@visx/tooltip";
 import { NodeData } from "./types";
 import { HierarchyPointNode } from "@visx/hierarchy/lib/types";
@@ -67,17 +67,6 @@ function Tree({
     // Force re-render
     setRenderCount(renderCount + 1);
   };
-
-  useEffect(() => {
-    const handleCtrlClick = (e: MouseEvent) => {
-      if (e.ctrlKey || e.metaKey) {
-        console.log("clicked", e);
-      }
-    };
-
-    document.addEventListener("click", handleCtrlClick);
-    return () => document.removeEventListener("click", handleCtrlClick);
-  }, []);
 
   if (width < 10) return null;
 

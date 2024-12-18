@@ -2,73 +2,101 @@
   "name": "Functional Specifications",
   "description": "",
   "specId": "",
+  "currentFunctionality": "",
+  "future": "",
   "children": [
     {
       "name": "Smart Contracts",
       "description": "",
       "specId": "1",
+      "currentFunctionality": "",
+      "future": "No",
       "children": [
         {
           "name": "Authoring",
           "description": "",
           "specId": "1.1",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "High level Language Use",
               "description": "A set of HLL syntaxes and semantics to enable writing Algorand Smart Contracts.",
               "specId": "1.1.1",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "High level Language Use Native Syntax",
                   "description": "Each HLL definition should use as much native syntax as possibile while keeping the number of new concepts, types, and idioms to a minimum.",
-                  "specId": "1.1.1.1"
+                  "specId": "1.1.1.1",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "Clear definition of native High Level Language Syntax",
                   "description": "Must define exactly what subset of the native HLL is available and the restriction when it is.",
-                  "specId": "1.1.1.2"
+                  "specId": "1.1.1.2",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "Contract Structures",
                   "description": "",
                   "specId": "1.1.1.3",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Contract Types",
                       "description": "",
                       "specId": "1.1.1.3.1",
+                      "currentFunctionality": "",
+                      "future": "No",
                       "children": [
                         {
                           "name": "ARC4 Contracts",
                           "description": "",
                           "specId": "1.1.1.3.1.1",
+                          "currentFunctionality": "",
+                          "future": "No",
                           "children": [
                             {
                               "name": "Scaffolding for ARC4 Contracts",
                               "description": "",
-                              "specId": "1.1.1.3.1.1.1"
+                              "specId": "1.1.1.3.1.1.1",
+                              "currentFunctionality": "",
+                              "future": "No"
                             },
                             {
                               "name": "Automated routing",
                               "description": "",
-                              "specId": "1.1.1.3.1.1.2"
+                              "specId": "1.1.1.3.1.1.2",
+                              "currentFunctionality": "",
+                              "future": "No"
                             },
                             {
                               "name": "ABI methods",
                               "description": "",
-                              "specId": "1.1.1.3.1.1.3"
+                              "specId": "1.1.1.3.1.1.3",
+                              "currentFunctionality": "",
+                              "future": "No"
                             },
                             {
                               "name": "Bare methods",
                               "description": "",
-                              "specId": "1.1.1.3.1.1.4"
+                              "specId": "1.1.1.3.1.1.4",
+                              "currentFunctionality": "",
+                              "future": "No"
                             }
                           ]
                         },
                         {
                           "name": "Logic Signatures",
                           "description": "",
-                          "specId": "1.1.1.3.1.2"
+                          "specId": "1.1.1.3.1.2",
+                          "currentFunctionality": "",
+                          "future": "No"
                         }
                       ]
                     },
@@ -76,11 +104,15 @@
                       "name": "Subroutines",
                       "description": "Must allow for subroutines that are internal or private methods to a contract",
                       "specId": "1.1.1.3.2",
+                      "currentFunctionality": "",
+                      "future": "No",
                       "children": [
                         {
                           "name": "Subroutine accessibility",
                           "description": "Subroutines must be able to exist as part of a contract class, or at the module level so they can be used by multiple classes or even across multiple projects.",
-                          "specId": "1.1.1.3.2.1"
+                          "specId": "1.1.1.3.2.1",
+                          "currentFunctionality": "",
+                          "future": "No"
                         }
                       ]
                     },
@@ -88,31 +120,43 @@
                       "name": "Control Flow Structures",
                       "description": "",
                       "specId": "1.1.1.3.3",
+                      "currentFunctionality": "",
+                      "future": "No",
                       "children": [
                         {
                           "name": "If Statements",
                           "description": "",
-                          "specId": "1.1.1.3.3.1"
+                          "specId": "1.1.1.3.3.1",
+                          "currentFunctionality": "",
+                          "future": "No"
                         },
                         {
                           "name": "Ternary Conditions",
                           "description": "",
-                          "specId": "1.1.1.3.3.2"
+                          "specId": "1.1.1.3.3.2",
+                          "currentFunctionality": "",
+                          "future": "No"
                         },
                         {
                           "name": "While Loops",
                           "description": "",
-                          "specId": "1.1.1.3.3.3"
+                          "specId": "1.1.1.3.3.3",
+                          "currentFunctionality": "",
+                          "future": "No"
                         },
                         {
                           "name": "For Loops",
                           "description": "",
-                          "specId": "1.1.1.3.3.4"
+                          "specId": "1.1.1.3.3.4",
+                          "currentFunctionality": "",
+                          "future": "No"
                         },
                         {
                           "name": "Match Statements",
                           "description": "",
-                          "specId": "1.1.1.3.3.5"
+                          "specId": "1.1.1.3.3.5",
+                          "currentFunctionality": "",
+                          "future": "No"
                         }
                       ]
                     }
@@ -124,31 +168,43 @@
               "name": "Smart Contract Compilation",
               "description": "Has the ability to compile Algorand Python code into AVM (Algorand Virtual Machine) bytecode for execution on the Algorand blockchain",
               "specId": "1.1.3",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Modular Design",
                   "description": "The components of the compiler should have a modular design that enables extensibility and code reuse, facilitating future enhancements and support for new languages or platforms",
-                  "specId": "1.1.3.1"
+                  "specId": "1.1.3.1",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "Frontend",
                   "description": "Has the ability to compile code from an AlgoKit-support language to Intermediate Representation of the code",
                   "specId": "1.1.3.2",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Support Languages",
                       "description": "Must have the ability to support multiple languages in which users will write smart contracts. These languages must be as semantically close as possible to the original languages",
                       "specId": "1.1.3.2.1",
+                      "currentFunctionality": "",
+                      "future": "No",
                       "children": [
                         {
                           "name": "Python",
                           "description": "Must support the Python language",
-                          "specId": "1.1.3.2.1.1"
+                          "specId": "1.1.3.2.1.1",
+                          "currentFunctionality": "",
+                          "future": "No"
                         },
                         {
                           "name": "Typescript",
                           "description": "Must support the Typescript Language",
-                          "specId": "1.1.3.2.1.2"
+                          "specId": "1.1.3.2.1.2",
+                          "currentFunctionality": "",
+                          "future": "No"
                         }
                       ]
                     }
@@ -158,21 +214,29 @@
                   "name": "Multi-stage optimization",
                   "description": "Must support applying multiple optimization passes at different IR stages that allow for more specialized and effective optimizations. The end result should be TEAL Intermediate Representation",
                   "specId": "1.1.3.3",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Optimization Parameters",
                       "description": "Must be able to optimize the code based on the following parameters",
                       "specId": "1.1.3.3.1",
+                      "currentFunctionality": "",
+                      "future": "No",
                       "children": [
                         {
                           "name": "opcode budget",
                           "description": "Must be able to optimize the code for opcode budget",
-                          "specId": "1.1.3.3.1.1"
+                          "specId": "1.1.3.3.1.1",
+                          "currentFunctionality": "",
+                          "future": "No"
                         },
                         {
                           "name": "code size",
                           "description": "Must be able to optimize the code for code size",
-                          "specId": "1.1.3.3.1.2"
+                          "specId": "1.1.3.3.1.2",
+                          "currentFunctionality": "",
+                          "future": "No"
                         }
                       ]
                     }
@@ -182,43 +246,59 @@
                   "name": "Output",
                   "description": "The compiler should be able to turn TEAL Intermediate Representation to various target languages and output various files generated from the TEAL.",
                   "specId": "1.1.3.4",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Artifacts",
                       "description": "The compiler should generate various output artifacts, including:",
                       "specId": "1.1.3.4.1",
+                      "currentFunctionality": "",
+                      "future": "No",
                       "children": [
                         {
                           "name": "TEAL code",
                           "description": "The compiler should output TEAL code",
-                          "specId": "1.1.3.4.1.1"
+                          "specId": "1.1.3.4.1.1",
+                          "currentFunctionality": "",
+                          "future": "No"
                         },
                         {
                           "name": "AVM bytecode",
                           "description": "The compiler should output AVM bytecode",
-                          "specId": "1.1.3.4.1.2"
+                          "specId": "1.1.3.4.1.2",
+                          "currentFunctionality": "",
+                          "future": "No"
                         },
                         {
                           "name": "ARC-32 application specification file",
                           "description": "The compiler should output ARC-32 application specification files (for ARC-4 contracts)",
-                          "specId": "1.1.3.4.1.3"
+                          "specId": "1.1.3.4.1.3",
+                          "currentFunctionality": "",
+                          "future": "No"
                         },
                         {
                           "name": "ARC-56 application specification file",
                           "description": "The compiler should output ARC-56 application specification files (for ARC-4 contracts)",
-                          "specId": "1.1.3.4.1.4"
+                          "specId": "1.1.3.4.1.4",
+                          "currentFunctionality": "",
+                          "future": "No"
                         },
                         {
                           "name": "Source Maps",
                           "description": "Must be able to produce debugging symbols and source maps.",
-                          "specId": "1.1.3.4.1.5"
+                          "specId": "1.1.3.4.1.5",
+                          "currentFunctionality": "",
+                          "future": "No"
                         }
                       ]
                     },
                     {
                       "name": "AVM Target Version",
                       "description": "Must be able to target all versions of the AVM.",
-                      "specId": "1.1.3.4.2"
+                      "specId": "1.1.3.4.2",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 }
@@ -228,128 +308,178 @@
               "name": "Data Types",
               "description": "Uses a typing system for the particular language that that provide a statically typed representation of the behaviour that is possible on the Algorand Virtual Machine",
               "specId": "1.1.4",
+              "currentFunctionality": "MyPy for python, Typescript for Javascript",
+              "future": "No",
               "children": [
                 {
                   "name": "AVM Types",
                   "description": "",
                   "specId": "1.1.4.1",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "UInt64",
                       "description": "",
-                      "specId": "1.1.4.1.1"
+                      "specId": "1.1.4.1.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Bytes",
                       "description": "",
-                      "specId": "1.1.4.1.2"
+                      "specId": "1.1.4.1.2",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "String",
                       "description": "",
-                      "specId": "1.1.4.1.3"
+                      "specId": "1.1.4.1.3",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "BigUInt",
                       "description": "",
-                      "specId": "1.1.4.1.4"
+                      "specId": "1.1.4.1.4",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "bool",
                       "description": "",
-                      "specId": "1.1.4.1.5"
+                      "specId": "1.1.4.1.5",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Account",
                       "description": "",
-                      "specId": "1.1.4.1.6"
+                      "specId": "1.1.4.1.6",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Asset",
                       "description": "",
-                      "specId": "1.1.4.1.7"
+                      "specId": "1.1.4.1.7",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Application",
                       "description": "",
-                      "specId": "1.1.4.1.8"
+                      "specId": "1.1.4.1.8",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 },
                 {
                   "name": "Template Variables",
                   "description": "Must provide a way to define template variables that are placeholders for a deploy-time provided value. They allow developers to define placeholders in their Algorand Python smart contract code that can be replaced with specific literal values during the compilation process.",
-                  "specId": "1.1.4.2"
+                  "specId": "1.1.4.2",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "ARC-4 Types",
                   "description": "",
                   "specId": "1.1.4.3",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Address",
                       "description": "Must have support for Address: An alias for an array containing 32 bytes representing an Algorand address",
-                      "specId": "1.1.4.3.1"
+                      "specId": "1.1.4.3.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "BigUFixedNxM",
                       "description": "Must have support for BigUFixedNxM: An ARC4 UFixed representing a decimal with the number of bits and precision specified.",
-                      "specId": "1.1.4.3.2"
+                      "specId": "1.1.4.3.2",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "BigUIntN",
                       "description": "Must have support for BigUIntN: An ARC4 UInt consisting of the number of bits specified.",
-                      "specId": "1.1.4.3.3"
+                      "specId": "1.1.4.3.3",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Bool",
                       "description": "Must have support for Bool: An ARC4 encoded bool",
-                      "specId": "1.1.4.3.4"
+                      "specId": "1.1.4.3.4",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Bytes",
                       "description": "Must have support for Bytes: An ARC4 alias for a UInt8",
-                      "specId": "1.1.4.3.5"
+                      "specId": "1.1.4.3.5",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "DynamicArray",
                       "description": "Must have support for DynamicArray: A dynamically sized ARC4 Array of the specified type",
-                      "specId": "1.1.4.3.6"
+                      "specId": "1.1.4.3.6",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "DynamicBytes",
                       "description": "Must have support for DynamicBytes: A variable sized array of bytes",
-                      "specId": "1.1.4.3.7"
+                      "specId": "1.1.4.3.7",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "StaticArray",
                       "description": "Must have support for StaticArray: A fixed length ARC4 Array of the specified type and length",
-                      "specId": "1.1.4.3.8"
+                      "specId": "1.1.4.3.8",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "String",
                       "description": "Must have support for String: An ARC4 sequence of bytes containing a UTF8 string",
-                      "specId": "1.1.4.3.9"
+                      "specId": "1.1.4.3.9",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Struct",
                       "description": "Must have support for Struct: Base class for ARC4 Struct types",
-                      "specId": "1.1.4.3.10"
+                      "specId": "1.1.4.3.10",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Tuple",
                       "description": "Must have support for Tuple: An ARC4 ABI tuple, containing other ARC4 ABI types",
-                      "specId": "1.1.4.3.11"
+                      "specId": "1.1.4.3.11",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "UFixedNxM",
                       "description": "Must have support for UFixedNxM: An ARC4 UFixed representing a decimal with the number of bits and precision specified.",
-                      "specId": "1.1.4.3.12"
+                      "specId": "1.1.4.3.12",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "UIntN",
                       "description": "Must have support for UIntN: An ARC4 UInt consisting of the number of bits specified.",
-                      "specId": "1.1.4.3.13"
+                      "specId": "1.1.4.3.13",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 }
@@ -359,48 +489,66 @@
               "name": "Data Storage",
               "description": "Must have ways to store data within your smart contracts, both persistently and temporarily and various access types",
               "specId": "1.1.5",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Global Storage",
                   "description": "Must allow for data that global available to the contract that needs to be accessible across multiple calls to the contract and should persist throughout the contract's lifetime",
-                  "specId": "1.1.5.1"
+                  "specId": "1.1.5.1",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "Local Storage",
                   "description": "Must allow for storing data specific to individual accounts that interact with your contract",
-                  "specId": "1.1.5.2"
+                  "specId": "1.1.5.2",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "Box Storage",
                   "description": "Must allow for data globally available to the contract that is more flexible and potentially larger data storage",
                   "specId": "1.1.5.3",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Box",
                       "description": "Must be able to store single values",
-                      "specId": "1.1.5.3.1"
+                      "specId": "1.1.5.3.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "BoxMap",
                       "description": "Must be able to organizing multiple boxes (e.g. key-value store)",
-                      "specId": "1.1.5.3.2"
+                      "specId": "1.1.5.3.2",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "BoxRef",
                       "description": "Must allow for working with large byte arrays in boxes, offering efficient methods for reading and updating portions of the data.",
-                      "specId": "1.1.5.3.3"
+                      "specId": "1.1.5.3.3",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Raw AVM Ops",
                       "description": "Allow for fine-grained control to interact with box storage directly using the AVM operations",
-                      "specId": "1.1.5.3.4"
+                      "specId": "1.1.5.3.4",
+                      "currentFunctionality": "algopy.op",
+                      "future": "No"
                     }
                   ]
                 },
                 {
                   "name": "Scratch Space",
                   "description": "Must allow for temporary storage that's only available during a single execution of your contract's approval or clear-state program",
-                  "specId": "1.1.5.4"
+                  "specId": "1.1.5.4",
+                  "currentFunctionality": "",
+                  "future": "No"
                 }
               ]
             },
@@ -408,36 +556,50 @@
               "name": "Typed Client Generation",
               "description": "Create type safe clients for smart contracts based on an app spec",
               "specId": "1.1.6",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Inputs",
                   "description": "The following are the supported app spec inputs for generating typed clients",
                   "specId": "1.1.6.1",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Reading Inputs",
                       "description": "Ability to use directory walking for recursive client generation and error handling for invalid app spec input paths.",
-                      "specId": "1.1.6.1.1"
+                      "specId": "1.1.6.1.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Determine Validity",
                       "description": "Ability to determine whether a given application specification is valid according to the ARC specification",
-                      "specId": "1.1.6.1.2"
+                      "specId": "1.1.6.1.2",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Supported Inputs",
                       "description": "The following are the supported application specification for generating typed clients",
                       "specId": "1.1.6.1.3",
+                      "currentFunctionality": "",
+                      "future": "No",
                       "children": [
                         {
                           "name": "ARC-32",
                           "description": "The ability to parse ARC-32 application specifications to extract contract methods and structure them for client generation",
-                          "specId": "1.1.6.1.3.1"
+                          "specId": "1.1.6.1.3.1",
+                          "currentFunctionality": "",
+                          "future": "No"
                         },
                         {
                           "name": "ARC-56",
                           "description": "The ability to parse ARC-56 application specifications to extract contract methods and structure them for client generation",
-                          "specId": "1.1.6.1.3.2"
+                          "specId": "1.1.6.1.3.2",
+                          "currentFunctionality": "",
+                          "future": "No"
                         }
                       ]
                     }
@@ -447,33 +609,45 @@
                   "name": "Spec to Client Conversion",
                   "description": "The application specification to client conversion should have the following functionalities",
                   "specId": "1.1.6.2",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Contract classes and methods",
                       "description": "Generate a client classes and methods for each public method in the smart contract",
                       "specId": "1.1.6.2.1",
+                      "currentFunctionality": "",
+                      "future": "No",
                       "children": [
                         {
                           "name": "Class and Method Naming",
                           "description": "Classes and method names must be unique and have logical names based on names and/or signatures",
-                          "specId": "1.1.6.2.1.1"
+                          "specId": "1.1.6.2.1.1",
+                          "currentFunctionality": "client-py",
+                          "future": "No"
                         }
                       ]
                     },
                     {
                       "name": "ABI Types",
                       "description": "Map ABI types to target language types for data conversion in generated clients",
-                      "specId": "1.1.6.2.2"
+                      "specId": "1.1.6.2.2",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Algorand Chain Interaction",
                       "description": "Abilty for the generated client to perform the actions on the Algorand blockchain",
-                      "specId": "1.1.6.2.3"
+                      "specId": "1.1.6.2.3",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Updating",
                       "description": "The typed client should be able to be updated based on any changes made the to input smart contract application specification",
-                      "specId": "1.1.6.2.4"
+                      "specId": "1.1.6.2.4",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 },
@@ -481,33 +655,45 @@
                   "name": "Client Output",
                   "description": "The typed client should have the following properties",
                   "specId": "1.1.6.3",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Target Languages",
                       "description": "The following are the target languages for typed clients",
                       "specId": "1.1.6.3.1",
+                      "currentFunctionality": "",
+                      "future": "No",
                       "children": [
                         {
                           "name": "Python",
                           "description": "The ability to generate a typed client in Python",
-                          "specId": "1.1.6.3.1.1"
+                          "specId": "1.1.6.3.1.1",
+                          "currentFunctionality": "",
+                          "future": "No"
                         },
                         {
                           "name": "Typescript",
                           "description": "The ability to generate a typed client in Typescript",
-                          "specId": "1.1.6.3.1.2"
+                          "specId": "1.1.6.3.1.2",
+                          "currentFunctionality": "",
+                          "future": "No"
                         }
                       ]
                     },
                     {
                       "name": "Formatting",
                       "description": "The typed client code should have proper formatting for each target language and easily readable by a human",
-                      "specId": "1.1.6.3.2"
+                      "specId": "1.1.6.3.2",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Type Safety",
                       "description": "Generated clients must have type-safe functions compatible with SC types and offer type hinting",
-                      "specId": "1.1.6.3.3"
+                      "specId": "1.1.6.3.3",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 },
@@ -515,11 +701,15 @@
                   "name": "Use",
                   "description": "The following are ways to calling the client generator",
                   "specId": "1.1.6.4",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "CLI",
                       "description": "Ability to parse command-line arguments for generating typed Python clients from Algorand application specification files",
-                      "specId": "1.1.6.4.1"
+                      "specId": "1.1.6.4.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 }
@@ -529,31 +719,43 @@
               "name": "Development Environment",
               "description": "Provide a streamlined development experience with tools for testing, debugging, and deploying contracts.",
               "specId": "1.1.7",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Intellisense",
                   "description": "Code completion and suggestions within your editor.",
-                  "specId": "1.1.7.1"
+                  "specId": "1.1.7.1",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "Linting",
                   "description": "Static analysis to identify potential code style and quality issues.",
-                  "specId": "1.1.7.2"
+                  "specId": "1.1.7.2",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "Formatting",
                   "description": "Automatic code style enforcement to maintain consistency.",
-                  "specId": "1.1.7.3"
+                  "specId": "1.1.7.3",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "Debugging",
                   "description": "Tools for setting breakpoints and stepping through code execution.",
-                  "specId": "1.1.7.4"
+                  "specId": "1.1.7.4",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "Deployment",
                   "description": "Simplified processes for deploying contracts to the Algorand network.",
-                  "specId": "1.1.7.5"
+                  "specId": "1.1.7.5",
+                  "currentFunctionality": "",
+                  "future": "No"
                 }
               ]
             }
@@ -563,63 +765,87 @@
           "name": "Interaction",
           "description": "",
           "specId": "1.2",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "Logging",
               "description": "Allow emitting debugging and event information as well as return values from your contracts to the caller.",
               "specId": "1.2.1",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Logging various Data Types",
                   "description": "Allow logging the following data types:",
                   "specId": "1.2.1.1",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "int",
                       "description": "Allow logging int literals / module variables (encoded as raw bytes, not ASCII)",
-                      "specId": "1.2.1.1.1"
+                      "specId": "1.2.1.1.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "UInt64",
                       "description": "Allow logging UInt64 values (encoded as raw bytes, not ASCII)",
-                      "specId": "1.2.1.1.2"
+                      "specId": "1.2.1.1.2",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "str",
                       "description": "Allow logging str literals / module variables (encoded as UTF-8)",
-                      "specId": "1.2.1.1.3"
+                      "specId": "1.2.1.1.3",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "bytes literals",
                       "description": "Allow logging bytes literals / module variables (encoded as is)",
-                      "specId": "1.2.1.1.4"
+                      "specId": "1.2.1.1.4",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Bytes values",
                       "description": "Allow logging Bytes values (encoded as is)",
-                      "specId": "1.2.1.1.5"
+                      "specId": "1.2.1.1.5",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "BytesBacked",
                       "description": "Allow logging BytesBacked values, which includes String, BigUInt, Account and all of the ARC-4 types (encoded as their underlying bytes values)",
-                      "specId": "1.2.1.1.6"
+                      "specId": "1.2.1.1.6",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 },
                 {
                   "name": "Log single value",
                   "description": "Allow logging a single value",
-                  "specId": "1.2.1.2"
+                  "specId": "1.2.1.2",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "Log multiple values",
                   "description": "Allow logging mulitple values",
-                  "specId": "1.2.1.3"
+                  "specId": "1.2.1.3",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "ARC-28 Event Logs",
                   "description": "Allow for logging ARC-28 events according to the ARC-28 specification",
-                  "specId": "1.2.1.4"
+                  "specId": "1.2.1.4",
+                  "currentFunctionality": "",
+                  "future": "No"
                 }
               ]
             },
@@ -627,35 +853,47 @@
               "name": "Error Handling",
               "description": "Allow for handling errors on execution of a smart contract",
               "specId": "1.2.2",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Assertions",
                   "description": "Allow for addition of assertions to a smart contract that will immediately fail the execution if the statement evaluate to false",
                   "specId": "1.2.2.1",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Assertion Error Message",
                       "description": "Allow for a string error message added to the assertion that will be added as a TEAL comment if the assertion fails. The error should show a TEAL stack trace of an error and thus show the error message to the caller (when source maps have been loaded)",
-                      "specId": "1.2.2.1.1"
+                      "specId": "1.2.2.1.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 },
                 {
                   "name": "Explicit Failures",
                   "description": "Allow to fail the contract explicitly. This operation should cause the TEAL program to immediately and unconditionally fail.",
-                  "specId": "1.2.2.2"
+                  "specId": "1.2.2.2",
+                  "currentFunctionality": "",
+                  "future": "No"
                 }
               ]
             },
             {
               "name": "Debugging",
               "description": "NEED MORE DETAIL HERE",
-              "specId": "1.2.3"
+              "specId": "1.2.3",
+              "currentFunctionality": "",
+              "future": "No"
             },
             {
               "name": "Contract Auditing",
               "description": "NEED MORE DETAIL HERE",
-              "specId": "1.2.4"
+              "specId": "1.2.4",
+              "currentFunctionality": "",
+              "future": "No"
             }
           ]
         }
@@ -665,75 +903,103 @@
       "name": "Algokit Templates",
       "description": "Scaffolding for an AlgoKit-first project.",
       "specId": "2",
+      "currentFunctionality": "",
+      "future": "No",
       "children": [
         {
           "name": "Template Definition",
           "description": "Definition of a parameterizable and reusable templates",
           "specId": "2.1",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "Create project scaffold",
               "description": "The ability to create a project directory structure that conforms the best practices of AlgoKit-first project",
               "specId": "2.1.1",
+              "currentFunctionality": "Copier allows you to set the project dir structure",
+              "future": "No",
               "children": [
                 {
                   "name": "Standard project structure",
                   "description": "Define a standard project structure and strategy to, optionally, deploy a compiled smart contract.",
-                  "specId": "2.1.1.1"
+                  "specId": "2.1.1.1",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "Integrate with IDE visual debugging",
                   "description": "",
                   "specId": "2.1.1.2",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Integrate with visual debugging VSCode",
                       "description": "Must integrate with VSCode visual debugging tools.",
-                      "specId": "2.1.1.2.1"
+                      "specId": "2.1.1.2.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Integrate visual debugging PyCharm",
                       "description": "Must integrate with PyCharm visual debugging tools.",
-                      "specId": "2.1.1.2.2"
+                      "specId": "2.1.1.2.2",
+                      "currentFunctionality": "Future",
+                      "future": "No"
                     }
                   ]
                 },
                 {
                   "name": "Support all smart contract languages",
                   "description": "Smart contract template must support all supported languages.",
-                  "specId": "2.1.1.3"
+                  "specId": "2.1.1.3",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "Support versioning",
                   "description": "Must integrate with git.",
-                  "specId": "2.1.1.4"
+                  "specId": "2.1.1.4",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "Mutli-contract deployment",
                   "description": "The deployment strategy shall be able to orchestrate a complex multi-contract deployment in addition to a single-contract deployment.",
-                  "specId": "2.1.1.5"
+                  "specId": "2.1.1.5",
+                  "currentFunctionality": "Future",
+                  "future": "No"
                 }
               ]
             },
             {
               "name": "Create templating parameters",
               "description": "The project should contain parameters that the user can set when the template is being initialized",
-              "specId": "2.1.2"
+              "specId": "2.1.2",
+              "currentFunctionality": "Copier has jinja templating for this function",
+              "future": "No"
             },
             {
               "name": "Creating project dependencies",
               "description": "Project dependencies should be able to be set and upgraded for each template",
-              "specId": "2.1.3"
+              "specId": "2.1.3",
+              "currentFunctionality": "Copier allows to create the files you want in the project and thus you can define and upgrade your project deps as you want",
+              "future": "No"
             },
             {
               "name": "Pinning LocalNet version",
               "description": "A template must define the acceptable range of versions compatible with that project.",
-              "specId": "2.1.4"
+              "specId": "2.1.4",
+              "currentFunctionality": "Future",
+              "future": "No"
             },
             {
               "name": "Template upgradeability",
               "description": "There should exist a path to migration in case a template is re-rendered on top of an existing project.",
-              "specId": "2.1.5"
+              "specId": "2.1.5",
+              "currentFunctionality": "Future",
+              "future": "No"
             }
           ]
         },
@@ -741,21 +1007,29 @@
           "name": "Template Runner",
           "description": "",
           "specId": "2.2",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "Initializing the project from the command line",
               "description": "The ability to run a command and create a new algokit project",
               "specId": "2.2.1",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Generating the project through a guided wizard",
                   "description": "Allow the user to set the parameters for the given project through a wizard cli with prompts and options",
-                  "specId": "2.2.1.1"
+                  "specId": "2.2.1.1",
+                  "currentFunctionality": "algokit init and subsequent prompts",
+                  "future": "No"
                 },
                 {
                   "name": "Generating the project through command line arguments",
                   "description": "Allow the user to set the paramaters through command line arguments with defaults for the arguments not specifiied",
-                  "specId": "2.2.1.2"
+                  "specId": "2.2.1.2",
+                  "currentFunctionality": "algokit init with flags for arguments",
+                  "future": "No"
                 }
               ]
             }
@@ -765,26 +1039,36 @@
           "name": "Example Template",
           "description": "",
           "specId": "2.3",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "Starter Template",
               "description": "Must have at least a lean, beginner friendly, and non-overwhelming variant.",
               "specId": "2.3.1",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Smart Contract Language",
                   "description": "Have the ability to choose a language in which to develop smart contracts",
                   "specId": "2.3.1.1",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Python",
                       "description": "The template structure and dependencies to develop smart contracts in python",
-                      "specId": "2.3.1.1.1"
+                      "specId": "2.3.1.1.1",
+                      "currentFunctionality": "algorand-python-template",
+                      "future": "No"
                     },
                     {
                       "name": "Typescript",
                       "description": "The template structure and dependencies to develop smart contracts in typescript",
-                      "specId": "2.3.1.1.2"
+                      "specId": "2.3.1.1.2",
+                      "currentFunctionality": "tealscript-template",
+                      "future": "No"
                     }
                   ]
                 },
@@ -792,16 +1076,22 @@
                   "name": "Frontend Framework",
                   "description": "",
                   "specId": "2.3.1.2",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "React Frontend",
                       "description": "DESCRIBE WHAT THE BASIC REACT TEMPLATE HAS HERE",
                       "specId": "2.3.1.2.1",
+                      "currentFunctionality": "algokit-react-frontend-template ",
+                      "future": "No",
                       "children": [
                         {
                           "name": "Wallet aggregators integration",
                           "description": "Must integrate with Algorand wallet aggregators.",
-                          "specId": "2.3.1.2.1.1"
+                          "specId": "2.3.1.2.1.1",
+                          "currentFunctionality": "",
+                          "future": "No"
                         }
                       ]
                     }
@@ -813,21 +1103,29 @@
               "name": "Production Template",
               "description": "Must have a full featured, complete, and comprehensive production ready variant.",
               "specId": "2.3.2",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Smart Contract Language",
                   "description": "Have the ability to choose a language in which to develop smart contracts",
                   "specId": "2.3.2.1",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Python",
                       "description": "The template structure and dependencies to develop smart contracts in python",
-                      "specId": "2.3.2.1.1"
+                      "specId": "2.3.2.1.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Typescript",
                       "description": "The template structure and dependencies to develop smart contracts in typescript",
-                      "specId": "2.3.2.1.2"
+                      "specId": "2.3.2.1.2",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 },
@@ -835,11 +1133,15 @@
                   "name": "Frontend Framework",
                   "description": "",
                   "specId": "2.3.2.2",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "React Frontend",
                       "description": "DESCRIBE WHAT THE PRODUCTION REACT TEMPLATE HAS HERE",
-                      "specId": "2.3.2.2.1"
+                      "specId": "2.3.2.2.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 },
@@ -847,16 +1149,22 @@
                   "name": "Production CI-CD",
                   "description": "",
                   "specId": "2.3.2.3",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Smart Contract CI-CD",
                       "description": "Must provide CI-CD pipelines using GitHub workflows and virtualized task runners. These pipelines must be: compatible with output stability checks, cheap in terms of compute minutes, dependency environment and artifact cache friendly, and finally parametrizable at least in terms of Algorand API provider and target network.",
-                      "specId": "2.3.2.3.1"
+                      "specId": "2.3.2.3.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Frontend CI-CD",
                       "description": "Must provide CI-CD pipelines using GitHub workflows and virtualized task runners. These pipelines should: be compatible with Vercel and Netlify deployments using API tokens, implement best practices for building a vite project.",
-                      "specId": "2.3.2.3.2"
+                      "specId": "2.3.2.3.2",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 }
@@ -867,7 +1175,9 @@
         {
           "name": "Template variant migration path",
           "description": "It shall be possible, by use of generators, template re-rendering, or otherwise, to migrate from a beginner template to a production one easily.",
-          "specId": "2.4.1"
+          "specId": "2.4.1",
+          "currentFunctionality": "",
+          "future": "No"
         }
       ]
     },
@@ -875,26 +1185,36 @@
       "name": "Account Management",
       "description": "",
       "specId": "3",
+      "currentFunctionality": "",
+      "future": "No",
       "children": [
         {
           "name": "Wallet Creation",
           "description": "Ability to create a wallet provided a wallet name and password",
-          "specId": "3.1"
+          "specId": "3.1",
+          "currentFunctionality": "AlgoSDK: KMDClient.create_wallet(), Wallet.__init__()",
+          "future": "No"
         },
         {
           "name": "Wallet Information",
           "description": "Get Wallet information",
           "specId": "3.2",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "All Wallets Information",
               "description": "Get all wallets",
-              "specId": "3.2.1"
+              "specId": "3.2.1",
+              "currentFunctionality": "AlgoSDK: KMDClient.list_wallets()",
+              "future": "No"
             },
             {
               "name": "Single Wallet Information",
               "description": "Fetches and returns wallet information associated with the given wallet name",
-              "specId": "3.2.2"
+              "specId": "3.2.2",
+              "currentFunctionality": "AlgoSDK: KMDClient.get_wallet(), Wallet.info()",
+              "future": "No"
             }
           ]
         },
@@ -902,73 +1222,101 @@
           "name": "Wallet Handle Management",
           "description": "Manage the wallet handles for accessing information for an associated wallet",
           "specId": "3.3",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "Initialize Wallet Hanlde",
               "description": "Initializes a handle for the wallet associated with an existing wallet",
-              "specId": "3.3.1"
+              "specId": "3.3.1",
+              "currentFunctionality": "AlgoSDK: KMDClient.init_wallet_handle(), Wallet.init_handle()",
+              "future": "No"
             },
             {
               "name": "Release Wallet Handle",
               "description": "Deactivates the wallet handle",
-              "specId": "3.3.2"
+              "specId": "3.3.2",
+              "currentFunctionality": "AlgoSDK: KMDClient.release_wallet_handle(), Wallet.release_handle()",
+              "future": "No"
             },
             {
               "name": "Renew Wallet Handle",
               "description": "Extends the validity of a wallet handle",
-              "specId": "3.3.3"
+              "specId": "3.3.3",
+              "currentFunctionality": "AlgoSDK: KMDClient.renew_wallet_handle(), Wallet.renew_handle() ",
+              "future": "No"
             }
           ]
         },
         {
           "name": "Rename Wallet",
           "description": "Ability to change the name of an existing wallet",
-          "specId": "3.4"
+          "specId": "3.4",
+          "currentFunctionality": "AlgoSDK: KMDClient.rename_wallet(), Wallet.rename()",
+          "future": "No"
         },
         {
           "name": "Key Management",
           "description": "Manages public/private key pair inside a wallet",
           "specId": "3.5",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "List Keys",
               "description": "Generates a new key pair in the wallet.",
-              "specId": "3.5.1"
+              "specId": "3.5.1",
+              "currentFunctionality": "AlgoSDK: KMDClient.generate_key(), Wallet.generate_key()",
+              "future": "No"
             },
             {
               "name": "Generate Keys",
               "description": "Adds an existing private key to a wallet.",
-              "specId": "3.5.2"
+              "specId": "3.5.2",
+              "currentFunctionality": "AlgoSDK: KMDClient.import_key(),Wallet.import_key()",
+              "future": "No"
             },
             {
               "name": "Import Key",
               "description": "Exports the private key associated with a specific address from",
-              "specId": "3.5.3"
+              "specId": "3.5.3",
+              "currentFunctionality": "AlgoSDK: KMDClient.export_key(), Wallet.export_key()",
+              "future": "No"
             },
             {
               "name": "Export Key",
               "description": "Deletes a key pair from the wallet.",
-              "specId": "3.5.4"
+              "specId": "3.5.4",
+              "currentFunctionality": "AlgoSDK: KMDClient.delete_key(), Wallet.delete_key()",
+              "future": "No"
             },
             {
               "name": "Delete Key",
               "description": "Provides a list of all public keys in a wallet.",
-              "specId": "3.5.5"
+              "specId": "3.5.5",
+              "currentFunctionality": "AlgoSDK: KMDClient.list_keys(),Wallet.list_keys()",
+              "future": "No"
             },
             {
               "name": "Master Derivation Key",
               "description": "Exports the master key, enabling wallet",
-              "specId": "3.5.6"
+              "specId": "3.5.6",
+              "currentFunctionality": "AlgoSDK: KMDClient.export_master_derivation_key(), Wallet.export_master_derivation_key()",
+              "future": "No"
             },
             {
               "name": "Rekey Account",
               "description": "Allow modifying the underlying private key or spending authority.",
               "specId": "3.5.7",
+              "currentFunctionality": "AlgoKit Utils: algokit_utils.TransactionParameters.rekey_to",
+              "future": "No",
               "children": [
                 {
                   "name": "Upgrade on Rekey",
                   "description": "When rekeying, has the ability to optionally upgrade to multisig or stateless smart contract authorization.",
-                  "specId": "3.5.7.1"
+                  "specId": "3.5.7.1",
+                  "currentFunctionality": "AlgoKit Utils: algokit_utils.TransactionParameters.rekey_to",
+                  "future": "No"
                 }
               ]
             }
@@ -978,26 +1326,36 @@
           "name": "Multi Signature Account Management",
           "description": "Manage multi-signature accounts",
           "specId": "3.6",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "List Mutisignature Account",
               "description": "Lists all multisig accounts in the wallet.",
-              "specId": "3.6.1"
+              "specId": "3.6.1",
+              "currentFunctionality": "AlgoSDK: KMDClient.list_multisig(), Wallet.list_multisig()",
+              "future": "No"
             },
             {
               "name": "Import Mutisignature Account",
               "description": "Imports a multisig account into the wallet.",
-              "specId": "3.6.2"
+              "specId": "3.6.2",
+              "currentFunctionality": "AlgoSDK: KMDClient.import_multisig(), Wallet.import_multisig()",
+              "future": "No"
             },
             {
               "name": "Export Mutisignature Account",
               "description": "Exports a multisig account from the wallet.",
-              "specId": "3.6.3"
+              "specId": "3.6.3",
+              "currentFunctionality": "AlgoSDK: KMDClient.export_multisig(), Wallet.export_multisig()",
+              "future": "No"
             },
             {
               "name": "Delete Mutisignature Account",
               "description": "Deletes a multisig account from the wallet.",
-              "specId": "3.6.4"
+              "specId": "3.6.4",
+              "currentFunctionality": "AlgoSDK: KMDClient.delete_multisig(), Wallet.delete_multisig()",
+              "future": "No"
             }
           ]
         },
@@ -1005,16 +1363,22 @@
           "name": "Transaction Signing",
           "description": "Allow signing a transactions using a key from the wallet",
           "specId": "3.7",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "Single Signature",
               "description": "Signs a transaction using a key from a wallet.",
-              "specId": "3.7.1"
+              "specId": "3.7.1",
+              "currentFunctionality": "AlgoSDK: KMDClient.sign_transaction(),Wallet.sign_transaction()",
+              "future": "No"
             },
             {
               "name": "Multisig Signature",
               "description": "Partially or fully signs a multisig transaction.",
-              "specId": "3.7.2"
+              "specId": "3.7.2",
+              "currentFunctionality": "AlgoSDK: KMDClient.sign_multisig_transaction(), Wallet.sign_multisig_transaction()",
+              "future": "No"
             }
           ]
         },
@@ -1022,41 +1386,57 @@
           "name": "Fund Account",
           "description": "A public service for getting TestNet ALGO.",
           "specId": "3.8",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "Availability",
               "description": "This service shall be available through the AlgoKit CLI and public APIs.",
-              "specId": "3.8.1"
+              "specId": "3.8.1",
+              "currentFunctionality": "",
+              "future": "No"
             },
             {
               "name": "Safety",
               "description": "This service must prevent abuse at least in the form of REST requests and funds dispensed.",
               "specId": "3.8.2",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Authentication",
                   "description": "Users must be authenticated with an account using exactly one of the available methods.",
                   "specId": "3.8.2.1",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Email authn",
                       "description": "Users must be able to use a verified email to authenticate.",
                       "specId": "3.8.2.1.1",
+                      "currentFunctionality": "",
+                      "future": "No",
                       "children": [
                         {
                           "name": "Email authn session expiration",
                           "description": "Each session must expire after 15 minutes.",
-                          "specId": "3.8.2.1.1.1"
+                          "specId": "3.8.2.1.1.1",
+                          "currentFunctionality": "",
+                          "future": "No"
                         },
                         {
                           "name": "Email authn session renewal",
                           "description": "It should be possible to refresh a session without user interaction.",
-                          "specId": "3.8.2.1.1.2"
+                          "specId": "3.8.2.1.1.2",
+                          "currentFunctionality": "",
+                          "future": "No"
                         },
                         {
                           "name": "Email authn renewal rotation",
                           "description": "It must be possible to extend/rotate the renewal windows without user interaction.",
-                          "specId": "3.8.2.1.1.3"
+                          "specId": "3.8.2.1.1.3",
+                          "currentFunctionality": "",
+                          "future": "No"
                         }
                       ]
                     },
@@ -1064,23 +1444,31 @@
                       "name": "Token authn",
                       "description": "Users must be able to use a verified token to authenticate.",
                       "specId": "3.8.2.1.2",
+                      "currentFunctionality": "",
+                      "future": "No",
                       "children": [
                         {
                           "name": "Token authn session expiration",
                           "description": "Each session must expire after 30 minutes.",
-                          "specId": "3.8.2.1.2.1"
+                          "specId": "3.8.2.1.2.1",
+                          "currentFunctionality": "",
+                          "future": "No"
                         }
                       ]
                     },
                     {
                       "name": "CI authn",
                       "description": "Only the Token authn must be available in CI mode.",
-                      "specId": "3.8.2.1.3"
+                      "specId": "3.8.2.1.3",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Multiple devices",
                       "description": "The same account can be used on multiple devices.",
-                      "specId": "3.8.2.1.4"
+                      "specId": "3.8.2.1.4",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 },
@@ -1088,11 +1476,15 @@
                   "name": "DDoS measures",
                   "description": "Any user that attempts to DDoS the service shall be suspended from making requests.",
                   "specId": "3.8.2.2",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Ban malicious actors",
                       "description": "The service shall ban malicious users.",
-                      "specId": "3.8.2.2.1"
+                      "specId": "3.8.2.2.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 }
@@ -1102,21 +1494,29 @@
               "name": "Liveness",
               "description": "This service must implement mechanisms to mitigate the risk of being out of funds.",
               "specId": "3.8.3",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "ALGO Quota",
                   "description": "The service defines a max amount of ALGO that can be sent daily.",
-                  "specId": "3.8.3.1"
+                  "specId": "3.8.3.1",
+                  "currentFunctionality": "",
+                  "future": "No"
                 },
                 {
                   "name": "Reputation system",
                   "description": "The quota can be subject to change.",
                   "specId": "3.8.3.2",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Refunds",
                       "description": "Each succesful refund increases our trust that the user can be allowed more quota.",
-                      "specId": "3.8.3.2.1"
+                      "specId": "3.8.3.2.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 },
@@ -1124,11 +1524,15 @@
                   "name": "Refund ALGO",
                   "description": "The service defines a way to accept user refunds.",
                   "specId": "3.8.3.3",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Restoring the quota",
                       "description": "Each refund must be accounted for with no more than a 24h delay.",
-                      "specId": "3.8.3.3.1"
+                      "specId": "3.8.3.3.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 }
@@ -1137,32 +1541,44 @@
             {
               "name": "Quota status",
               "description": "The current quota must be available to the user that owns it.",
-              "specId": "3.8.4"
+              "specId": "3.8.4",
+              "currentFunctionality": "",
+              "future": "No"
             },
             {
               "name": "Address alias",
               "description": "The CLI shall accept an Algorand address alias as the subject of any TestNet Dispenser function (where applicable).",
-              "specId": "3.8.5"
+              "specId": "3.8.5",
+              "currentFunctionality": "",
+              "future": "No"
             },
             {
               "name": "Utilities",
               "description": "Functions in the algokit-utils library.",
               "specId": "3.8.6",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Funding function",
                   "description": "The \"ensureFunded\" function shall be able to issue a payment to the target address that ensures a minimum amount of funds.",
                   "specId": "3.8.6.1",
+                  "currentFunctionality": "",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Balance awareness",
                       "description": "This function shall be aware of the current balance of the target and dynamically raise it according to the target and additional configuration.",
-                      "specId": "3.8.6.1.1"
+                      "specId": "3.8.6.1.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     },
                     {
                       "name": "Minimum payment",
                       "description": "This function must be configurable in the minimum payment it will make (even when it would exceed the target balance).",
-                      "specId": "3.8.6.1.2"
+                      "specId": "3.8.6.1.2",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 }
@@ -1172,11 +1588,15 @@
               "name": "LocalNet utilities",
               "description": "Functions to fund other LocalNet accounts.",
               "specId": "3.8.7",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Pre-funded addresses",
                   "description": "Must be able to discover genesis addresses in the known LocalNet default wallet.",
-                  "specId": "3.8.7.1"
+                  "specId": "3.8.7.1",
+                  "currentFunctionality": "",
+                  "future": "No"
                 }
               ]
             }
@@ -1185,24 +1605,32 @@
       ]
     },
     {
-      "name": "AlgoKit Transaction Type Support",
+      "name": "Transaction Management",
       "description": "The AlgoKit utilities should have knowledge of the supported types of Algorand transcations and it should provide type-safe idiomatic interfaces for compiling transactions.",
       "specId": "4",
+      "currentFunctionality": "",
+      "future": "No",
       "children": [
         {
           "name": "Transaction Type Abstractions",
           "description": "The tooling should also provide useful abstraction on top of the transaction type defined by the Algorand Protocol.",
           "specId": "4.1",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "Transaction Field Compatibility",
               "description": "These abstraction must prevent producing a transaction type with incompatibly set fields.",
-              "specId": "4.1.1"
+              "specId": "4.1.1",
+              "currentFunctionality": "",
+              "future": "No"
             },
             {
               "name": "Cross-product Compliance",
               "description": "All AlgoKit tooling must be compliant with the same knowledge and abstraction built on top of the transaction type defined by the Algorand Protocol.",
-              "specId": "4.1.2"
+              "specId": "4.1.2",
+              "currentFunctionality": "",
+              "future": "Yes"
             }
           ]
         },
@@ -1210,11 +1638,15 @@
           "name": "Field Name Standardization",
           "description": "All AlgoKit tooling must implement these type-safe interfaces using the same field names defined in this document.",
           "specId": "4.2",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "Language-Specific Case Style Conventions",
               "description": "The field names in these interfaces shall be written using the case style idiomatic to the language its being implemented in.",
-              "specId": "4.2.1"
+              "specId": "4.2.1",
+              "currentFunctionality": "",
+              "future": "No"
             }
           ]
         },
@@ -1222,48 +1654,66 @@
           "name": "Protocol Transaction Types",
           "description": "Algorand Protocol Transaction Types",
           "specId": "4.3",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "Low-Level Type Availability",
               "description": "All these types must be available as a low-level alternative to abstracted AlgoKit types.",
-              "specId": "4.3.1"
+              "specId": "4.3.1",
+              "currentFunctionality": "",
+              "future": "No"
             },
             {
               "name": "Module Import Structure",
               "description": "All these types must be available in all modules as a deeper object in the import hierarchy.",
               "specId": "4.3.2",
+              "currentFunctionality": "",
+              "future": "Yes",
               "children": [
                 {
                   "name": "Import Structure Exceptions",
                   "description": "With the exception of the Payment and Asset Freeze types.",
-                  "specId": "4.3.2.1"
+                  "specId": "4.3.2.1",
+                  "currentFunctionality": "",
+                  "future": "No"
                 }
               ]
             },
             {
               "name": "Payment Transaction Type",
               "description": "Payment",
-              "specId": "4.3.3"
+              "specId": "4.3.3",
+              "currentFunctionality": "",
+              "future": "No"
             },
             {
               "name": "Key Registration Transaction Type",
               "description": "Key Registration",
-              "specId": "4.3.4"
+              "specId": "4.3.4",
+              "currentFunctionality": "",
+              "future": "No"
             },
             {
               "name": "Asset Configuration Transaction Type",
               "description": "Asset Configuration",
-              "specId": "4.3.5"
+              "specId": "4.3.5",
+              "currentFunctionality": "",
+              "future": "No"
             },
             {
               "name": "Asset Freeze Transaction Type",
               "description": "Asset Freeze",
               "specId": "4.3.6",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Freeze Target Field Renaming",
                   "description": "All reference (either direct or indirect) to this transaction type must expose the \"FreezeAccount\" field renamed as \"freezeTarget\".",
-                  "specId": "4.3.6.1"
+                  "specId": "4.3.6.1",
+                  "currentFunctionality": "",
+                  "future": "No"
                 }
               ]
             },
@@ -1271,238 +1721,340 @@
               "name": "Asset Transfer Transaction Type",
               "description": "Asset Transfer",
               "specId": "4.3.7",
+              "currentFunctionality": "algokit-utils-py: algokit.transfer",
+              "future": "No",
               "children": [
                 {
                   "name": "Asset Receiver Field Renaming",
                   "description": "All reference (either direct or indirect) to this transaction type must expose the \"assetReceiver\" field renamed as \"receiver\".",
-                  "specId": "4.3.7.1"
+                  "specId": "4.3.7.1",
+                  "currentFunctionality": "",
+                  "future": "Yes"
                 },
                 {
                   "name": "Asset Sender Field Renaming",
                   "description": "All reference (either direct or indirect) to this transaction type must expose the \"assetSender\" field renamed as \"clawbackTarget\".",
-                  "specId": "4.3.7.2"
+                  "specId": "4.3.7.2",
+                  "currentFunctionality": "",
+                  "future": "Yes"
                 }
               ]
             },
             {
               "name": "Application Call Transaction Type",
               "description": "Application Call",
-              "specId": "4.3.8"
+              "specId": "4.3.8",
+              "currentFunctionality": "",
+              "future": "No"
             },
             {
               "name": "State Proof Transaction Type",
               "description": "State Proof",
-              "specId": "4.3.9"
+              "specId": "4.3.9",
+              "currentFunctionality": "",
+              "future": "No"
             }
           ]
         },
         {
           "name": "Abstract Transaction Types",
-          "description": "AlgoKit Abstracted Transaction Types",
+          "description": "Definition of AlgoKit Abstracted Transaction Types",
           "specId": "4.4",
+          "currentFunctionality": "",
+          "future": "Yes",
           "children": [
+            {
+              "name": "Protocol Field Hiding",
+              "description": "Unless specified, fields from the underlying protocol type transaction should assumed to be hidden in the higher-level abstracted type.",
+              "specId": "4.4.1",
+              "currentFunctionality": "",
+              "future": "",
+              "children": [
+                {
+                  "name": "Rekey To Field Exception",
+                  "description": "The \"rekeyTo\" field should be present in all transactions regardless of their type.",
+                  "specId": "4.4.1.1",
+                  "currentFunctionality": "",
+                  "future": ""
+                }
+              ]
+            },
             {
               "name": "Key Registration Types",
               "description": "Key Registration Abstracted Transaction Types",
-              "specId": "4.4.1",
+              "specId": "4.4.2",
+              "currentFunctionality": "",
+              "future": "Yes",
               "children": [
                 {
                   "name": "Online Key Registration",
                   "description": "Key Registration Online",
-                  "specId": "4.4.1.1",
+                  "specId": "4.4.2.1",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
                     {
                       "name": "Base Transaction Type",
                       "description": "Is based on the Key Registration transaction type.",
-                      "specId": "4.4.1.1.1"
+                      "specId": "4.4.2.1.1",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Required Fields",
                       "description": "votekey, selkey, votekd, votefst, votelst must all be set.",
-                      "specId": "4.4.1.1.2"
+                      "specId": "4.4.2.1.2",
+                      "currentFunctionality": "Present outside of AlgoKit",
+                      "future": "Yes"
                     }
                   ]
                 },
                 {
                   "name": "Offline Key Registration",
                   "description": "Key Registration Offline",
-                  "specId": "4.4.1.2",
+                  "specId": "4.4.2.2",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
                     {
                       "name": "Base Transaction Type",
                       "description": "Is based on the Key Registration transaction type.",
-                      "specId": "4.4.1.2.1"
+                      "specId": "4.4.2.2.1",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Field Requirements",
                       "description": "votekey, selkey, votekd, votefst, votelst must all be non-set.",
-                      "specId": "4.4.1.2.2"
+                      "specId": "4.4.2.2.2",
+                      "currentFunctionality": "Present outside of AlgoKit",
+                      "future": "Yes"
                     }
                   ]
+                },
+                {
+                  "name": "Base Type Definition",
+                  "description": "Is based on the Asset Transfer transaction type.",
+                  "specId": "4.4.2.3.1",
+                  "currentFunctionality": "",
+                  "future": "Yes"
                 }
               ]
             },
             {
               "name": "Asset Transaction Types",
               "description": "Asset Abstracted Transaction Types",
-              "specId": "4.4.2",
+              "specId": "4.4.3",
+              "currentFunctionality": "",
+              "future": "Yes",
               "children": [
                 {
                   "name": "Clawback Field Restriction",
                   "description": "Unless explicitly state, all these types must not expose the \"clawbackTarget\" (renamed from asnd / \"assetSender\") field (when applicable).",
-                  "specId": "4.4.2.1"
+                  "specId": "4.4.3.1",
+                  "currentFunctionality": "",
+                  "future": "Yes"
                 },
                 {
                   "name": "Close Field Restriction",
                   "description": "Unless explicitly state, all these types must not expose the aclose field (when applicable).",
-                  "specId": "4.4.2.2"
+                  "specId": "4.4.3.2",
+                  "currentFunctionality": "",
+                  "future": "Yes"
                 },
                 {
                   "name": "Asset Creation Type",
                   "description": "Asset Creation",
-                  "specId": "4.4.2.3",
+                  "specId": "4.4.3.3",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
                     {
                       "name": "Base Type Definition",
                       "description": "Is based on the Asset Configuration transaction type.",
-                      "specId": "4.4.2.3.1"
+                      "specId": "4.4.3.3.1",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Address Field Requirements",
                       "description": "Manager, Freeze, Clawback, and Reserve address fields must all be set to either a valid address or a special enum-like (or string literal) value called \"ForeverDisabled\".",
-                      "specId": "4.4.2.3.2"
+                      "specId": "4.4.3.3.2",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Field Requirements",
                       "description": "caid must be non-set. apar.t, apar.dc, apar.df must be all set.",
-                      "specId": "4.4.2.3.2"
+                      "specId": "4.4.3.3.3",
+                      "currentFunctionality": "Present outside of AlgoKit",
+                      "future": "Yes"
                     }
                   ]
                 },
                 {
                   "name": "Asset Update Type",
                   "description": "Asset Update",
-                  "specId": "4.4.2.4",
+                  "specId": "4.4.3.4",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
                     {
                       "name": "Base Type Definition",
                       "description": "Is based on the Asset Configuration transaction type.",
-                      "specId": "4.4.2.4.1"
+                      "specId": "4.4.3.4.1",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Configuration ID Requirement",
                       "description": "caid must be set.",
-                      "specId": "4.4.2.4.2"
+                      "specId": "4.4.3.4.2",
+                      "currentFunctionality": "Present outside of AlgoKit",
+                      "future": "Yes"
                     },
                     {
                       "name": "Address Field Requirements",
                       "description": "Manager, Freeze, Clawback, and Reserve address fields must all be set to either a valid address or a special enum-like (or string literal) value called \"ForeverDisabled\".",
-                      "specId": "4.4.2.4.3"
+                      "specId": "4.4.3.4.3",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     }
                   ]
                 },
                 {
                   "name": "Asset Deletion Type",
                   "description": "Asset Delete",
-                  "specId": "4.4.2.5",
+                  "specId": "4.4.3.5",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
                     {
                       "name": "Base Type Definition",
                       "description": "Is based on the Asset Configuration transaction type.",
-                      "specId": "4.4.2.5.1"
+                      "specId": "4.4.3.5.1",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "ConfigAsset ID",
                       "description": "caid must be set.",
-                      "specId": "4.4.2.5.2"
+                      "specId": "4.4.3.5.2",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "AssetParams Requirements",
                       "description": "apar must be non-set.",
-                      "specId": "4.4.2.5.3"
+                      "specId": "4.4.3.5.3",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     }
                   ]
                 },
                 {
                   "name": "Asset Transfer Type",
                   "description": "Asset Transfer",
-                  "specId": "4.4.2.6",
+                  "specId": "4.4.3.6",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
                     {
                       "name": "Base Type Definition",
                       "description": "Is based on the Asset Transfer transaction type.",
-                      "specId": "4.4.2.6.1"
+                      "specId": "4.4.3.6.1",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Field Requirements",
                       "description": "snd, \"receiver\" (renamed from arcv) must be set.",
-                      "specId": "4.4.2.6.2"
+                      "specId": "4.4.3.6.2",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     }
                   ]
                 },
                 {
                   "name": "Asset Opt-In Type",
                   "description": "Asset Opt In",
-                  "specId": "4.4.2.7",
+                  "specId": "4.4.3.7",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
                     {
                       "name": "Base Type Definition",
                       "description": "Is based on the Asset Transfer transaction type.",
-                      "specId": "4.4.2.7.1"
+                      "specId": "4.4.3.7.1",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Asset ID Requirement",
                       "description": "xaid must be set.",
-                      "specId": "4.4.2.7.2"
+                      "specId": "4.4.3.7.2",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Address Requirements",
                       "description": "snd and arcv must be set and equal to each other.",
-                      "specId": "4.4.2.7.3"
+                      "specId": "4.4.3.7.3",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Amount Requirement",
                       "description": "amt must be 0.",
-                      "specId": "4.4.2.7.4"
+                      "specId": "4.4.3.7.4",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     }
                   ]
                 },
                 {
                   "name": "Asset Close-Out Type",
                   "description": "Asset Close Out",
-                  "specId": "4.4.2.8",
+                  "specId": "4.4.3.8",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
                     {
                       "name": "Base Type Definition",
                       "description": "Is based on the Asset Transfer transaction type.",
-                      "specId": "4.4.2.8.1"
+                      "specId": "4.4.3.8.1",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Asset ID Requirement",
                       "description": "xaid must be set.",
-                      "specId": "4.4.2.8.2"
+                      "specId": "4.4.3.8.2",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Close Field Requirement",
                       "description": "aclose must be set and different than sender.",
-                      "specId": "4.4.2.8.3"
+                      "specId": "4.4.3.8.3",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     }
                   ]
                 },
                 {
                   "name": "Asset Clawback Type",
                   "description": "Asset Clawback",
-                  "specId": "4.4.2.9",
+                  "specId": "4.4.3.9",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
-                    {
-                      "name": "Base Type Definition",
-                      "description": "Is based on the Asset Transfer transaction type.",
-                      "specId": "4.4.2.9.1"
-                    },
                     {
                       "name": "Clawback Target Requirement",
                       "description": "clawbackTarget must be set.",
-                      "specId": "4.4.2.9.2"
+                      "specId": "4.4.3.9.2",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     }
                   ]
                 }
@@ -1511,137 +2063,187 @@
             {
               "name": "Application Types",
               "description": "Application Call Abstracted Transaction Types",
-              "specId": "4.4.3",
+              "specId": "4.4.4",
+              "currentFunctionality": "",
+              "future": "Yes",
               "children": [
                 {
                   "name": "Application Creation Type",
                   "description": "Application Create",
-                  "specId": "4.4.3.1",
+                  "specId": "4.4.4.1",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
                     {
                       "name": "Base Type Definition",
                       "description": "Is based on the Application Call transaction type.",
-                      "specId": "4.4.3.1.1"
+                      "specId": "4.4.4.1.1",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Application ID Requirement",
                       "description": "apid must be non-set.",
-                      "specId": "4.4.3.1.2"
+                      "specId": "4.4.4.1.2",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Program Requirements",
                       "description": "apap, apsu, apgs, apls must be set.",
-                      "specId": "4.4.3.1.3"
+                      "specId": "4.4.4.1.3",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     }
                   ]
                 },
                 {
                   "name": "Application Update Type",
                   "description": "Application Update",
-                  "specId": "4.4.3.2",
+                  "specId": "4.4.4.2",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
                     {
                       "name": "Base Type Definition",
                       "description": "Is based on the Application Call transaction type.",
-                      "specId": "4.4.3.2.1"
+                      "specId": "4.4.4.2.1",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "OnComplete Requirement",
                       "description": "apan must be set to 4.",
-                      "specId": "4.4.3.2.2"
+                      "specId": "4.4.4.2.2",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Field Requirements",
                       "description": "apid, apap, apsu must be set.",
-                      "specId": "4.4.3.2.3"
+                      "specId": "4.4.4.2.3",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     }
                   ]
                 },
                 {
                   "name": "Application Deletion Type",
                   "description": "Application Delete",
-                  "specId": "4.4.3.3",
+                  "specId": "4.4.4.3",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
                     {
                       "name": "Base Type Definition",
                       "description": "Is based on the Application Call transaction type.",
-                      "specId": "4.4.3.3.1"
+                      "specId": "4.4.4.3.1",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "OnComplete Requirement",
                       "description": "apan must be set to 5.",
-                      "specId": "4.4.3.3.2"
+                      "specId": "4.4.4.3.2",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Application ID Requirement",
                       "description": "apid must be set.",
-                      "specId": "4.4.3.3.3"
+                      "specId": "4.4.4.3.3",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     }
                   ]
                 },
                 {
                   "name": "Application Opt-In Type",
                   "description": "Application Opt In",
-                  "specId": "4.4.3.4",
+                  "specId": "4.4.4.4",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
                     {
                       "name": "Base Type Definition",
                       "description": "Is based on the Application Call transaction type.",
-                      "specId": "4.4.3.4.1"
+                      "specId": "4.4.4.4.1",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Application ID Requirement",
                       "description": "apid must be set.",
-                      "specId": "4.4.3.4.2"
+                      "specId": "4.4.4.4.2",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "OnComplete Requirement",
                       "description": "apan must be set to 1.",
-                      "specId": "4.4.3.4.3"
+                      "specId": "4.4.4.4.3",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     }
                   ]
                 },
                 {
                   "name": "Application Close-Out Type",
                   "description": "Application Close Out",
-                  "specId": "4.4.3.5",
+                  "specId": "4.4.4.5",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
                     {
                       "name": "Base Type Definition",
                       "description": "Is based on the Application Call transaction type.",
-                      "specId": "4.4.3.5.1"
+                      "specId": "4.4.4.5.1",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Application ID Requirement",
                       "description": "apid must be set.",
-                      "specId": "4.4.3.5.2"
+                      "specId": "4.4.4.5.2",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "OnComplete Requirement",
                       "description": "apan must be set to 2.",
-                      "specId": "4.4.3.5.3"
+                      "specId": "4.4.4.5.3",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     }
                   ]
                 },
                 {
                   "name": "Application Clear State Type",
                   "description": "Application Clear State",
-                  "specId": "4.4.3.6",
+                  "specId": "4.4.4.6",
+                  "currentFunctionality": "",
+                  "future": "Yes",
                   "children": [
                     {
                       "name": "Base Type Definition",
                       "description": "Is based on the Application Call transaction type.",
-                      "specId": "4.4.3.6.1"
+                      "specId": "4.4.4.6.1",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "Application ID Requirement",
                       "description": "apid must be set.",
-                      "specId": "4.4.3.6.2"
+                      "specId": "4.4.4.6.2",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     },
                     {
                       "name": "OnComplete Requirement",
                       "description": "apan must be set to 3.",
-                      "specId": "4.4.3.6.3"
+                      "specId": "4.4.4.6.3",
+                      "currentFunctionality": "",
+                      "future": "Yes"
                     }
                   ]
                 }
@@ -1650,9 +2252,62 @@
           ]
         },
         {
+          "name": "Transaction Groups",
+          "description": "It must be possible to combine transaction into atomic groups using the underlying features offered by Node Services",
+          "specId": "4.5",
+          "currentFunctionality": "Present outside of AlgoKit",
+          "future": "No"
+        },
+        {
           "name": "AlgoKit Utilities",
           "description": "AlgoKit Utilities",
-          "specId": "4.5"
+          "specId": "4.6",
+          "currentFunctionality": "Mostly just re-exposes algosdk transactions. This tool would need to implement this common interface.",
+          "future": "Yes"
+        },
+        {
+          "name": "TEALScript",
+          "description": "TEALScript",
+          "specId": "4.7",
+          "currentFunctionality": "Partially implements requirements",
+          "future": ""
+        },
+        {
+          "name": "Algorand Python",
+          "description": "Algorand Python",
+          "specId": "4.8",
+          "currentFunctionality": "Partially implements requirements",
+          "future": ""
+        },
+        {
+          "name": "Lora",
+          "description": "Lora",
+          "specId": "4.9",
+          "currentFunctionality": "",
+          "future": ""
+        },
+        {
+          "name": "Subscriber Lib",
+          "description": "Subscriber Lib",
+          "specId": "4.10",
+          "currentFunctionality": "",
+          "future": ""
+        },
+        {
+          "name": "AlgoKit CLI",
+          "description": "AlgoKit CLI",
+          "specId": "4.11",
+          "currentFunctionality": "",
+          "future": "",
+          "children": [
+            {
+              "name": "NFT Minting",
+              "description": "It must be possible to construct an AssetCreate transaction that is compliant with the ARC-0003 standard.",
+              "specId": "4.11.1",
+              "currentFunctionality": "",
+              "future": ""
+            }
+          ]
         }
       ]
     },
@@ -1660,16 +2315,22 @@
       "name": "Ledger Observability",
       "description": "",
       "specId": "5",
+      "currentFunctionality": "",
+      "future": "No",
       "children": [
         {
           "name": "Ledger Status",
           "description": "",
           "specId": "5.1",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": " Ledger Supply",
               "description": "Get the current supply reported by the ledger.",
-              "specId": "5.1.1"
+              "specId": "5.1.1",
+              "currentFunctionality": "algod-rest: /v2/ledger/supply",
+              "future": "No"
             }
           ]
         },
@@ -1677,41 +2338,57 @@
           "name": "Block Observability",
           "description": "",
           "specId": "5.2",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "Block Information",
               "description": "Get the block information for the given round.",
-              "specId": "5.2.1"
+              "specId": "5.2.1",
+              "currentFunctionality": "algod-rest: /v2/blocks/{round}",
+              "future": "No"
             },
             {
               "name": "Block Hash",
               "description": "Get the block hash for the block on the given round.",
-              "specId": "5.2.2"
+              "specId": "5.2.2",
+              "currentFunctionality": "algod-rest: /v2/blocks/{round}/hash",
+              "future": "No"
             },
             {
               "name": "Transactions IDs in Block",
               "description": "Get the top level transaction IDs for the block on the given round.",
-              "specId": "5.2.3"
+              "specId": "5.2.3",
+              "currentFunctionality": "algod-rest: /v2/blocks/{round}/txids",
+              "future": "No"
             },
             {
               "name": "Transaction Proof",
               "description": "Get a proof for a transaction in a block.",
-              "specId": "5.2.4"
+              "specId": "5.2.4",
+              "currentFunctionality": "algod-rest: /v2/blocks/{round}/transactions/{txid}/proof",
+              "future": "No"
             },
             {
               "name": "Block Logs",
               "description": "Get all of the logs from outer and inner app calls in the given round",
-              "specId": "5.2.5"
+              "specId": "5.2.5",
+              "currentFunctionality": "algod-rest: /v2/blocks/{round}/logs",
+              "future": "No"
             },
             {
               "name": "Light Block Header Proof",
               "description": "Gets a proof for a given light block header inside a state proof commitment",
-              "specId": "5.2.6"
+              "specId": "5.2.6",
+              "currentFunctionality": "algod-rest: /v2/blocks/{round}/lightheader/proof",
+              "future": "No"
             },
             {
               "name": "Block State Proof",
               "description": "Get a state proof that covers a given round",
-              "specId": "5.2.7"
+              "specId": "5.2.7",
+              "currentFunctionality": "algod-api: /v2/stateproofs/{round}",
+              "future": "No"
             }
           ]
         },
@@ -1719,43 +2396,59 @@
           "name": "Account Observability",
           "description": "Get information regarding accounts",
           "specId": "5.3",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "List Accounts",
               "description": "Search for accounts given a set of query parameters",
-              "specId": "5.3.1"
+              "specId": "5.3.1",
+              "currentFunctionality": "indexer-api: /v2/accounts",
+              "future": "No"
             },
             {
               "name": "Detailed Account information By Address",
               "description": "Given an account address, get all of the account information specified in the algod schema: https://developer.algorand.org/docs/rest-apis/algod/#account",
-              "specId": "5.3.2"
+              "specId": "5.3.2",
+              "currentFunctionality": "algod-rest: /v2/accounts/{address}",
+              "future": "No"
             },
             {
               "name": "Account Asset Holdings",
               "description": "Given an account address, get all of the assets the account is holding.",
               "specId": "5.3.3",
+              "currentFunctionality": "algod-rest: /v2/accounts/{address}/assets",
+              "future": "No",
               "children": [
                 {
                   "name": "Account Asset Holding by Specific Asset",
                   "description": "Get account's asset holding and asset parameters (if either exist) ,given a specific account public key and asset ID. The asset parameters should only be returned if the provided address is the asset's creator.",
-                  "specId": "5.3.3.1"
+                  "specId": "5.3.3.1",
+                  "currentFunctionality": "algod-rest: /v2/accounts/{address}/assets/{asset-id}",
+                  "future": "No"
                 }
               ]
             },
             {
               "name": "Account created Assets",
               "description": "Get all the account's created assets",
-              "specId": "5.3.4"
+              "specId": "5.3.4",
+              "currentFunctionality": "indexer-api: /v2/accounts/{account-id}/created-assets",
+              "future": "No"
             },
             {
               "name": "Account Applications",
               "description": "Lists all of the applications created by the given account",
               "specId": "5.3.5",
+              "currentFunctionality": "indexer-api: /v2/accounts/{account-id}/created-applications",
+              "future": "No",
               "children": [
                 {
                   "name": "Account Application by Specific Application ID",
                   "description": "Given a specific account public key and application ID, get the application information",
-                  "specId": "5.3.5.1"
+                  "specId": "5.3.5.1",
+                  "currentFunctionality": "algod-rest: /v2/accounts/{address}/applications/{application-id}",
+                  "future": "No"
                 }
               ]
             }
@@ -1765,26 +2458,36 @@
           "name": "Asset Observability",
           "description": "Gets information regarding Assets",
           "specId": "5.4",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "List Assets",
               "description": "Search for assets given a set of query parameters",
-              "specId": "5.4.1"
+              "specId": "5.4.1",
+              "currentFunctionality": "indexer-api: /v2/assets",
+              "future": "No"
             },
             {
               "name": "Information by Asset ID",
               "description": "Given and asset Id, get all the information about that asset in the following schema: https://developer.algorand.org/docs/rest-apis/algod/#asset",
-              "specId": "5.4.2"
+              "specId": "5.4.2",
+              "currentFunctionality": "algod-api: /v2/assets/{asset-id}\nindexer-api: /v2/assets/{asset-id}",
+              "future": "No"
             },
             {
               "name": "Accounts that hold an asset",
               "description": "List of accounts who hold this asset",
-              "specId": "5.4.3"
+              "specId": "5.4.3",
+              "currentFunctionality": "indexer-api: /v2/assets/{asset-id}/balances",
+              "future": "No"
             },
             {
               "name": "Transaction involving an asset",
               "description": "List transactions that involved the given asset id",
-              "specId": "5.4.4"
+              "specId": "5.4.4",
+              "currentFunctionality": "indexer-api: /v2/assets/{asset-id}/transactions",
+              "future": "No"
             }
           ]
         },
@@ -1792,26 +2495,36 @@
           "name": "Application Observability",
           "description": "Gets information regarding Applications",
           "specId": "5.5",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "Application Information",
               "description": "Given a application ID, application information including creator, approval and clear programs, global and local schemas, and global state.",
-              "specId": "5.5.1"
+              "specId": "5.5.1",
+              "currentFunctionality": "algod-rest: /v2/applications/{application-id}\nindexer-api: /v2/applications/{application-id}",
+              "future": "No"
             },
             {
               "name": "Get Application Boxes",
               "description": "Given an application ID, get all Box names. ",
-              "specId": "5.5.2"
+              "specId": "5.5.2",
+              "currentFunctionality": "algod-rest: /v2/applications/{application-id}/boxes\nindexer-api: /v2/applications/{application-id}/boxes",
+              "future": "No"
             },
             {
               "name": "Get Application Box Information",
               "description": "Given an application ID and box name, get round, box name, and value (each base64 encoded). ",
-              "specId": "5.5.3"
+              "specId": "5.5.3",
+              "currentFunctionality": "algod-rest: /v2/applications/{application-id}/box\nindexer-api: /v2/applications/{application-id}/box",
+              "future": "No"
             },
             {
               "name": "Get Application Logs",
               "description": "Get application log for a specific application ID",
-              "specId": "5.5.4"
+              "specId": "5.5.4",
+              "currentFunctionality": "indexer-api: /v2/applications/{application-id}/logs",
+              "future": "No"
             }
           ]
         },
@@ -1819,36 +2532,186 @@
           "name": "Transaction Observability",
           "description": "Get transaction information",
           "specId": "5.6",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "List Transactions",
               "description": "Return a list of transactions given a set of params",
-              "specId": "5.6.1"
+              "specId": "5.6.1",
+              "currentFunctionality": "indexer-api: /v2/transactions\nLora",
+              "future": "No"
             },
             {
               "name": "Transaction Information By Id",
               "description": "Get information for single transactions by its ID",
-              "specId": "5.6.2"
+              "specId": "5.6.2",
+              "currentFunctionality": "indexer: /v2/transactions/{txid}\nLora",
+              "future": "No"
             },
             {
               "name": "Transaction Parameters",
               "description": "Get parameters that help a client construct a new transaction.",
-              "specId": "5.6.3"
+              "specId": "5.6.3",
+              "currentFunctionality": "algod-rest: /v2/transactions/params",
+              "future": "No"
             },
             {
               "name": "Pending Transactions",
               "description": "Get information about pending transactions",
               "specId": "5.6.4",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "All Pending Transactions",
                   "description": "Get the list of pending transactions",
-                  "specId": "5.6.4.1"
+                  "specId": "5.6.4.1",
+                  "currentFunctionality": "algod-rest: /v2/transactions/pending",
+                  "future": "No"
                 },
                 {
                   "name": "Pending Transactions By ID",
                   "description": "Get the transactions information of a recently submitted transaction, given a transaction ID.",
-                  "specId": "5.6.4.2"
+                  "specId": "5.6.4.2",
+                  "currentFunctionality": "algod-api: /v2/transactions/pending/{txid}",
+                  "future": "No"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Event Subscription",
+          "description": "The Algorand Subscriber shall provide a mechanism for subscribing to and receiving real-time updates on Algorand blockchain transactions and events. It shall support flexible filtering based on transaction properties (e.g., type, sender, receiver, application calls, asset transfers) and ARC-28 events. The subscriber shall offer both single poll and continuous subscription modes. It shall handle inner transactions, state proof transactions, and compute balance changes. The system shall be designed for seamless integration with various deployment environments and data processing pipelines.",
+          "specId": "5.7",
+          "currentFunctionality": "algokit-subscriber-py\nalgokit-subscriber-ts",
+          "future": "No",
+          "children": [
+            {
+              "name": "Single Subscription Poll",
+              "description": "Executes a single pull/poll operation against the Algorand blockchain to retrieve transactions matching specific criteria.  Handles watermarking for at-least-once delivery and allows syncing from both algod and indexer.",
+              "specId": "5.7.1",
+              "currentFunctionality": "algokit-subcriber-py: `get_subscribed_transactions` in `subscription.py`",
+              "future": "No",
+              "children": [
+                {
+                  "name": "Subscription Parameters",
+                  "description": "Defines the criteria for a subscription, including filters, ARC-28 events, synchronization behavior, and watermark.",
+                  "specId": "5.7.1.1",
+                  "currentFunctionality": "algokit-subcriber-py: `TransactionSubscriptionParams`",
+                  "future": "No",
+                  "children": [
+                    {
+                      "name": "Transaction Filters",
+                      "description": "Specifies criteria for filtering transactions based on properties like type, sender, receiver, notes, application interaction, asset transfers, and balance changes.  `NamedTransactionFilter` allows naming filters for easier identification.",
+                      "specId": "5.7.1.1.1",
+                      "currentFunctionality": "algokit-subcriber-py: `TransactionFilter`, `NamedTransactionFilter`",
+                      "future": "No"
+                    },
+                    {
+                      "name": "ARC-28 Event Filters",
+                      "description": "Defines ARC-28 events to include in the subscription or to process and attach to subscribed transactions. Includes event name, optional description and arguments.",
+                      "specId": "5.7.1.1.2",
+                      "currentFunctionality": "algokit-subcriber-py: `Arc28EventGroup` in `arc28.py`",
+                      "future": "No"
+                    },
+                    {
+                      "name": "Sync Behavior",
+                      "description": "Determines how to handle scenarios where the blockchain tip is significantly ahead of the watermark.",
+                      "specId": "5.7.1.1.3",
+                      "currentFunctionality": "algokit-subcriber-py:",
+                      "future": "No"
+                    }
+                  ]
+                },
+                {
+                  "name": "Subscription Results",
+                  "description": "Represents the outcome of a single subscription poll, including synced round range, current round, and starting watermark.",
+                  "specId": "5.7.1.2",
+                  "currentFunctionality": "algokit-subcriber-py: `TransactionSubscriptionResult`",
+                  "future": "No"
+                },
+                {
+                  "name": "Data Mapping",
+                  "description": "Allows for custom mapping of subscribed transaction data via an optional `mapper` function.  Facilitates transforming the event data into a desired format.",
+                  "specId": "5.7.1.3",
+                  "currentFunctionality": "algokit-subcriber-py: `SubscriberConfigFilter` in `subscription.py`",
+                  "future": "No"
+                },
+                {
+                  "name": "Processing Extra Fields",
+                  "description": "Enriches subscribed transactions with additional information, such as ARC-28 events and balance changes.",
+                  "specId": "5.7.1.4",
+                  "currentFunctionality": "algokit-subcriber-py: `process_extra_fields` in `subscription.py`",
+                  "future": "No"
+                }
+              ]
+            },
+            {
+              "name": "Continuous Subscription",
+              "description": "Provides a higher-level interface for continuous polling and management.",
+              "specId": "5.7.2",
+              "currentFunctionality": "algokit-subcriber-py: __init__.py (AlgorandSubscriber), subscriber.md (reference)",
+              "future": "No"
+            },
+            {
+              "name": "Transaction Data Enrichment and Processing",
+              "description": "Enhances subscribed transactions with calculated information.",
+              "specId": "5.7.3",
+              "currentFunctionality": "algokit-subcriber-py: N/A",
+              "future": "No",
+              "children": [
+                {
+                  "name": "Balance Change Calculation",
+                  "description": "Calculates and adds balance changes for Algos and assets.",
+                  "specId": "5.7.3.1",
+                  "currentFunctionality": "algokit-subcriber-py: __init__.py (BalanceChange, BalanceChangeRole)",
+                  "future": "No"
+                },
+                {
+                  "name": "Inner Transaction Handling",
+                  "description": "Supports nested inner transactions and provides parent transaction IDs.",
+                  "specId": "5.7.3.2",
+                  "currentFunctionality": "algokit-subcriber-py: index.md, subscriptions.md (reference)",
+                  "future": "No"
+                },
+                {
+                  "name": "State Proof Transaction Support",
+                  "description": "Allows subscription to state proof transactions.",
+                  "specId": "5.7.3.3",
+                  "currentFunctionality": "algokit-subcriber-py: index.md, subscriptions.md (reference)",
+                  "future": "No"
+                },
+                {
+                  "name": "ARC-28 Event Emission and Handling",
+                  "description": "Handles emitting and processing ARC-28 events from smart contracts.",
+                  "specId": "5.7.3.4",
+                  "currentFunctionality": "algokit-subcriber-py: testing_app_client.py, index.md",
+                  "future": "No"
+                }
+              ]
+            },
+            {
+              "name": "Application Interaction",
+              "description": "Handles interaction with Algorand applications.",
+              "specId": "5.7.4",
+              "currentFunctionality": "algokit-subcriber-py: N/A",
+              "future": "No",
+              "children": [
+                {
+                  "name": "ABI Method Call Filtering",
+                  "description": "Supports filtering by application ABI method signatures.",
+                  "specId": "5.7.4.1",
+                  "currentFunctionality": "algokit-subcriber-py: test_filters.py",
+                  "future": "No"
+                },
+                {
+                  "name": "Atomic Transaction Composer Interaction",
+                  "description": "Hints at integration with an Atomic Transaction Composer.",
+                  "specId": "5.7.4.2",
+                  "currentFunctionality": "algokit-subcriber-py: testing_app_client.py (Composer)",
+                  "future": "No"
                 }
               ]
             }
@@ -1860,70 +2723,96 @@
       "name": "Environment Management",
       "description": "",
       "specId": "6",
+      "currentFunctionality": "",
+      "future": "No",
       "children": [
         {
           "name": "Localnet",
           "description": "A system-wide set of containerized services working in concert to provide a local replica of the Algorand blockchain.",
           "specId": "6.1",
+          "currentFunctionality": "algokit localnet",
+          "future": "No",
           "children": [
             {
               "name": "Localnet Management",
               "description": "Manages the use of the Localnet through commands like start and stop",
               "specId": "6.1.1",
+              "currentFunctionality": "algokit localnet",
+              "future": "No",
               "children": [
                 {
                   "name": "Localnet Start",
                   "description": "Start-ups localnet so that it's running algod, indexer and KMD",
-                  "specId": "6.1.1.1"
+                  "specId": "6.1.1.1",
+                  "currentFunctionality": "algokit localnet start",
+                  "future": "No"
                 },
                 {
                   "name": "Localnet Stop",
                   "description": "Stop all running processes related to localnet but does not clear the state information",
-                  "specId": "6.1.1.2"
+                  "specId": "6.1.1.2",
+                  "currentFunctionality": "algokit localnet stop",
+                  "future": "No"
                 },
                 {
                   "name": "Localnet Status",
                   "description": "Get the status of all the containerized services that are running. The information should contain information about the blockchain state, node state, connection information (e.g. ports, schema), indexer state, KMD state.",
                   "specId": "6.1.1.3",
+                  "currentFunctionality": "algokit localnet status",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Specific node status",
                       "description": "???",
-                      "specId": "6.1.1.3.1"
+                      "specId": "6.1.1.3.1",
+                      "currentFunctionality": "",
+                      "future": "No"
                     }
                   ]
                 },
                 {
                   "name": "Localnet reset",
                   "description": "Resets localnet to the its original state (i.e. deletes all the blocks)",
-                  "specId": "6.1.1.4"
+                  "specId": "6.1.1.4",
+                  "currentFunctionality": "algokit localnet reset",
+                  "future": "No"
                 },
                 {
                   "name": "Localnet update to latest version",
                   "description": "Updates the localnet containerize services to the latest container versions",
                   "specId": "6.1.1.5",
+                  "currentFunctionality": "algokit localnet reset --update",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Localnet detect older versions",
                       "description": "Detects if the current localnet containers are not the latest version an prompts the user to the update the container versions.",
-                      "specId": "6.1.1.5.1"
+                      "specId": "6.1.1.5.1",
+                      "currentFunctionality": "This check is run before you start localnet",
+                      "future": "No"
                     }
                   ]
                 },
                 {
                   "name": "Localnet configure container engine",
                   "description": "Allows users to choose different container engines on which to run the containerize services, e.g. docker, podman",
-                  "specId": "6.1.1.7"
+                  "specId": "6.1.1.7",
+                  "currentFunctionality": "algokit localnet config",
+                  "future": "No"
                 },
                 {
                   "name": "Global or project-based localnet",
                   "description": "The ability to set a global localnet config (i.e. pinned versions for each service) or have particular pinned versions that vary by project. This would be something similar to global python installation vs virtual envs",
                   "specId": "6.1.1.8",
+                  "currentFunctionality": "Future",
+                  "future": "No",
                   "children": [
                     {
                       "name": "Version configuration by project",
                       "description": "The ability to customize the version of each of the services in localnet",
-                      "specId": "6.1.1.8.1"
+                      "specId": "6.1.1.8.1",
+                      "currentFunctionality": "Future",
+                      "future": "No"
                     }
                   ]
                 }
@@ -1933,21 +2822,29 @@
               "name": "Localnet interaction",
               "description": "Interact with localnet services to get awareness of nodes and blockchain data",
               "specId": "6.1.2",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Web-Browser based interactions",
                   "description": "Can be inspected thru a web-browser application",
-                  "specId": "6.1.2.1"
+                  "specId": "6.1.2.1",
+                  "currentFunctionality": "algokit localnet explore",
+                  "future": "No"
                 },
                 {
                   "name": "CLI interaction with algod",
                   "description": "Allows to iteract directly with the underlying algod containerized service",
-                  "specId": "6.1.2.2"
+                  "specId": "6.1.2.2",
+                  "currentFunctionality": "algokit localnet console",
+                  "future": "No"
                 },
                 {
                   "name": "OTHER INTERACTIONS?????",
                   "description": "",
-                  "specId": "6.1.2.3"
+                  "specId": "6.1.2.3",
+                  "currentFunctionality": "",
+                  "future": "No"
                 }
               ]
             },
@@ -1955,11 +2852,15 @@
               "name": "Localnet in a Web IDE",
               "description": "The ability to run localnet and its functions, including development in a Web IDE. The functionality for development will be determined the the functionality offered by the Web IDE",
               "specId": "6.1.3",
+              "currentFunctionality": "",
+              "future": "No",
               "children": [
                 {
                   "name": "Localnet in Github Codespace",
                   "description": "Must be able to run in Github codespaces",
-                  "specId": "6.1.3.1"
+                  "specId": "6.1.3.1",
+                  "currentFunctionality": "algokit localnet codespace",
+                  "future": "No"
                 }
               ]
             }
@@ -1969,16 +2870,22 @@
           "name": "Node management",
           "description": "",
           "specId": "6.2",
+          "currentFunctionality": "",
+          "future": "No",
           "children": [
             {
               "name": "Status",
               "description": "",
-              "specId": "6.2.1"
+              "specId": "6.2.1",
+              "currentFunctionality": "",
+              "future": "No"
             },
             {
               "name": "Node Information After Specific Block",
               "description": "Waits for a block to appear after round {round} and returns the node's status at the time. There is a 1 minute timeout, when reached the current status is returned regardless of whether or not it is the round after the given round.",
-              "specId": "6.2.2"
+              "specId": "6.2.2",
+              "currentFunctionality": "/v2/status/wait-for-block-after/{round}",
+              "future": "No"
             }
           ]
         }
