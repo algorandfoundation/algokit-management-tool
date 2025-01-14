@@ -1,5 +1,5 @@
 from typing import Dict, List, Any, Tuple
-from ingest.utils import get_node_name, get_package_owner
+from .utils import get_node_name, get_package_owner
 import requests
 import tomllib
 import re
@@ -28,7 +28,7 @@ def get_node_links_from_py_deps(
             )
         nodes.append(
             {
-                "id": f"{name}-{repo.get("language")}",
+                "id": f"{name}-{repo.get('language')}",
                 "name": name,
                 "version": [version],
                 "owner": get_package_owner(name),
@@ -38,7 +38,7 @@ def get_node_links_from_py_deps(
 
     links = [
         {
-            "source": f"{name}-{repo.get("language")}",
+            "source": f"{name}-{repo.get('language')}",
             "target": repo_node_name,
             **link_data,
         }

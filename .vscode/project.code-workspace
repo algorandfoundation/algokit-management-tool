@@ -1,0 +1,18 @@
+{
+  "folders": [
+    {
+      "name": "app",
+      "path": "../app"
+    },
+    {
+      "name": "backend-app",
+      "path": "../backend-app"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "app/": false,
+      "backend-app/": false
+    }
+  }
+}

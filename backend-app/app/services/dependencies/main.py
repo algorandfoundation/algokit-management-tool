@@ -3,10 +3,10 @@ from typing import Dict, List, Any
 import re
 import json
 
-from validate import validate
-from config import repos
-from ingest.python_module import get_node_links_from_python_repo
-from ingest.js_package import get_node_links_from_js_repo
+from app.config import REPOSITORIES
+from app.services.dependencies.validate import validate
+from .python_module import get_node_links_from_python_repo
+from .js_package import get_node_links_from_js_repo
 
 
 def get_repo_contents(repo: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -37,7 +37,7 @@ def get_dep_data_from_repo(repo: Dict[str, Any]) -> Dict[str, Any]:
     return (nodes, links)
 
 
-def main():
+def get_dependency_data(repos: List[Dict[str, Any]]) -> Dict[str, Any]:
     nodes = []
     links = []
     for repo in repos:
@@ -45,17 +45,11 @@ def main():
         nodes.extend(_nodes)
         links.extend(_links)
 
-    # with open("dependencies.json", "r") as f:
-    #     repo_deps = json.load(f)
-    #     nodes = repo_deps.get("nodes")
-    #     links = repo_deps.get("links")
-
     nodes, links = validate({"nodes": nodes, "links": links})
-    repo_deps = {"nodes": nodes, "links": links}
-
-    with open("dependencies.json", "w") as f:
-        json.dump(repo_deps, f, indent=4)
+    return {"nodes": nodes, "links": links}
 
 
 if __name__ == "__main__":
-    main()
+    repo_deps = get_dependency_data(REPOSITORIES)
+    with open("dependencies.json", "w") as f:
+        json.dump(repo_deps, f, indent=4)
