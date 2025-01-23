@@ -1,7 +1,11 @@
+type Version = {
+  repo_name: string;
+  version: string;
+};
 export interface Node extends d3.SimulationNodeDatum {
   id: string;
   name: string;
-  version: string[];
+  version: Version[];
   owner: string;
   language: string;
   type: string;
@@ -15,6 +19,11 @@ export interface Link extends d3.SimulationLinkDatum<Node> {
 }
 
 export type Data = {
+  nodes: Node[];
+  links: Link[];
+};
+
+export type GraphData = {
   nodes: Node[];
   links: Link[];
 };

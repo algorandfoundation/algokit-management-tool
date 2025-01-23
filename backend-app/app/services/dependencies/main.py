@@ -1,12 +1,14 @@
-import requests
-from typing import Dict, List, Any
-import re
 import json
+import re
+from typing import Any, Dict, List
 
-from app.config import REPOSITORIES
+import requests
+
+from app.core.config import REPOSITORIES
 from app.services.dependencies.validate import validate
-from .python_module import get_node_links_from_python_repo
+
 from .js_package import get_node_links_from_js_repo
+from .python_module import get_node_links_from_python_repo
 
 
 def get_repo_contents(repo: Dict[str, Any]) -> List[Dict[str, Any]]:

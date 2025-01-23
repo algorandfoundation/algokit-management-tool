@@ -5,9 +5,9 @@ import {
   PropsWithChildren,
   useMemo,
 } from "react";
-import { data } from "./components/network/data";
 import { ScaleOrdinal } from "d3";
 import { scaleOrdinal } from "@visx/scale";
+import { GraphData } from "./components/network/types";
 
 type UniqueAttributesMap = {
   owner: Record<string, number>;
@@ -31,7 +31,14 @@ const ConfigContext = createContext<Config | undefined>(undefined);
 
 const colorRange = ["#66d981", "#71f5ef", "#4899f1", "#7d81f6"];
 
-export const ConfigContextProvider = ({ children }: PropsWithChildren) => {
+type ConfigContextProviderProps = {
+  data: GraphData;
+};
+
+export const ConfigContextProvider = ({
+  data,
+  children,
+}: PropsWithChildren<ConfigContextProviderProps>) => {
   const [showDevDependencies, setShowDevDependencies] = useState(true);
   const [showMismatchedVersions, setShowMismatchedVersions] = useState(false);
   const [colorBySelection, setColorBySelection] =
@@ -51,7 +58,7 @@ export const ConfigContextProvider = ({ children }: PropsWithChildren) => {
       return acc;
     }, initialAccumulator);
     return result;
-  }, []);
+  }, [data.nodes]);
 
   const uniqueAttributes = useMemo(() => {
     if (colorBySelection in uniqueAttributesMap) {

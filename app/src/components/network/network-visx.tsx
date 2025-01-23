@@ -1,8 +1,7 @@
 import { DefaultNode, Graph } from "@visx/network";
-import { data } from "./data";
 import { useCallback } from "react";
 import { LinkProvidedProps, NodeProvidedProps } from "@visx/network/lib/types";
-import { Link, Node } from "./types";
+import { GraphData, Link, Node } from "./types";
 import { UseTooltipParams } from "@visx/tooltip/lib/hooks/useTooltip";
 import { useConfigContext } from "../../config-context";
 
@@ -10,9 +9,11 @@ type NetworkProps = {
   showTooltip: UseTooltipParams<Node>["showTooltip"];
   hideTooltip: UseTooltipParams<Node>["hideTooltip"];
   tooltipData: UseTooltipParams<Node>["tooltipData"];
+  data: GraphData;
 };
 
 export function NetworkVisx({
+  data,
   showTooltip,
   hideTooltip,
   tooltipData,
@@ -31,7 +32,10 @@ export function NetworkVisx({
       const color =
         colorBySelection !== "none" ? colorMap(node[colorBySelection]) : "cyan";
       const shouldShowMismatched =
-        showMismatchedVersions && node.version.length > 1;
+        showMismatchedVersions &&
+        node.version.some((v, _, arr) =>
+          arr.some((other) => other.version !== v.version)
+        );
       return (
         <DefaultNode
           onMouseOver={(event) => {

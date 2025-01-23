@@ -6,7 +6,13 @@ export function NodeTooltip({ node }: { node: Node }) {
       <dt className="font-semibold">Name</dt>
       <dd>{node.name}</dd>
       <dt className="font-semibold">Version(s)</dt>
-      <dd>{node.version.join(", ")}</dd>
+      <dd className="flex flex-col">
+        {node.version.map((v, i) => (
+          <div key={i}>
+            {v.repo_name}: {v.version}
+          </div>
+        ))}
+      </dd>
       <dt className="font-semibold">Owner</dt>
       <dd>{node.owner}</dd>
       <dt className="font-semibold">Language</dt>

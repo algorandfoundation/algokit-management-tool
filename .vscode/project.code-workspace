@@ -10,9 +10,37 @@
     }
   ],
   "settings": {
+    // Language-specific settings
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true
+    },
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.python",
+      "editor.formatOnSave": true
+    },
+    // Folder-specific settings
     "files.exclude": {
       "app/": false,
-      "backend-app/": false
+      "backend-app/": false,
+      "**/node_modules": true,
+      "**/__pycache__": true,
+      "**/*.pyc": true
+    },
+    // Search settings
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/__pycache__": true,
+      "**/dist": true,
+      "**/build": true
     }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "ms-python.vscode-pylance"
+    ]
   }
 }

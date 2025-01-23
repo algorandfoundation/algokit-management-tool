@@ -1,5 +1,7 @@
+from typing import Any, Dict, List, Tuple
+
 import requests
-from typing import List, Dict, Tuple, Any
+
 from .utils import get_node_name, get_package_owner
 
 
@@ -14,7 +16,7 @@ def get_node_links_from_js_deps(
         {
             "id": f"{name}-{repo.get('language')}",
             "name": name,
-            "version": [version],
+            "version": [{"repo_name": repo_node_name, "version": version}],
             "owner": get_package_owner(name),
             **node_data,
         }

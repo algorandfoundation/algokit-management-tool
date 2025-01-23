@@ -2,13 +2,17 @@ import { useScreenSize } from "@visx/responsive";
 import { useEffect, useRef, useState } from "react";
 import { Link, Node } from "../components/network/types";
 import * as d3 from "d3";
-import { data } from "../components/network/data";
 import ZoomableContainer from "../components/zoom";
 import { NetworkVisx } from "../components/network/network-visx";
 import { useTooltip, useTooltipInPortal } from "@visx/tooltip";
 import { NodeTooltip } from "../components/network/node-tooltip";
+import { GraphData } from "../components/network/types";
 
-export function RepoNetwork() {
+type RepoNetworkProps = {
+  data: GraphData;
+};
+
+export function RepoNetwork({ data }: RepoNetworkProps) {
   const [, forceUpdate] = useState(0);
   const { width, height } = useScreenSize();
   const { tooltipData, tooltipLeft, tooltipTop, showTooltip, hideTooltip } =
@@ -41,11 +45,12 @@ export function RepoNetwork() {
     return () => {
       forceRef.current?.stop();
     };
-  }, [width, height]);
+  }, [width, height, data]);
   return width < 10 ? null : (
     <div ref={containerRef}>
       <ZoomableContainer width={width} height={height}>
         <NetworkVisx
+          data={data}
           showTooltip={showTooltip}
           hideTooltip={hideTooltip}
           tooltipData={tooltipData}

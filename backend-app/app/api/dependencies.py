@@ -1,9 +1,10 @@
-from fastapi import APIRouter, HTTPException
-from typing import Dict, Any
-from datetime import datetime, UTC
+from datetime import UTC, datetime
+from typing import Any, Dict
 
+from fastapi import APIRouter, HTTPException
+
+from app.core.config import settings
 from app.services.dependencies.main import get_dependency_data
-from app.config import settings
 from app.utils.storage import save_to_storage
 
 router = APIRouter()
@@ -17,13 +18,22 @@ async def get_dependencies():
     """
     try:
         dependency_data = get_dependency_data(settings.REPOSITORIES)
-        nodes = dependency_data.get("nodes")
-        links = dependency_data.get("links")
+        created_at = datetime.now(UTC).replace(microsecond=0).isoformat()
+        outdata = {
+            "results": dependency_data,
+            "metadata": {
+                "created_at": created_at,
+                "version": settings.VERSION,
+                "repository_count": len(settings.REPOSITORIES),
+                "source": "dependency-analyzer",
+            },
+        }
         cloud_storage_folder = f"{settings.GCP_BUCKET_SITE_FOLDER_NAME}/dependencies"
 
-        timestamp = datetime.now(UTC).replace(microsecond=0).isoformat()
-        save_to_storage(dependency_data, f"{cloud_storage_folder}/latest.json")
-        save_to_storage(dependency_data, f"{cloud_storage_folder}/{timestamp}.json")
-        return {"nodes": nodes, "links": links}
+        save_to_storage(
+            outdata, f"{cloud_storage_folder}/latest.json", make_public=True
+        )
+        save_to_storage(outdata, f"{cloud_storage_folder}/{created_at}.json")
+        return outdata
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

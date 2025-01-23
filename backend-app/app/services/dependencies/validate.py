@@ -6,10 +6,13 @@ def validate_unique_nodes(nodes):
         if node_id in unique_nodes:
             print(f"Duplicate node found: {node_id}")
             current_versions = unique_nodes[node_id]["version"]
+            # Combine lists and use set comprehension to remove exact duplicates
             unique_nodes[node_id]["version"] = list(
-                set(current_versions + node_version)
+                {
+                    (v["repo_name"], v["version"]): v
+                    for v in current_versions + node_version
+                }.values()
             )
-
         else:
             unique_nodes[node_id] = node
 

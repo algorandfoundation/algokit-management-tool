@@ -69,7 +69,7 @@ function Tree({
   };
 
   if (width < 10) return null;
-
+  console.log({ tooltipData, tooltipTop, tooltipLeft });
   return (
     <div style={{ position: "relative" }}>
       <svg width={width} height={height}>
@@ -88,13 +88,13 @@ function Tree({
                   nodes={tree.descendants()}
                   onNodeClick={handleNodeClick}
                   onMouseOver={(event, node) => {
-                    const { x, y } = (
-                      event.target as HTMLElement
-                    ).getBoundingClientRect();
+                    const { clientX, clientY } = event;
+                    console.log({ clientX, clientY });
+
                     showTooltip({
                       tooltipData: node.data,
-                      tooltipLeft: x,
-                      tooltipTop: y,
+                      tooltipLeft: clientX,
+                      tooltipTop: clientY,
                     });
                   }}
                   onMouseLeave={() => hideTooltip()}
@@ -105,11 +105,7 @@ function Tree({
         </VisxTree>
       </svg>
       {tooltipData && (
-        <TooltipWithBounds
-          key={Math.random()}
-          top={tooltipTop}
-          left={tooltipLeft}
-        >
+        <TooltipWithBounds top={tooltipTop} left={tooltipLeft}>
           <div className="min-w-[200px] max-w-[400px] p-2 flex flex-col gap-1">
             <p>
               <strong>{tooltipData.name}</strong>

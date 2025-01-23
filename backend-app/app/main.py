@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import dependencies, github, outdated
-from app.config import settings
+from app.core.config import settings
 
 app = FastAPI(
     title="AlgoKit Dependencies API",
