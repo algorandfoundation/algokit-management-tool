@@ -5,8 +5,9 @@ import { RepoNetwork } from "../features/repo-network";
 import { Drawer } from "../features/drawer";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { DependenciesDetailsDrawer } from "@/features/dependencies-detail-drawer";
+import { flattenDependencies } from "@/features/dependencies-detail-drawer/data-transform";
 
-export const Route = createLazyFileRoute("/deps-viz")({
+export const Route = createLazyFileRoute("/dependencies")({
   component: RouteComponent,
 });
 
@@ -21,10 +22,9 @@ const fetchDeps = async () => {
   const outdated_response = await fetch(OUTDATED_DEPENDENCIES_URL);
   const dependencies = await dependencies_response.json();
   const outdated = await outdated_response.json();
-  console.log({ dependencies, outdated, outdated_response });
   return {
     dependencies: dependencies["results"],
-    outdated: outdated["results"],
+    outdated: flattenDependencies(outdated["results"]),
   };
 };
 

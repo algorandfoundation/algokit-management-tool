@@ -1,27 +1,6 @@
 import { DataTable } from "@/components/table/data-table";
-import { OutdatedDependenciesData } from "./types";
-
-export interface TableData {
-  packageName: string;
-  id: string;
-  name: string;
-  current: string;
-  wanted: string;
-  latest: string;
-}
-
-const transformToTableData = (data: OutdatedDependenciesData): TableData[] => {
-  return data.flatMap((packageData) =>
-    packageData.outdated_dependencies.map((dependency) => ({
-      packageName: packageData.name,
-      id: `${packageData.name}-${dependency.name}`,
-      name: dependency.name,
-      current: dependency.current,
-      wanted: dependency.wanted,
-      latest: dependency.latest,
-    }))
-  );
-};
+import { Dependency } from "@/types/dependencies";
+import { ColumnDef } from "@tanstack/react-table";
 
 const compareVersions = (
   current: string,
@@ -59,34 +38,34 @@ const VersionWithIcon = ({
   );
 };
 
-const columnDefs = [
+const columnDefs: ColumnDef<Dependency & { id: string }>[] = [
   {
-    id: "packageName",
-    header: "Package Name",
-    accessorKey: "packageName",
+    id: "repoName",
+    header: "Repository Name",
+    accessorKey: "repoName",
     size: 250,
   },
   {
-    id: "name",
+    id: "packageName",
     header: "Dependency Name",
-    accessorKey: "name",
+    accessorKey: "packageName",
     size: 250,
   },
   {
     id: "current",
     header: "Current Version",
-    accessorKey: "current",
+    accessorKey: "packageCurrent",
     size: 150,
   },
   {
-    id: "wanted",
+    id: "packageWanted",
     header: "Wanted Version",
-    accessorKey: "wanted",
+    accessorKey: "packageWanted",
     size: 150,
     cell: ({ row }) => (
       <VersionWithIcon
-        current={row.original.current}
-        version={row.original.wanted}
+        current={row.original.packageCurrent}
+        version={row.original.packageWanted}
         type="wanted"
       />
     ),
@@ -94,12 +73,12 @@ const columnDefs = [
   {
     id: "latest",
     header: "Latest Version",
-    accessorKey: "latest",
+    accessorKey: "packageLatest",
     size: 150,
     cell: ({ row }) => (
       <VersionWithIcon
-        current={row.original.current}
-        version={row.original.latest}
+        current={row.original.packageCurrent}
+        version={row.original.packageLatest}
         type="latest"
       />
     ),
@@ -107,11 +86,19 @@ const columnDefs = [
 ];
 
 interface OutdatedDependenciesTableProps {
-  data: OutdatedDependenciesData;
+  data: Dependency[];
 }
 export function OutdatedDependenciesTable({
   data,
 }: OutdatedDependenciesTableProps) {
-  const tableData = transformToTableData(data);
-  return <DataTable<TableData> columnDefs={columnDefs} data={tableData} />;
+  return (
+    <DataTable<Dependency & { id: string }>
+      columnDefs={columnDefs}
+      data={data.map((d) => ({
+        ...d,
+        id: d.repoName + d.packageName,
+        name: d.packageName,
+      }))}
+    />
+  );
 }

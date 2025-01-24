@@ -6,6 +6,7 @@ import requests
 
 from app.core.config import REPOSITORIES
 from app.services.dependencies.validate import validate
+from app.utils.github import get_github_token
 
 from .js_package import get_node_links_from_js_repo
 from .python_module import get_node_links_from_python_repo
@@ -15,10 +16,16 @@ def get_repo_contents(repo: Dict[str, Any]) -> List[Dict[str, Any]]:
     organization = re.sub("_", "", repo.get("owner"))
     repo_name = repo.get("name")
 
+    token = get_github_token()
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github.v3+json",
+    }
+
     url = f"https://api.github.com/repos/{organization}/{repo_name}/contents"
     if repo.get("branch"):
         url += f"?ref={repo.get('branch')}"
-    repo_contents_response = requests.get(url)
+    repo_contents_response = requests.get(url, headers=headers)
     repo_contents = repo_contents_response.json()
 
     return repo_contents

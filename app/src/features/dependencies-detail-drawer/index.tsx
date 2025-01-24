@@ -2,11 +2,11 @@ import { useState } from "react";
 import { MdOutlineAnalytics } from "react-icons/md";
 import { MotionDrawer } from "@/components/motion-drawer";
 import { TabPanel } from "@/components/tab-panel";
-import { OutdatedDependenciesData } from "./types";
 import OutdatedPanel from "./outdated-panel";
+import { Dependency } from "@/types/dependencies";
 
 interface DependenciesDetailsDrawerProps {
-  data: OutdatedDependenciesData;
+  data: Dependency[];
 }
 
 export function DependenciesDetailsDrawer({

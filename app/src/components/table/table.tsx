@@ -9,7 +9,7 @@ export const Table = <TData,>({ table }: TablePropTypes<TData>) => {
   const hasRows = rows.length > 0;
 
   return (
-    <table className="table p-0" style={{ tableLayout: "fixed" }}>
+    <table className="table p-0">
       <thead className="sticky top-0 bg-base-200">
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>

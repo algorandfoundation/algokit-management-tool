@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import dependencies, github, outdated
+from app.api import dependencies, issues, outdated
 from app.core.config import settings
 
 app = FastAPI(
@@ -23,7 +23,7 @@ app.add_middleware(
 app.include_router(
     dependencies.router, prefix=settings.API_V1_STR, tags=["dependencies"]
 )
-app.include_router(github.router, prefix=settings.API_V1_STR, tags=["github"])
+app.include_router(issues.router, prefix=settings.API_V1_STR, tags=["issues"])
 app.include_router(outdated.router, prefix=settings.API_V1_STR, tags=["outdated"])
 
 

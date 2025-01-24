@@ -6,7 +6,6 @@ from typing import Dict, List, Optional
 
 from app.core.logging import LoggerFactory
 
-# Create a logger specific to this module
 logger = LoggerFactory.get_logger(__name__)
 
 

@@ -113,7 +113,22 @@ class Settings(BaseSettings):
 
     # Service Account Configuration for local development
     GOOGLE_APPLICATION_CREDENTIALS: str
-    GITHUB_TOKEN: str
+    GITHUB_TOKEN_LOCAL: str
+
+    @property
+    def GITHUB_TOKEN(self) -> str:
+        try:
+            client = secretmanager.SecretManagerServiceClient()
+            name = f"projects/{self.GCP_PROJECT_ID}/secrets/github-token/versions/latest"
+            response = client.access_secret_version(request={"name": name})
+            return response.payload.data.decode("UTF-8")
+        except Exception as e:
+            raise Exception(
+                "Failed to access Secret Manager. Ensure you have either:\n"
+                "1. Run 'gcloud auth application-default login' or\n"
+                "2. Set GOOGLE_APPLICATION_CREDENTIALS environment variable\n"
+                f"Error: {str(e)}"
+            ) from e
 
     @property
     def GCP_SERVICE_ACCOUNT_INFO(self) -> str:
