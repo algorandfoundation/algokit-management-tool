@@ -101,6 +101,7 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "AlgoKit Dependencies API"
     VERSION: str = "0.1.0"
     API_V1_STR: str = "/api"
+    FUNCTIONAL_SPECS_SHEET_URL: str = "https://docs.google.com/spreadsheets/d/1YXC-6YTo7HT0lUl_eTbtgUwGmq9T2tBox_N7wbBs2UY/edit?usp=sharing"
 
     # GitHub Configuration
     GITHUB_ORG: str = ORGANIZATION
@@ -119,7 +120,9 @@ class Settings(BaseSettings):
     def GITHUB_TOKEN(self) -> str:
         try:
             client = secretmanager.SecretManagerServiceClient()
-            name = f"projects/{self.GCP_PROJECT_ID}/secrets/github-token/versions/latest"
+            name = (
+                f"projects/{self.GCP_PROJECT_ID}/secrets/github-token/versions/latest"
+            )
             response = client.access_secret_version(request={"name": name})
             return response.payload.data.decode("UTF-8")
         except Exception as e:
