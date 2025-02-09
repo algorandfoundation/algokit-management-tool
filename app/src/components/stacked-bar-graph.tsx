@@ -127,7 +127,6 @@ function StackedBarGraphInner<T>({
   };
 
   const colors = config.colors || defaultColors;
-  console.log({ tooltipData });
 
   return width < 10 ? null : (
     <>

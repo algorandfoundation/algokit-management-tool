@@ -69,7 +69,6 @@ function Tree({
   };
 
   if (width < 10) return null;
-  console.log({ tooltipData, tooltipTop, tooltipLeft });
   return (
     <div style={{ position: "relative" }}>
       <svg width={width} height={height}>
@@ -89,7 +88,6 @@ function Tree({
                   onNodeClick={handleNodeClick}
                   onMouseOver={(event, node) => {
                     const { clientX, clientY } = event;
-                    console.log({ clientX, clientY });
 
                     showTooltip({
                       tooltipData: node.data,
