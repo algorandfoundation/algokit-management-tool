@@ -4,6 +4,11 @@ version = "0.1.0"
 description = ""
 authors = ["David Rojas <lempira@gmail.com>"]
 readme = "README.md"
+package-mode = false
+
+[virtualenvs]
+in-project=true
+
 
 [tool.poetry.dependencies]
 python = "^3.12"

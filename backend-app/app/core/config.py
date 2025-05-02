@@ -148,6 +148,19 @@ class Settings(BaseSettings):
                 f"Error: {str(e)}"
             ) from e
 
+    @property
+    def SLACK_WEBHOOK_URL(self) -> str:
+        try:
+            client = secretmanager.SecretManagerServiceClient()
+            name = f"projects/{self.GCP_PROJECT_ID}/secrets/slack-webhook-url/versions/latest"
+            response = client.access_secret_version(request={"name": name})
+            return response.payload.data.decode("UTF-8")
+        except Exception as e:
+            raise Exception(
+                "Failed to access Slack webhook URL from Secret Manager.\n"
+                f"Error: {str(e)}"
+            ) from e
+
     class Config:
         case_sensitive = True
         env_file = ".env"
