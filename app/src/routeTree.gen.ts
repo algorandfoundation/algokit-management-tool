@@ -16,12 +16,19 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
+const OverviewLazyImport = createFileRoute('/overview')()
 const MetricsLazyImport = createFileRoute('/metrics')()
 const IssuesLazyImport = createFileRoute('/issues')()
 const FuncSpecsLazyImport = createFileRoute('/func-specs')()
 const DependenciesLazyImport = createFileRoute('/dependencies')()
 
 // Create/Update Routes
+
+const OverviewLazyRoute = OverviewLazyImport.update({
+  id: '/overview',
+  path: '/overview',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/overview.lazy').then((d) => d.Route))
 
 const MetricsLazyRoute = MetricsLazyImport.update({
   id: '/metrics',
@@ -79,6 +86,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MetricsLazyImport
       parentRoute: typeof rootRoute
     }
+    '/overview': {
+      id: '/overview'
+      path: '/overview'
+      fullPath: '/overview'
+      preLoaderRoute: typeof OverviewLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -89,6 +103,7 @@ export interface FileRoutesByFullPath {
   '/func-specs': typeof FuncSpecsLazyRoute
   '/issues': typeof IssuesLazyRoute
   '/metrics': typeof MetricsLazyRoute
+  '/overview': typeof OverviewLazyRoute
 }
 
 export interface FileRoutesByTo {
@@ -96,6 +111,7 @@ export interface FileRoutesByTo {
   '/func-specs': typeof FuncSpecsLazyRoute
   '/issues': typeof IssuesLazyRoute
   '/metrics': typeof MetricsLazyRoute
+  '/overview': typeof OverviewLazyRoute
 }
 
 export interface FileRoutesById {
@@ -104,14 +120,26 @@ export interface FileRoutesById {
   '/func-specs': typeof FuncSpecsLazyRoute
   '/issues': typeof IssuesLazyRoute
   '/metrics': typeof MetricsLazyRoute
+  '/overview': typeof OverviewLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/dependencies' | '/func-specs' | '/issues' | '/metrics'
+  fullPaths:
+    | '/dependencies'
+    | '/func-specs'
+    | '/issues'
+    | '/metrics'
+    | '/overview'
   fileRoutesByTo: FileRoutesByTo
-  to: '/dependencies' | '/func-specs' | '/issues' | '/metrics'
-  id: '__root__' | '/dependencies' | '/func-specs' | '/issues' | '/metrics'
+  to: '/dependencies' | '/func-specs' | '/issues' | '/metrics' | '/overview'
+  id:
+    | '__root__'
+    | '/dependencies'
+    | '/func-specs'
+    | '/issues'
+    | '/metrics'
+    | '/overview'
   fileRoutesById: FileRoutesById
 }
 
@@ -120,6 +148,7 @@ export interface RootRouteChildren {
   FuncSpecsLazyRoute: typeof FuncSpecsLazyRoute
   IssuesLazyRoute: typeof IssuesLazyRoute
   MetricsLazyRoute: typeof MetricsLazyRoute
+  OverviewLazyRoute: typeof OverviewLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -127,6 +156,7 @@ const rootRouteChildren: RootRouteChildren = {
   FuncSpecsLazyRoute: FuncSpecsLazyRoute,
   IssuesLazyRoute: IssuesLazyRoute,
   MetricsLazyRoute: MetricsLazyRoute,
+  OverviewLazyRoute: OverviewLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -142,7 +172,8 @@ export const routeTree = rootRoute
         "/dependencies",
         "/func-specs",
         "/issues",
-        "/metrics"
+        "/metrics",
+        "/overview"
       ]
     },
     "/dependencies": {
@@ -156,6 +187,9 @@ export const routeTree = rootRoute
     },
     "/metrics": {
       "filePath": "metrics.lazy.tsx"
+    },
+    "/overview": {
+      "filePath": "overview.lazy.tsx"
     }
   }
 }

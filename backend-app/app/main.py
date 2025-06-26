@@ -8,6 +8,7 @@ from app.api import (
     outdated,
     pipelines,
     pull_requests,
+    releases,
     slack,
 )
 from app.core.config import settings
@@ -42,6 +43,7 @@ app.include_router(
 app.include_router(
     pull_requests.router, prefix=settings.API_V1_STR, tags=["pull_requests"]
 )
+app.include_router(releases.router, prefix=settings.API_V1_STR, tags=["releases"])
 app.include_router(slack.router, prefix=settings.API_V1_STR, tags=["slack"])
 
 
