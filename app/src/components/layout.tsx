@@ -35,6 +35,9 @@ export function Layout({ children }: PropsWithChildren) {
         ></label>
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 gap-2">
           <li>
+            <Link to="/overview">Overview</Link>
+          </li>
+          <li>
             <Link to="/metrics">Metrics</Link>
           </li>
           <li>

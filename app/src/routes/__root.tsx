@@ -11,7 +11,7 @@ export const Route = createRootRoute({
   loader: () => {
     if (window.location.pathname === "/") {
       redirect({
-        to: "/metrics",
+        to: "/overview",
         throw: true,
       });
     }
