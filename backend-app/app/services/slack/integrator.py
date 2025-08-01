@@ -163,6 +163,50 @@ def compare_versions(version1: str, version2: str) -> int:
         return 1 if version1 > version2 else (-1 if version1 < version2 else 0)
 
 
+def determine_version_difference(current: str, latest: str) -> str:
+    """
+    Determine if the version difference is Major, Minor, or Patch.
+    
+    Args:
+        current: Current version string
+        latest: Latest version string
+        
+    Returns:
+        String indicating the type of difference: "major", "minor", "patch", or "unknown"
+    """
+    try:
+        # Extract numeric components for comparison
+        current_parts = current.split('.')
+        latest_parts = latest.split('.')
+        
+        # Ensure we have at least 3 parts (major.minor.patch)
+        while len(current_parts) < 3:
+            current_parts.append('0')
+        while len(latest_parts) < 3:
+            latest_parts.append('0')
+        
+        # Extract numeric values
+        current_major = int(''.join(c for c in current_parts[0] if c.isdigit()) or '0')
+        current_minor = int(''.join(c for c in current_parts[1] if c.isdigit()) or '0')
+        current_patch = int(''.join(c for c in current_parts[2] if c.isdigit()) or '0')
+        
+        latest_major = int(''.join(c for c in latest_parts[0] if c.isdigit()) or '0')
+        latest_minor = int(''.join(c for c in latest_parts[1] if c.isdigit()) or '0')
+        latest_patch = int(''.join(c for c in latest_parts[2] if c.isdigit()) or '0')
+        
+        # Determine version difference type
+        if latest_major > current_major:
+            return "major"
+        elif latest_minor > current_minor:
+            return "minor"
+        elif latest_patch > current_patch:
+            return "patch"
+        else:
+            return "unknown"
+    except Exception:
+        return "unknown"
+
+
 def process_outdated_data(outdated_data: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
     """Process outdated dependencies data and return counts by repository."""
     repo_outdated_deps = {}
@@ -178,6 +222,9 @@ def process_outdated_data(outdated_data: Dict[str, Any]) -> Dict[str, Dict[str, 
         if repo_name not in repo_outdated_deps:
             repo_outdated_deps[repo_name] = {
                 "outdated_deps_count": 0,
+                "major_version_count": 0,
+                "minor_version_count": 0,
+                "patch_version_count": 0,
                 "outdated_deps_details": [],
             }
 
@@ -190,12 +237,25 @@ def process_outdated_data(outdated_data: Dict[str, Any]) -> Dict[str, Dict[str, 
             # Only count if latest version is greater than current version
             if current_version and latest_version:
                 if compare_versions(latest_version, current_version) > 0:
+                    # Determine the type of version difference
+                    version_diff_type = determine_version_difference(current_version, latest_version)
+                    
+                    # Update counts
                     repo_outdated_deps[repo_name]["outdated_deps_count"] += 1
+                    
+                    if version_diff_type == "major":
+                        repo_outdated_deps[repo_name]["major_version_count"] += 1
+                    elif version_diff_type == "minor":
+                        repo_outdated_deps[repo_name]["minor_version_count"] += 1
+                    elif version_diff_type == "patch":
+                        repo_outdated_deps[repo_name]["patch_version_count"] += 1
+                    
                     repo_outdated_deps[repo_name]["outdated_deps_details"].append(
                         {
                             "name": dep_name,
                             "current": current_version,
                             "latest": latest_version,
+                            "version_diff_type": version_diff_type
                         }
                     )
 
@@ -207,6 +267,9 @@ def initialize_repo_summary(repo_name: str) -> Dict[str, Any]:
     return {
         "name": repo_name,
         "outdated_deps": 0,
+        "major_version_deps": 0,
+        "minor_version_deps": 0,
+        "patch_version_deps": 0,
         "open_prs": 0,
         "dependabot_prs": 0,
         "open_issues": 0,
@@ -235,6 +298,9 @@ def generate_repo_summary() -> List[Dict[str, Any]]:
             repo_summaries[repo_name] = initialize_repo_summary(repo_name)
             
         repo_summaries[repo_name]["outdated_deps"] = data["outdated_deps_count"]
+        repo_summaries[repo_name]["major_version_deps"] = data["major_version_count"]
+        repo_summaries[repo_name]["minor_version_deps"] = data["minor_version_count"]
+        repo_summaries[repo_name]["patch_version_deps"] = data["patch_version_count"]
 
     # Process pull requests using the dedicated function
     pr_counts = process_pull_request_data(pr_data)
@@ -335,6 +401,10 @@ def post_to_slack() -> Dict[str, Any]:
                 prs_url = f"{repo_url}/pulls"
                 
                 outdated_deps = repo.get("outdated_deps", 0)
+                major_deps = repo.get("major_version_deps", 0)
+                minor_deps = repo.get("minor_version_deps", 0)
+                patch_deps = repo.get("patch_version_deps", 0)
+                
                 open_prs = repo.get("open_prs", 0)
                 dependabot_prs = repo.get("dependabot_prs", 0)
                 open_issues = repo.get("open_issues", 0)
@@ -357,6 +427,9 @@ def post_to_slack() -> Dict[str, Any]:
                 # Create link to the outdated deps data
                 outdated_deps_url = f"https://storage.googleapis.com/{settings.GCP_BUCKET_NAME}/{settings.GCP_BUCKET_SITE_FOLDER_NAME}/outdated/latest.json"
                 
+                # Format outdated deps with the new semantic versioning breakdown
+                outdated_deps_text = f"{outdated_deps} (Major: {major_deps}, Minor: {minor_deps}, Patch: {patch_deps})"
+                
                 # Each repo gets its own block
                 blocks.append({
                     "type": "section",
@@ -366,7 +439,7 @@ def post_to_slack() -> Dict[str, Any]:
                             f"{emoji} *<{repo_url}|{repo_name}>*\n"
                             f"<{prs_url}|PRs>: {open_prs} ({dependabot_prs} dependabot)\n"
                             f"<{issues_url}|Issues>: {open_issues} ({bug_issues} bugs)\n"
-                            f"<{outdated_deps_url}|Outdated deps>: {outdated_deps}\n"
+                            f"<{outdated_deps_url}|Outdated deps>: {outdated_deps_text}\n"
                             f"<{repo_url}/actions|Pipeline success>: {pipeline_success_rate_text}"
                         )
                     }

@@ -1,7 +1,0 @@
-                        "text": (
-                            f"{emoji} *<{repo_url}|{repo_name}>*\n"
-                            f"<{prs_url}|PRs>: {open_prs} ({dependabot_prs} dependabot)\n"
-                            f"<{issues_url}|Issues>: {open_issues} ({bug_issues} bugs)\n"
-                            f"Outdated deps: {outdated_deps}\n"
-                            f"<{repo_url}/actions|Pipeline success>: {pipeline_success_rate_text}"
-                        ) 
