@@ -4,7 +4,10 @@ from typing import Any, Dict
 from fastapi import APIRouter, HTTPException
 
 from app.core.config import settings
-from app.services.pull_requests.github import get_github_pull_requests, get_closed_pull_requests
+from app.services.pull_requests.github import (
+    get_github_pull_requests, 
+    get_closed_pull_requests_with_metrics
+)
 from app.utils.storage import save_to_storage
 
 router = APIRouter()
@@ -41,29 +44,28 @@ async def get_repo_pull_requests():
 
 
 @router.get("/pull-requests/closed", response_model=Dict[str, Any])
-async def get_closed_repo_pull_requests(days_back: int = 1):
+async def get_closed_repo_pull_requests():
     """
-    Fetch closed pull requests for all configured repositories.
-    
-    Args:
-        days_back: Number of days to look back for closed PRs (default: 1)
+    Fetch closed pull requests for all configured repositories with metrics.
+    Retrieves PRs from the past 7 days to calculate both 24hr and 7day metrics.
     
     Returns:
-        A summary of closed PRs with metadata.
+        A summary of closed PRs with calculated metrics.
     """
     try:
-        results = get_closed_pull_requests(days_back=days_back)
+        # Get closed PRs with metrics (default 7 days to cover both metric periods)
+        data = get_closed_pull_requests_with_metrics(days_back=7)
         created_at = datetime.now(UTC).replace(microsecond=0).isoformat()
         
         outdata = {
-            "results": results,
+            "results": data["pull_requests"],
+            "metrics": data["metrics"],
             "metadata": {
                 "created_at": created_at,
                 "version": settings.VERSION,
                 "repository_count": len(settings.REPOSITORIES),
                 "source": "pull-requests-analyzer",
-                "days_back": days_back,
-                "pr_count": len(results),
+                "pr_count": len(data["pull_requests"]),
             },
         }
 

@@ -166,5 +166,134 @@ def get_closed_pull_requests(days_back: int = 1) -> List[Dict[str, Any]]:
         return []
 
 
+def calculate_pr_metrics(closed_prs: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """
+    Calculate metrics from closed PRs data.
+    
+    Args:
+        closed_prs: List of closed PR data
+    
+    Returns:
+        Dict containing PR metrics for different time periods
+    """
+    now = datetime.now(timezone.utc)
+    
+    # Initialize counters
+    metrics = {
+        "24_hours": {
+            "total_closed": 0,
+            "total_merged": 0,
+            "dependabot_closed": 0,
+            "dependabot_merged": 0,
+            "human_closed": 0,
+            "human_merged": 0,
+            "by_repository": {}
+        },
+        "7_days": {
+            "total_closed": 0,
+            "total_merged": 0,
+            "dependabot_closed": 0,
+            "dependabot_merged": 0,
+            "human_closed": 0,
+            "human_merged": 0,
+            "by_repository": {}
+        }
+    }
+    
+    # Calculate time boundaries
+    twenty_four_hours_ago = now - timedelta(days=1)
+    seven_days_ago = now - timedelta(days=7)
+    
+    for pr in closed_prs:
+        if not pr.get("closedAt"):
+            continue
+            
+        closed_date = datetime.fromisoformat(pr["closedAt"].replace('Z', '+00:00'))
+        repo_name = pr["repository"]
+        is_merged = pr.get("merged", False)
+        is_dependabot = pr.get("isDependabot", False)
+        
+        # Process 24-hour metrics
+        if closed_date >= twenty_four_hours_ago:
+            metrics["24_hours"]["total_closed"] += 1
+            
+            if is_merged:
+                metrics["24_hours"]["total_merged"] += 1
+            
+            if is_dependabot:
+                metrics["24_hours"]["dependabot_closed"] += 1
+                if is_merged:
+                    metrics["24_hours"]["dependabot_merged"] += 1
+            else:
+                metrics["24_hours"]["human_closed"] += 1
+                if is_merged:
+                    metrics["24_hours"]["human_merged"] += 1
+            
+            # By repository
+            if repo_name not in metrics["24_hours"]["by_repository"]:
+                metrics["24_hours"]["by_repository"][repo_name] = {
+                    "closed": 0,
+                    "merged": 0,
+                    "dependabot": 0
+                }
+            
+            metrics["24_hours"]["by_repository"][repo_name]["closed"] += 1
+            if is_merged:
+                metrics["24_hours"]["by_repository"][repo_name]["merged"] += 1
+            if is_dependabot:
+                metrics["24_hours"]["by_repository"][repo_name]["dependabot"] += 1
+        
+        # Process 7-day metrics
+        if closed_date >= seven_days_ago:
+            metrics["7_days"]["total_closed"] += 1
+            
+            if is_merged:
+                metrics["7_days"]["total_merged"] += 1
+            
+            if is_dependabot:
+                metrics["7_days"]["dependabot_closed"] += 1
+                if is_merged:
+                    metrics["7_days"]["dependabot_merged"] += 1
+            else:
+                metrics["7_days"]["human_closed"] += 1
+                if is_merged:
+                    metrics["7_days"]["human_merged"] += 1
+            
+            # By repository
+            if repo_name not in metrics["7_days"]["by_repository"]:
+                metrics["7_days"]["by_repository"][repo_name] = {
+                    "closed": 0,
+                    "merged": 0,
+                    "dependabot": 0
+                }
+            
+            metrics["7_days"]["by_repository"][repo_name]["closed"] += 1
+            if is_merged:
+                metrics["7_days"]["by_repository"][repo_name]["merged"] += 1
+            if is_dependabot:
+                metrics["7_days"]["by_repository"][repo_name]["dependabot"] += 1
+    
+    return metrics
+
+
+def get_closed_pull_requests_with_metrics(days_back: int = 7) -> Dict[str, Any]:
+    """
+    Fetches closed pull requests and calculates metrics.
+    
+    Args:
+        days_back: Number of days to look back for closed PRs (default: 7 to cover both metrics)
+    
+    Returns:
+        Dict containing both the closed PRs data and calculated metrics
+    """
+    closed_prs = get_closed_pull_requests(days_back=days_back)
+    metrics = calculate_pr_metrics(closed_prs)
+    
+    return {
+        "pull_requests": closed_prs,
+        "metrics": metrics
+    }
+
+
 if __name__ == "__main__":
     print("Hello World") 
