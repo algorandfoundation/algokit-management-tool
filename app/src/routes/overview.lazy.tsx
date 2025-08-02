@@ -3,6 +3,12 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTable } from "@/components/table/data-table";
 import { Release, ReleasesApiResponse, RepositoryReleases } from "@/types/releases";
+import { PRMetricsCards } from "@/components/pr-metrics-cards";
+import { PRMetricsDetails } from "@/components/pr-metrics-details";
+import { ErrorBoundary } from "react-error-boundary";
+import { useState } from "react";
+
+import { HiChevronDown, HiChevronUp } from "react-icons/hi2";
 
 export const Route = createLazyFileRoute("/overview")({
   component: RouteComponent,
@@ -83,22 +89,62 @@ const columns: ColumnDef<RepositoryReleases>[] = [
 ];
 
 function RouteComponent() {
+  const [showPRDetails, setShowPRDetails] = useState(false);
+  
   const { data } = useSuspenseQuery({
     queryKey: ["releases-data"],
     queryFn: fetchReleases,
   });
 
   return (
-    <div className="h-dvh p-2 px-12">
+    <div className="h-dvh p-2 px-12 overflow-y-auto">
       <div className="mb-6">
         <h1 className="text-2xl font-bold mb-2">Repository Overview</h1>
-        <p >
-          Latest releases for AlgoKit repositories ({data?.length || 0} repositories)
+        <p className="text-muted-foreground">
+          Latest releases and pull request metrics for AlgoKit repositories
         </p>
       </div>
-      
-      <div className="flex-1 min-h-0 shadow-sm overflow-auto bg-base rounded-sm">
-        <DataTable columnDefs={columns} data={data || []} />
+
+      {/* PR Metrics Section */}
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-semibold">Pull Request Activity</h2>
+          <button
+            className="btn btn-outline btn-sm"
+            onClick={() => setShowPRDetails(!showPRDetails)}
+          >
+            {showPRDetails ? (
+              <>
+                <HiChevronUp className="h-4 w-4 mr-2" />
+                Hide Details
+              </>
+            ) : (
+              <>
+                <HiChevronDown className="h-4 w-4 mr-2" />
+                Show Details
+              </>
+            )}
+          </button>
+        </div>
+        <ErrorBoundary fallback={<div>Error loading PR metrics</div>}>
+          <PRMetricsCards />
+          {showPRDetails && (
+            <div className="mt-6">
+              <PRMetricsDetails />
+            </div>
+          )}
+        </ErrorBoundary>
+      </div>
+
+      {/* Releases Section */}
+      <div className="mb-6">
+        <h2 className="text-lg font-semibold mb-4">Latest Releases</h2>
+        <p className="text-sm text-muted-foreground mb-4">
+          Showing latest releases for {data?.length || 0} repositories
+        </p>
+        <div className="shadow-sm overflow-auto bg-base rounded-sm">
+          <DataTable columnDefs={columns} data={data || []} />
+        </div>
       </div>
     </div>
   );
