@@ -97,7 +97,7 @@ def format_pr_data(pr: Dict[str, Any], repo_name: str) -> Dict[str, Any]:
         "branch": pr["head"]["ref"],
         "mergeable": pr.get("mergeable"),
         "draft": pr.get("draft", False),
-        "merged": pr.get("merged", False),
+        "merged": bool(pr.get("merged_at")),
         "mergedAt": pr.get("merged_at"),
         "mergedBy": pr.get("merged_by", {}).get("login") if pr.get("merged_by") else None,
         "isDependabot": pr["user"]["login"] == "dependabot[bot]",

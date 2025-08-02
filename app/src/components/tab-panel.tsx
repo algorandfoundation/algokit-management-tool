@@ -13,16 +13,12 @@ export function TabPanel({ tabs, hideBorder = false }: TabPanelProps) {
 
   return (
     <div className="h-full flex flex-col">
-      <div className="flex">
+      <div className={`tabs ${hideBorder ? '' : 'tabs-bordered'}`}>
         {tabs.map((tab, index) => (
           <button
             key={typeof tab.label === "string" ? tab.label : index}
             onClick={() => setActiveTab(index)}
-            className={`px-4 py-2 ${
-              activeTab === index
-                ? "border-primary text-primary"
-                : "border-transparent"
-            } ${hideBorder ? "border-b-0" : "border-b-2"}`}
+            className={`tab tab-lg ${activeTab === index ? 'tab-active' : ''}`}
           >
             {tab.label}
           </button>

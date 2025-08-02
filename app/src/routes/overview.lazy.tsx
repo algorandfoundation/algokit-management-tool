@@ -7,8 +7,8 @@ import { PRMetricsCards } from "@/components/pr-metrics-cards";
 import { PRMetricsDetails } from "@/components/pr-metrics-details";
 import { ErrorBoundary } from "react-error-boundary";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp } from "lucide-react";
+
+import { HiChevronDown, HiChevronUp } from "react-icons/hi2";
 
 export const Route = createLazyFileRoute("/overview")({
   component: RouteComponent,
@@ -109,23 +109,22 @@ function RouteComponent() {
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold">Pull Request Activity</h2>
-          <Button
-            variant="outline"
-            size="sm"
+          <button
+            className="btn btn-outline btn-sm"
             onClick={() => setShowPRDetails(!showPRDetails)}
           >
             {showPRDetails ? (
               <>
-                <ChevronUp className="h-4 w-4 mr-2" />
+                <HiChevronUp className="h-4 w-4 mr-2" />
                 Hide Details
               </>
             ) : (
               <>
-                <ChevronDown className="h-4 w-4 mr-2" />
+                <HiChevronDown className="h-4 w-4 mr-2" />
                 Show Details
               </>
             )}
-          </Button>
+          </button>
         </div>
         <ErrorBoundary fallback={<div>Error loading PR metrics</div>}>
           <PRMetricsCards />

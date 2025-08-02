@@ -1,6 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { usePRMetrics } from "@/hooks/use-pr-metrics";
-import { DataTable } from "@/components/ui/data-table";
+import { DataTable } from "@/components/table/data-table";
 import { ColumnDef } from "@tanstack/react-table";
 
 interface RepositoryMetricRow {
@@ -79,16 +78,14 @@ export function PRMetricsDetails() {
   tableData.sort((a, b) => b.closed_7day - a.closed_7day);
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Pull Request Metrics by Repository</CardTitle>
-        <CardDescription>
+    <div className="card bg-base-100 shadow-xl">
+      <div className="card-body">
+        <h2 className="card-title">Pull Request Metrics by Repository</h2>
+        <p className="text-base-content/70 mb-4">
           Breakdown of closed and merged pull requests per repository
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <DataTable columns={columns} data={tableData} />
-      </CardContent>
-    </Card>
+        </p>
+        <DataTable columnDefs={columns} data={tableData} />
+      </div>
+    </div>
   );
 }
