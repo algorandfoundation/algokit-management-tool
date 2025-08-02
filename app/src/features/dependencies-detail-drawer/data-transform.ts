@@ -2,7 +2,7 @@ import { Dependency, RepositoryInfo } from "../../types/dependencies";
 
 export const flattenDependencies = (data: RepositoryInfo[]): Dependency[] => {
   return data.flatMap((repo) =>
-    repo.outdated_dependencies.map((dependency) => ({
+    (repo.outdated_dependencies ?? []).map((dependency) => ({
       repoName: repo.name,
       repoUrl: repo.url,
       repoLanguage: repo.language,
