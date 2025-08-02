@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 from typing import Dict, Any, List, Optional
 
@@ -22,6 +23,9 @@ class ChangelogGenerator:
         # Use configured model version if not specified
         if model_name is None:
             model_name = settings.LLM_MODEL_VERSION
+        
+        # Set the Google API key for Pydantic AI
+        os.environ["GOOGLE_API_KEY"] = settings.GEMINI_API_KEY
             
         # Create agent with configured model
         self.agent = Agent(

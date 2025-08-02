@@ -39,21 +39,35 @@ const formatDate = (dateString: string) => {
   });
 };
 
-const ReleaseLink = ({ release }: { release: Release | null }) => {
+const isReleaseNew = (publishedAt: string, daysThreshold: number): boolean => {
+  const publishedDate = new Date(publishedAt);
+  const now = new Date();
+  const diffInMs = now.getTime() - publishedDate.getTime();
+  const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+  return diffInDays <= daysThreshold;
+};
+
+const ReleaseLink = ({ release, releaseType }: { release: Release | null; releaseType: 'main' | 'beta' }) => {
   if (!release) {
     return <span className="text-gray-400">No release</span>;
   }
   
+  const daysThreshold = releaseType === 'main' ? 3 : 1;
+  const isNew = isReleaseNew(release.published_at, daysThreshold);
+  
   return (
     <div className="flex flex-col">
-      <a 
-        href={release.html_url} 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="text-blue-600 hover:underline font-medium"
-      >
-        {release.tag_name}
-      </a>
+      <div className="flex items-center gap-1">
+        <a 
+          href={release.html_url} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:underline font-medium"
+        >
+          {release.tag_name}
+        </a>
+        {isNew && <span className="text-sm">🆕</span>}
+      </div>
       <span className="text-xs text-gray-500">
         {formatDate(release.published_at)}
       </span>
@@ -75,7 +89,7 @@ const columns: ColumnDef<RepositoryReleases>[] = [
     header: "Latest Release",
     size: 200,
     cell: ({ row }) => (
-      <ReleaseLink release={row.getValue("latest_main_release")} />
+      <ReleaseLink release={row.getValue("latest_main_release")} releaseType="main" />
     ),
   },
   {
@@ -83,7 +97,7 @@ const columns: ColumnDef<RepositoryReleases>[] = [
     header: "Latest Beta",
     size: 200,
     cell: ({ row }) => (
-      <ReleaseLink release={row.getValue("latest_beta_release")} />
+      <ReleaseLink release={row.getValue("latest_beta_release")} releaseType="beta" />
     ),
   },
 ];

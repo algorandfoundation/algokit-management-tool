@@ -113,7 +113,6 @@ class Settings(BaseSettings):
     GCP_BUCKET_SITE_FOLDER_NAME: str = "site"
 
     # AI/LLM Configuration
-    GEMINI_API_KEY: str | None = None
     GEMINI_API_KEY_SECRET_NAME: str = "gemini-api-key"
     LLM_MODEL_VERSION: str = "google-gla:gemini-2.0-flash-exp"
 

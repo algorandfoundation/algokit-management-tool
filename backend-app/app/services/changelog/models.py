@@ -27,13 +27,13 @@ class RepositoryChangelog(BaseModel):
 # API Request/Response Models
 class ChangelogRequest(BaseModel):
     """Request model for changelog generation."""
-    days_back: int = Field(
+    days_back: int | None = Field(
         default=7, 
         ge=1, 
         le=90, 
         description="Number of days to look back for changes (1-90 days)"
     )
-    repositories: Optional[List[str]] = Field(
+    repositories: list[str] | None = Field(
         default=None,
         description="Optional list of repository names to process. If None, processes all configured repositories"
     )
