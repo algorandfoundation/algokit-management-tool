@@ -30,3 +30,6 @@ secrets/
 
 # Logs
 logs/
+
+# algokit repos used for git commands
+.algokit_repos/

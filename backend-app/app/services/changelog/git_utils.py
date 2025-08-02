@@ -1,5 +1,4 @@
 import subprocess
-import os
 from typing import List, Optional, Dict, Any
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -22,10 +21,10 @@ def get_or_clone_repo(repo_url: str, repo_name: str) -> Optional[str]:
             logger.info(f"Updating existing repository: {repo_name}")
             
             # Determine main branch (main vs master)
-            os.chdir(repo_path)
             try:
                 result = subprocess.run(
                     ["git", "symbolic-ref", "refs/remotes/origin/HEAD"],
+                    cwd=repo_path,
                     capture_output=True, text=True, check=False
                 )
                 main_branch = result.stdout.strip().split('/')[-1] if result.returncode == 0 else "main"
@@ -33,9 +32,9 @@ def get_or_clone_repo(repo_url: str, repo_name: str) -> Optional[str]:
                 main_branch = "main"
             
             # Checkout main branch and hard pull
-            subprocess.run(["git", "checkout", main_branch], check=True, capture_output=True)
-            subprocess.run(["git", "fetch", "origin"], check=True, capture_output=True)
-            subprocess.run(["git", "reset", "--hard", f"origin/{main_branch}"], check=True, capture_output=True)
+            subprocess.run(["git", "checkout", main_branch], cwd=repo_path, check=True, capture_output=True)
+            subprocess.run(["git", "fetch", "origin"], cwd=repo_path, check=True, capture_output=True)
+            subprocess.run(["git", "reset", "--hard", f"origin/{main_branch}"], cwd=repo_path, check=True, capture_output=True)
             
         else:
             logger.info(f"Cloning fresh repository: {repo_name}")
@@ -111,12 +110,13 @@ def get_commit_messages_since(repo_path: str, days_back: int = 7) -> List[str]:
         return []
 
 
-def get_repository_diff(repo_path: str, days_back: int = 7) -> str:
+def get_repository_diff(repo_path: str, days_back: int = 7, repo_name: Optional[str] = None) -> str:
     """Get git diff for changes in the last N days.
     
     Args:
         repo_path: Path to the git repository
         days_back: Number of days to look back
+        repo_name: Name of the repository (used for special filtering)
         
     Returns:
         Git diff content as string
@@ -139,9 +139,17 @@ def get_repository_diff(repo_path: str, days_back: int = 7) -> str:
             
         oldest_commit = oldest_commit_result.stdout.strip().split('\n')[0]
         
+        # Build git diff command with optional file filtering for Puya repo
+        diff_cmd = ["git", "diff", f"{oldest_commit}^", "HEAD"]
+        
+        # Special handling for Puya repository to exclude large log files and output directories
+        if repo_name and repo_name.lower() == "puya":
+            diff_cmd.extend(["--", ":!*.log", ":!**/out/", ":!*.puya.map", ":!*.stats.txt", ":!*.teal", ":!*.arc32.json"])
+            logger.info(f"Applying file filtering for {repo_name} repository (excluding *.log, **/out/, *.puya.map, *.stats.txt, *.teal, and *.arc32.json)")
+        
         # Get diff from oldest commit to HEAD
         result = subprocess.run(
-            ["git", "diff", f"{oldest_commit}^", "HEAD"],
+            diff_cmd,
             cwd=repo_path,
             check=True,
             capture_output=True,
@@ -157,12 +165,13 @@ def get_repository_diff(repo_path: str, days_back: int = 7) -> str:
         return ""
 
 
-def get_detailed_git_log(repo_path: str, days_back: int = 7) -> str:
+def get_detailed_git_log(repo_path: str, days_back: int = 7, repo_name: Optional[str] = None) -> str:
     """Get detailed git log for changes in the last N days.
     
     Args:
         repo_path: Path to the git repository
         days_back: Number of days to look back
+        repo_name: Name of the repository (used for special filtering)
         
     Returns:
         Git log content as string with full commit details
@@ -170,8 +179,16 @@ def get_detailed_git_log(repo_path: str, days_back: int = 7) -> str:
     try:
         since_date = (datetime.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
         
+        # Build git log command with optional file filtering for Puya repo
+        log_cmd = ["git", "log", f"--since={since_date}", "--pretty=format:%H%n%an <%ae>%n%ad%n%s%n%b%n---"]
+        
+        # Special handling for Puya repository to exclude large log files and output directories
+        if repo_name and repo_name.lower() == "puya":
+            log_cmd.extend(["--", ":!*.log", ":!**/out/", ":!*.puya.map", ":!*.stats.txt", ":!*.teal", ":!*.arc32.json"])
+            logger.info(f"Applying file filtering for {repo_name} git log (excluding *.log, **/out/, *.puya.map, *.stats.txt, *.teal, and *.arc32.json)")
+        
         result = subprocess.run(
-            ["git", "log", f"--since={since_date}", "--pretty=format:%H%n%an <%ae>%n%ad%n%s%n%b%n---"],
+            log_cmd,
             cwd=repo_path,
             check=True,
             capture_output=True,
@@ -246,8 +263,8 @@ def process_repository_git_data(repo_config: Dict[str, Any], days_back: int = 7)
 
     # Get commits, diff, and log
     commits = get_commits_since(repo_path, days_back)
-    diff_content = get_repository_diff(repo_path, days_back)
-    git_log = get_detailed_git_log(repo_path, days_back)
+    diff_content = get_repository_diff(repo_path, days_back, repo_name)
+    git_log = get_detailed_git_log(repo_path, days_back, repo_name)
     
     if not commits and not diff_content:
         return GitOperationResult(

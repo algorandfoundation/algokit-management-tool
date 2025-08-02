@@ -88,7 +88,9 @@ class ChangelogGenerator:
                 context += "No diff content available - repository may have no changes in the specified timeframe."
             
             # Generate changelog using AI
+            logger.info(f"🤖 Starting AI agent for {git_result.repository_name} changelog generation...")
             result = await self.agent.run(context)
+            logger.info(f"✅ AI agent completed for {git_result.repository_name}")
             
             # Update fields that AI might not set correctly
             changelog = result.output
@@ -226,10 +228,10 @@ class MultiRepoChangelogGenerator:
             if markdown_sections:
                 combined_markdown = "\n\n---\n\n".join(markdown_sections)
             else:
-                combined_markdown = "# Multi-Repository Changelog\n\nNo changelogs were successfully generated.\n\n"
+                combined_markdown = "# AlgoKit Repos Changelog\n\nNo changelogs were successfully generated.\n\n"
             
             # Add summary header to combined markdown
-            summary_header = f"# Multi-Repository Changelog\n\n"
+            summary_header = "# AlgoKit Repos Changelog\n\n"
             summary_header += f"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
             summary_header += f"**Period:** Last {days_back} days\n\n"
             summary_header += f"**Repositories:** {len(changelogs)} successful, {len(failed_repos)} failed\n\n"
