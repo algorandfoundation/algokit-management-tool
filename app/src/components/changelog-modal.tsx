@@ -87,7 +87,7 @@ export function ChangelogModal({ isOpen, onClose }: ChangelogModalProps) {
         </div>
 
         {/* Scrollable Content Container */}
-        <div className="flex-1 overflow-y-auto px-6 py-4">
+        <div className="flex-1 overflow-y-auto px-6">
           {loading && (
             <div className="flex justify-center items-center py-8">
               <span className="loading loading-spinner loading-lg"></span>

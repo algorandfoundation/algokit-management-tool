@@ -66,7 +66,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
       if (trimmedLine.startsWith('# ')) {
         flushList();
         elements.push(
-          <h1 key={key++} className="text-2xl font-bold mb-4 text-primary">
+          <h1 key={key++} className="sticky top-0 bg-base-100 z-10 text-2xl font-bold pb-4 text-primary">
             {renderInlineElements(trimmedLine.substring(2))}
           </h1>
         );
