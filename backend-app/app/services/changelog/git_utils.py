@@ -157,6 +157,36 @@ def get_repository_diff(repo_path: str, days_back: int = 7) -> str:
         return ""
 
 
+def get_detailed_git_log(repo_path: str, days_back: int = 7) -> str:
+    """Get detailed git log for changes in the last N days.
+    
+    Args:
+        repo_path: Path to the git repository
+        days_back: Number of days to look back
+        
+    Returns:
+        Git log content as string with full commit details
+    """
+    try:
+        since_date = (datetime.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
+        
+        result = subprocess.run(
+            ["git", "log", f"--since={since_date}", "--pretty=format:%H%n%an <%ae>%n%ad%n%s%n%b%n---"],
+            cwd=repo_path,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        
+        log_content = result.stdout
+        logger.info(f"Generated git log with {len(log_content)} characters")
+        return log_content
+        
+    except subprocess.CalledProcessError as e:
+        logger.error(f"Error getting git log from {repo_path}: {e}")
+        return ""
+
+
 def get_file_changes_since(repo_path: str, days_back: int = 7) -> List[str]:
     """Get list of files changed in the last N days.
     
@@ -210,12 +240,14 @@ def process_repository_git_data(repo_config: Dict[str, Any], days_back: int = 7)
             success=False,
             commits=[],
             diff_content="",
+            git_log="",
             error="Failed to get repository"
         )
 
-    # Get commits and diff
+    # Get commits, diff, and log
     commits = get_commits_since(repo_path, days_back)
     diff_content = get_repository_diff(repo_path, days_back)
+    git_log = get_detailed_git_log(repo_path, days_back)
     
     if not commits and not diff_content:
         return GitOperationResult(
@@ -223,6 +255,7 @@ def process_repository_git_data(repo_config: Dict[str, Any], days_back: int = 7)
             success=True,
             commits=[],
             diff_content="",
+            git_log="",
             error=None
         )
     
@@ -231,5 +264,6 @@ def process_repository_git_data(repo_config: Dict[str, Any], days_back: int = 7)
         success=True,
         commits=commits,
         diff_content=diff_content,
+        git_log=git_log,
         error=None
     ) 

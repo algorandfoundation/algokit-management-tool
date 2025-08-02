@@ -1,5 +1,4 @@
 from typing import List, Optional, Dict, Any
-from datetime import datetime
 
 from pydantic import BaseModel, Field
 
@@ -66,4 +65,5 @@ class GitOperationResult(BaseModel):
     success: bool = Field(description="Whether the operation was successful")
     commits: List[str] = Field(description="List of commit hashes")
     diff_content: str = Field(description="Git diff content")
+    git_log: Optional[str] = Field(default=None, description="Git log content with commit details")
     error: Optional[str] = Field(default=None, description="Error message if operation failed") 

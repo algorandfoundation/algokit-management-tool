@@ -78,6 +78,10 @@ class ChangelogGenerator:
             context += f"Days analyzed: {days_back}\n"
             context += f"Commits found: {len(git_result.commits)}\n\n"
             
+            # Add git log section
+            if git_result.git_log:
+                context += f"Git Log:\n{git_result.git_log}\n\n"
+            
             if git_result.diff_content:
                 context += f"Git Diff:\n{git_result.diff_content}"
             else:
