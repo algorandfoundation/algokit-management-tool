@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import (
+    changelog,
     dependencies,
     functional_specs,
     issues,
@@ -14,8 +15,8 @@ from app.api import (
 from app.core.config import settings
 
 app = FastAPI(
-    title="AlgoKit Dependencies API",
-    description="API for managing AlgoKit dependencies, outdated packages, and GitHub issues",
+    title="AlgoKit Management API",
+    description="API for managing AlgoKit dependencies, outdated packages, GitHub issues, and changelog generation",
     version="0.1.0",
 )
 
@@ -29,6 +30,7 @@ app.add_middleware(
 )
 
 # Include routers
+app.include_router(changelog.router, prefix=settings.API_V1_STR, tags=["changelog"])
 app.include_router(
     dependencies.router, prefix=settings.API_V1_STR, tags=["dependencies"]
 )

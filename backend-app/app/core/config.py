@@ -112,6 +112,10 @@ class Settings(BaseSettings):
     GCP_BUCKET_NAME: str = "algokit-management-tool"
     GCP_BUCKET_SITE_FOLDER_NAME: str = "site"
 
+    # AI/LLM Configuration
+    GEMINI_API_KEY_SECRET_NAME: str = "gemini-api-key"
+    LLM_MODEL_VERSION: str = "google-gla:gemini-2.0-flash-exp"
+
     # Service Account Configuration for local development
     GOOGLE_APPLICATION_CREDENTIALS: str
     GITHUB_TOKEN_LOCAL: str
@@ -145,6 +149,23 @@ class Settings(BaseSettings):
                 "Failed to access Secret Manager. Ensure you have either:\n"
                 "1. Run 'gcloud auth application-default login' or\n"
                 "2. Set GOOGLE_APPLICATION_CREDENTIALS environment variable\n"
+                f"Error: {str(e)}"
+            ) from e
+
+    @property
+    def GEMINI_API_KEY(self) -> str:
+        """Get Gemini API key from Google Cloud Secret Manager."""
+        try:
+            client = secretmanager.SecretManagerServiceClient()
+            name = f"projects/{self.GCP_PROJECT_ID}/secrets/{self.GEMINI_API_KEY_SECRET_NAME}/versions/latest"
+            response = client.access_secret_version(request={"name": name})
+            return response.payload.data.decode("UTF-8")
+        except Exception as e:
+            raise Exception(
+                "Failed to access Gemini API key from Secret Manager. Ensure you have either:\n"
+                "1. Run 'gcloud auth application-default login' or\n"
+                "2. Set GOOGLE_APPLICATION_CREDENTIALS environment variable\n"
+                f"3. The secret '{self.GEMINI_API_KEY_SECRET_NAME}' exists in project '{self.GCP_PROJECT_ID}'\n"
                 f"Error: {str(e)}"
             ) from e
 
