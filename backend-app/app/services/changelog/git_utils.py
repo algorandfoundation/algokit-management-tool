@@ -1,7 +1,8 @@
 import subprocess
-import tempfile
+import os
 from typing import List, Optional, Dict, Any
 from datetime import datetime, timedelta
+from pathlib import Path
 
 from app.core.logging import LoggerFactory
 from app.services.changelog.models import GitOperationResult
@@ -9,20 +10,45 @@ from app.services.changelog.models import GitOperationResult
 logger = LoggerFactory.get_logger(__name__)
 
 
-def clone_repo(repo_url: str, temp_dir: str) -> Optional[str]:
-    """Clone a repository into a temporary directory.
+def get_or_clone_repo(repo_url: str, repo_name: str) -> Optional[str]:
+    """Get repository from .algokit_repos folder, clone or update as needed."""
+    repos_dir = Path(".algokit_repos")
+    repos_dir.mkdir(exist_ok=True)
     
-    Reuses the pattern from dependency_checker.py
-    """
+    repo_path = repos_dir / repo_name
+    
     try:
-        subprocess.run(
-            ["git", "clone", repo_url, temp_dir],
-            check=True,
-            capture_output=True,
-        )
-        return temp_dir
+        if repo_path.exists():
+            logger.info(f"Updating existing repository: {repo_name}")
+            
+            # Determine main branch (main vs master)
+            os.chdir(repo_path)
+            try:
+                result = subprocess.run(
+                    ["git", "symbolic-ref", "refs/remotes/origin/HEAD"],
+                    capture_output=True, text=True, check=False
+                )
+                main_branch = result.stdout.strip().split('/')[-1] if result.returncode == 0 else "main"
+            except:
+                main_branch = "main"
+            
+            # Checkout main branch and hard pull
+            subprocess.run(["git", "checkout", main_branch], check=True, capture_output=True)
+            subprocess.run(["git", "fetch", "origin"], check=True, capture_output=True)
+            subprocess.run(["git", "reset", "--hard", f"origin/{main_branch}"], check=True, capture_output=True)
+            
+        else:
+            logger.info(f"Cloning fresh repository: {repo_name}")
+            subprocess.run(
+                ["git", "clone", repo_url, str(repo_path)],
+                check=True,
+                capture_output=True,
+            )
+        
+        return str(repo_path)
+        
     except subprocess.CalledProcessError as e:
-        logger.error(f"Error cloning repository {repo_url}: {e}")
+        logger.error(f"Error with repository {repo_name}: {e}")
         return None
 
 
@@ -176,35 +202,34 @@ def process_repository_git_data(repo_config: Dict[str, Any], days_back: int = 7)
     
     logger.info(f"Processing git data for {repo_name}")
     
-    with tempfile.TemporaryDirectory() as temp_dir:
-        # Clone repository
-        cloned_path = clone_repo(repo_url, temp_dir)
-        if not cloned_path:
-            return GitOperationResult(
-                repository_name=repo_name,
-                success=False,
-                commits=[],
-                diff_content="",
-                error="Failed to clone repository"
-            )
-        
-        # Get commits and diff
-        commits = get_commits_since(cloned_path, days_back)
-        diff_content = get_repository_diff(cloned_path, days_back)
-        
-        if not commits and not diff_content:
-            return GitOperationResult(
-                repository_name=repo_name,
-                success=True,
-                commits=[],
-                diff_content="",
-                error=None
-            )
-        
+    # Get or clone repository
+    repo_path = get_or_clone_repo(repo_url, repo_name)
+    if not repo_path:
+        return GitOperationResult(
+            repository_name=repo_name,
+            success=False,
+            commits=[],
+            diff_content="",
+            error="Failed to get repository"
+        )
+
+    # Get commits and diff
+    commits = get_commits_since(repo_path, days_back)
+    diff_content = get_repository_diff(repo_path, days_back)
+    
+    if not commits and not diff_content:
         return GitOperationResult(
             repository_name=repo_name,
             success=True,
-            commits=commits,
-            diff_content=diff_content,
+            commits=[],
+            diff_content="",
             error=None
-        ) 
+        )
+    
+    return GitOperationResult(
+        repository_name=repo_name,
+        success=True,
+        commits=commits,
+        diff_content=diff_content,
+        error=None
+    ) 
