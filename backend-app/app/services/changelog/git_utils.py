@@ -9,6 +9,48 @@ from app.services.changelog.models import GitOperationResult
 logger = LoggerFactory.get_logger(__name__)
 
 
+def get_repository_filter_patterns(repo_name: Optional[str]) -> tuple[list[str], str]:
+    """Get repository-specific filter patterns for git operations.
+    
+    Args:
+        repo_name: Name of the repository
+        
+    Returns:
+        Tuple of (filter_patterns, description) for the repository
+    """
+    if not repo_name:
+        return [], ""
+    
+    # Common binary file patterns to exclude from all repositories
+    binary_patterns = [
+        ":!*.png", ":!*.jpg", ":!*.jpeg", ":!*.gif", ":!*.bmp", ":!*.pdf", 
+        ":!*.zip", ":!*.tar", ":!*.gz", ":!*.wasm", ":!*.bin", ":!*.exe", 
+        ":!*.dll", ":!*.so", ":!*.dylib", ":!*.ico", ":!*.tiff", ":!*.svg"
+    ]
+    
+    repo_lower = repo_name.lower()
+    
+    if repo_lower == "puya":
+        patterns = [
+            "--", 
+            ":!*.log", ":!**/out/", ":!*.puya.map", ":!*.stats.txt", ":!*.teal", ":!*.arc32.json",
+            ":!examples/*", ":!tests/*", ":!test_cases/*"
+        ] + binary_patterns
+        description = "excluding logs, outputs, examples, tests, binaries, and generated files"
+        return patterns, description
+    
+    elif repo_lower == "algokit-templates":
+        patterns = ["--", ":!examples/*"] + binary_patterns
+        description = "excluding examples/* and binary files"
+        return patterns, description
+    
+    else:
+        # Apply binary filtering to all other repositories
+        patterns = ["--"] + binary_patterns
+        description = "excluding binary files"
+        return patterns, description
+
+
 def get_or_clone_repo(repo_url: str, repo_name: str) -> Optional[str]:
     """Get repository from .algokit_repos folder, clone or update as needed."""
     repos_dir = Path(".algokit_repos")
@@ -139,13 +181,14 @@ def get_repository_diff(repo_path: str, days_back: int = 7, repo_name: Optional[
             
         oldest_commit = oldest_commit_result.stdout.strip().split('\n')[0]
         
-        # Build git diff command with optional file filtering for Puya repo
+        # Build git diff command with optional file filtering
         diff_cmd = ["git", "diff", f"{oldest_commit}^", "HEAD"]
         
-        # Special handling for Puya repository to exclude large log files and output directories
-        if repo_name and repo_name.lower() == "puya":
-            diff_cmd.extend(["--", ":!*.log", ":!**/out/", ":!*.puya.map", ":!*.stats.txt", ":!*.teal", ":!*.arc32.json"])
-            logger.info(f"Applying file filtering for {repo_name} repository (excluding *.log, **/out/, *.puya.map, *.stats.txt, *.teal, and *.arc32.json)")
+        # Apply repository-specific filtering
+        filter_patterns, filter_description = get_repository_filter_patterns(repo_name)
+        if filter_patterns:
+            diff_cmd.extend(filter_patterns)
+            logger.info(f"Applying file filtering for {repo_name} repository ({filter_description})")
         
         # Get diff from oldest commit to HEAD
         result = subprocess.run(
@@ -179,13 +222,14 @@ def get_detailed_git_log(repo_path: str, days_back: int = 7, repo_name: Optional
     try:
         since_date = (datetime.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
         
-        # Build git log command with optional file filtering for Puya repo
+        # Build git log command with optional file filtering
         log_cmd = ["git", "log", f"--since={since_date}", "--pretty=format:%H%n%an <%ae>%n%ad%n%s%n%b%n---"]
         
-        # Special handling for Puya repository to exclude large log files and output directories
-        if repo_name and repo_name.lower() == "puya":
-            log_cmd.extend(["--", ":!*.log", ":!**/out/", ":!*.puya.map", ":!*.stats.txt", ":!*.teal", ":!*.arc32.json"])
-            logger.info(f"Applying file filtering for {repo_name} git log (excluding *.log, **/out/, *.puya.map, *.stats.txt, *.teal, and *.arc32.json)")
+        # Apply repository-specific filtering
+        filter_patterns, filter_description = get_repository_filter_patterns(repo_name)
+        if filter_patterns:
+            log_cmd.extend(filter_patterns)
+            logger.info(f"Applying file filtering for {repo_name} git log ({filter_description})")
         
         result = subprocess.run(
             log_cmd,

@@ -82,17 +82,24 @@ class ChangelogGenerator:
             context += f"Days analyzed: {days_back}\n"
             context += f"Commits found: {len(git_result.commits)}\n\n"
             
+            logger.info(f"📊 Base context size: {len(context)} characters")
+            
             # Add git log section
             if git_result.git_log:
                 context += f"Git Log:\n{git_result.git_log}\n\n"
             
             if git_result.diff_content:
+                logger.info(f"📊 Diff content size: {len(git_result.diff_content)} characters")
+                # Debug: Check for binary/special characters
+                printable_chars = sum(1 for c in git_result.diff_content if c.isprintable() or c in '\n\r\t')
+                logger.info(f"📊 Printable characters in diff: {printable_chars}")
                 context += f"Git Diff:\n{git_result.diff_content}"
             else:
                 context += "No diff content available - repository may have no changes in the specified timeframe."
             
             # Generate changelog using AI
             logger.info(f"🤖 Starting AI agent for {git_result.repository_name} changelog generation...")
+            logger.info(f"📝 Context size: {len(context)} characters")
             result = await self.agent.run(context)
             logger.info(f"✅ AI agent completed for {git_result.repository_name}")
             

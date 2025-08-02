@@ -22,6 +22,7 @@ const fetchDeps = async () => {
   const outdated_response = await fetch(OUTDATED_DEPENDENCIES_URL);
   const dependencies = await dependencies_response.json();
   const outdated = await outdated_response.json();
+
   return {
     dependencies: dependencies["results"],
     outdated: flattenDependencies(outdated["results"]),

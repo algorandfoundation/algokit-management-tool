@@ -35,19 +35,29 @@ export function Layout({ children }: PropsWithChildren) {
         ></label>
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 gap-2">
           <li>
-            <Link to="/overview">Overview</Link>
+            <Link to="/overview" className="text-base font-medium">
+              Overview
+            </Link>
           </li>
           <li>
-            <Link to="/metrics">Metrics</Link>
+            <Link to="/metrics" className="text-base font-medium">
+              Metrics
+            </Link>
           </li>
           <li>
-            <Link to="/func-specs">Functional Specifications</Link>
+            <Link to="/func-specs" className="text-base font-medium">
+              Functional Specifications
+            </Link>
           </li>
           <li>
-            <Link to="/dependencies">Dependencies</Link>
+            <Link to="/dependencies" className="text-base font-medium">
+              Dependencies
+            </Link>
           </li>
           <li>
-            <Link to="/issues">Issues</Link>
+            <Link to="/issues" className="text-base font-medium">
+              Issues
+            </Link>
           </li>
         </ul>
       </div>
