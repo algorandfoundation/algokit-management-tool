@@ -8,11 +8,13 @@ from .utils import get_node_name, get_package_owner
 
 
 def get_version_from_pyproject_toml(pyproject_toml_data: Dict[str, Any]) -> str:
-    if pyproject_toml_data.get("tool").get("poetry") is not None:
+    if is_poetry_pyproject(pyproject_toml_data):
         return pyproject_toml_data.get("tool").get("poetry").get("version")
-    if pyproject_toml_data.get("tool").get("hatch") is not None:
+    if is_hatch_pyproject(pyproject_toml_data):
         return pyproject_toml_data.get("project").get("version")
-    raise ValueError("No version found in pyproject.toml")
+    if is_uv_pyproject(pyproject_toml_data):
+        return pyproject_toml_data.get("project").get("version")
+    raise ValueError("Unsupported build system. Only Poetry, Hatch, and UV are supported.")
 
 
 def get_node_links_from_py_deps(
@@ -120,30 +122,97 @@ def get_deps_from_hatch_pyproject_toml(
     return (nodes, links)
 
 
+def get_deps_from_uv_pyproject_toml(
+    pyproject_toml_data: Dict[str, Any], repo: Dict, repo_node: Dict, graph_kwargs: Dict
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """Extract dependencies from UV pyproject.toml format.
+    
+    Args:
+        pyproject_toml_data: Dictionary containing parsed pyproject.toml data
+        repo: Repository information
+        repo_node: Repository node data
+        graph_kwargs: Graph configuration
+        
+    Returns:
+        Tuple of (nodes, links) for dependencies
+    """
+    nodes = [repo_node]
+    links = []
+    
+    # Get main project dependencies
+    dependencies = {}
+    project_deps = pyproject_toml_data.get("project", {}).get("dependencies", [])
+    for dep in project_deps:
+        parts = re.split(r"(>=|<=|==|!=|~=|<|>)", dep)
+        package = parts[0].strip()
+        version = "".join(parts[1:]).strip() if len(parts) > 1 else ""
+        dependencies[package] = version if version else "No Valid Version"
+    
+    (dep_nodes, dep_links) = get_node_links_from_py_deps(
+        dependencies,
+        {"type": "dependency", **graph_kwargs},
+        {"type": "dependency", **graph_kwargs},
+        repo,
+    )
+    nodes += dep_nodes
+    links += dep_links
+    
+    # Get optional dependencies
+    optional_deps = pyproject_toml_data.get("project", {}).get("optional-dependencies", {})
+    for group_name, group_deps in optional_deps.items():
+        dependencies = {}
+        for dep in group_deps:
+            parts = re.split(r"(>=|<=|==|!=|~=|<|>)", dep)
+            package = parts[0].strip()
+            version = "".join(parts[1:]).strip() if len(parts) > 1 else ""
+            dependencies[package] = version if version else "No Valid Version"
+        
+        (opt_dep_nodes, opt_dep_links) = get_node_links_from_py_deps(
+            dependencies,
+            {"type": f"{group_name}_dependency", **graph_kwargs},
+            {"type": f"{group_name}_dependency", **graph_kwargs},
+            repo,
+        )
+        nodes += opt_dep_nodes
+        links += opt_dep_links
+    
+    return (nodes, links)
+
+
 def is_poetry_pyproject(pyproject_toml_data: Dict[str, Any]) -> bool:
-    """Determine if pyproject.toml uses Poetry or Hatch as package manager.
+    """Determine if pyproject.toml uses Poetry as package manager.
 
     Args:
         pyproject_toml_data: Dictionary containing parsed pyproject.toml data
 
     Returns:
-        bool: True if Poetry is used, False if Hatch is used
+        bool: True if Poetry is used
     """
-    # Check for poetry tool section
-    has_poetry = "poetry" in pyproject_toml_data.get("tool", {})
+    return "poetry" in pyproject_toml_data.get("tool", {})
 
-    # Check for hatch tool section
-    has_hatch = "hatch" in pyproject_toml_data.get("tool", {})
 
-    if has_poetry and has_hatch:
-        # If both exist, check which one has dependencies defined
-        poetry_deps = (
-            pyproject_toml_data.get("tool", {}).get("poetry", {}).get("dependencies")
-        )
-        # hatch_deps = pyproject_toml_data.get("project", {}).get("dependencies")
-        return poetry_deps is not None
+def is_hatch_pyproject(pyproject_toml_data: Dict[str, Any]) -> bool:
+    """Determine if pyproject.toml uses Hatch as package manager.
 
-    return has_poetry
+    Args:
+        pyproject_toml_data: Dictionary containing parsed pyproject.toml data
+
+    Returns:
+        bool: True if Hatch is used
+    """
+    return "hatch" in pyproject_toml_data.get("tool", {})
+
+
+def is_uv_pyproject(pyproject_toml_data: Dict[str, Any]) -> bool:
+    """Determine if pyproject.toml uses UV as package manager.
+
+    Args:
+        pyproject_toml_data: Dictionary containing parsed pyproject.toml data
+
+    Returns:
+        bool: True if UV is used
+    """
+    return "uv" in pyproject_toml_data.get("tool", {})
 
 
 def get_node_links_from_python_repo(
@@ -165,13 +234,23 @@ def get_node_links_from_python_repo(
         pyproject_toml_response = requests.get(pyproject_toml_url)
         pyproject_toml_data = tomllib.loads(pyproject_toml_response.text)
         repo_node["version"] = [get_version_from_pyproject_toml(pyproject_toml_data)]
+        
         if is_poetry_pyproject(pyproject_toml_data):
             (nodes, links) = get_deps_from_poetry_pyproject_toml(
                 pyproject_toml_data, repo, repo_node, graph_kwargs
             )
-        else:
+        elif is_hatch_pyproject(pyproject_toml_data):
             (nodes, links) = get_deps_from_hatch_pyproject_toml(
                 pyproject_toml_data, repo, repo_node, graph_kwargs
+            )
+        elif is_uv_pyproject(pyproject_toml_data):
+            (nodes, links) = get_deps_from_uv_pyproject_toml(
+                pyproject_toml_data, repo, repo_node, graph_kwargs
+            )
+        else:
+            raise ValueError(
+                f"Unsupported build system in {repo.get('name', 'unknown')} repository. "
+                "Only Poetry, Hatch, and UV are supported."
             )
 
     return (nodes, links)
