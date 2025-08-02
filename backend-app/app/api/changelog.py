@@ -25,22 +25,26 @@ async def generate_changelog(request: ChangelogRequest):
     try:
         # Filter repositories if specific ones are requested
         repositories_to_process = settings.REPOSITORIES
-        if request.repositories:
-            # Filter to only requested repositories
-            repo_names = set(request.repositories)
-            repositories_to_process = [
-                repo for repo in settings.REPOSITORIES 
-                if repo["name"] in repo_names
-            ]
-            
-            # Check if all requested repositories exist
-            found_names = {repo["name"] for repo in repositories_to_process}
-            missing = repo_names - found_names
-            if missing:
-                raise HTTPException(
-                    status_code=400,
-                    detail=f"Repository(s) not found in configuration: {', '.join(missing)}"
-                )
+        if request.repositories is not None:
+            if len(request.repositories) == 0:
+                # Empty list explicitly means "process all repositories"
+                repositories_to_process = settings.REPOSITORIES
+            else:
+                # Filter to only requested repositories
+                repo_names = set(request.repositories)
+                repositories_to_process = [
+                    repo for repo in settings.REPOSITORIES 
+                    if repo["name"] in repo_names
+                ]
+                
+                # Check if all requested repositories exist
+                found_names = {repo["name"] for repo in repositories_to_process}
+                missing = repo_names - found_names
+                if missing:
+                    raise HTTPException(
+                        status_code=400,
+                        detail=f"Repository(s) not found in configuration: {', '.join(missing)}"
+                    )
         
         if not repositories_to_process:
             raise HTTPException(
@@ -127,7 +131,7 @@ async def get_changelog_status():
             "repository_names": [repo["name"] for repo in settings.REPOSITORIES],
             "default_days_back": 7,
             "max_days_back": 90,
-            "ai_model": "google-gla:gemini-2.0-flash-exp",
+            "ai_model": settings.LLM_MODEL_VERSION,
             "version": settings.VERSION
         }
     except Exception as e:

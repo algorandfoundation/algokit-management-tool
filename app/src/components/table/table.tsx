@@ -19,6 +19,7 @@ export const Table = <TData,>({ table }: TablePropTypes<TData>) => {
                 <th
                   key={header.id}
                   colSpan={header.colSpan}
+                  className="text-sm font-semibold"
                   style={{
                     width: columnDefSize === -1 ? "auto" : columnDefSize,
                   }}
@@ -61,6 +62,7 @@ export const Table = <TData,>({ table }: TablePropTypes<TData>) => {
                 return (
                   <td
                     key={cell.id}
+                    className="text-sm"
                     style={{
                       width:
                         columnDefSize === -1 ? "auto" : cell.column.getSize(),
@@ -74,7 +76,7 @@ export const Table = <TData,>({ table }: TablePropTypes<TData>) => {
           ))
         ) : (
           <tr>
-            <td colSpan={table.getLeafHeaders().length} className="text-center">
+            <td colSpan={table.getLeafHeaders().length} className="text-center text-base">
               No records to display
             </td>
           </tr>

@@ -1,16 +1,11 @@
-import asyncio
 from datetime import datetime
 from typing import Dict, Any, List, Optional
-import json
-import logging
 
-import httpx
 from pydantic_ai import Agent
 
 from app.core.config import settings
 from app.core.logging import LoggerFactory
 from app.services.changelog.models import (
-    ChangelogEntry, 
     RepositoryChangelog, 
     GitOperationResult,
     ChangelogMetadata
@@ -23,7 +18,12 @@ logger = LoggerFactory.get_logger(__name__)
 class ChangelogGenerator:
     """Generate changelogs from git diffs using Pydantic AI."""
     
-    def __init__(self, model_name: str = "google-gla:gemini-2.0-flash-exp"):
+    def __init__(self, model_name: str | None = None):
+        # Use configured model version if not specified
+        if model_name is None:
+            model_name = settings.LLM_MODEL_VERSION
+            
+        # Create agent with configured model
         self.agent = Agent(
             model_name,
             output_type=RepositoryChangelog,
@@ -34,9 +34,9 @@ class ChangelogGenerator:
                 "Refactoring, Performance, Security, Dependencies, Chore, etc. "
                 "Focus on user-facing changes and their impact. "
                 "Be concise but informative. Identify breaking changes carefully. "
-                "If no significant changes are found, create a minimal changelog noting maintenance updates."
-            ),
-            http_client=httpx.AsyncClient(timeout=httpx.Timeout(120.0))
+                "If no significant changes are found, create a minimal changelog noting maintenance updates. "
+                "Respond with structured JSON matching the RepositoryChangelog format."
+            )
         )
     
     async def generate_changelog(
@@ -153,7 +153,8 @@ class ChangelogGenerator:
                     files_text = "`, `".join(files_to_show)
                     if len(change.files_affected) > 5:
                         files_text += f"` and {len(change.files_affected) - 5} more"
-                    md += f"  - Files: `{files_text}`\n"
+                    # File commented so the affected files are not listed in the changelog
+                    # md += f"  - Files: `{files_text}`\n"
             md += "\n"
         
         return md

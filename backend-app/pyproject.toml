@@ -6,10 +6,6 @@ authors = ["David Rojas <lempira@gmail.com>"]
 readme = "README.md"
 package-mode = false
 
-[tool.poetry.virtualenvs]
-in-project = true
-
-
 [tool.poetry.dependencies]
 python = "^3.12"
 requests = "^2.32.3"
@@ -17,7 +13,7 @@ fastapi = {extras = ["standard"], version = "^0.115.6"}
 pydantic-settings = "^2.7.1"
 google-cloud-secret-manager = "^2.22.0"
 google-cloud-storage = "^2.19.0"
-pydantic-ai = "^0.0.13"
+pydantic-ai = "^0.4.11"
 httpx = "^0.28.1"
 
 
