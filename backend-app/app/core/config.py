@@ -93,6 +93,24 @@ REPOSITORIES = [
         "build_name": "@algorandfoundation/algokit-utils-debug",
         "language": "javascript",
     },
+    {
+        "name": "algokit-templates",
+        "owner": ORGANIZATION,
+        "build_name": "algokit-template",
+        "language": "python",
+    },
+    {
+        "name": "algokit-example-gallery",
+        "owner": ORGANIZATION,
+        "build_name": "algokit-example-gallery",
+        "language": "javascript",
+    },
+     {
+        "name": "algokit-core",
+        "owner": ORGANIZATION,
+        "build_name": "algokit-core",
+        "language": "rust",
+    },
 ]
 SERVICE_ACCOUNT_NAME = "algokit-management-tool-service-account"
 
@@ -114,7 +132,7 @@ class Settings(BaseSettings):
 
     # AI/LLM Configuration
     GEMINI_API_KEY_SECRET_NAME: str = "gemini-api-key"
-    LLM_MODEL_VERSION: str = "google-gla:gemini-2.0-flash-exp"
+    LLM_MODEL_VERSION: str = "google-gla:gemini-2.5-pro-preview-03-25"
 
     # Service Account Configuration for local development
     GOOGLE_APPLICATION_CREDENTIALS: str
