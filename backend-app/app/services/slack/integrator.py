@@ -229,7 +229,8 @@ def process_outdated_data(outdated_data: Dict[str, Any]) -> Dict[str, Dict[str, 
             }
 
         # Count and collect details of outdated dependencies
-        for dep in repo_data.get("outdated_dependencies", []):
+        outdated_dependencies = repo_data.get("outdated_dependencies") or []
+        for dep in outdated_dependencies:
             dep_name = dep.get("name")
             current_version = dep.get("current")
             latest_version = dep.get("latest")
